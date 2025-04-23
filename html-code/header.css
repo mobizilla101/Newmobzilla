@@ -1,0 +1,193 @@
+/* for header and nav bar */
+.gradient-bg {
+    background: linear-gradient(90deg, #0099cc 0%, #00cc99 100%);
+  }
+
+  .search-bar {
+    background: linear-gradient(90deg, #00cc99 0%, #0099cc 100%);
+    border-radius: 9999px;
+  }
+
+  .hello {
+    background-color: white;
+    border-radius: 9999px;
+  }
+
+  .active-nav {
+    border-bottom: 2px solid #0099cc;
+  }
+
+  /* Custom cart icon styles */
+  .custom-cart {
+    position: relative;
+    width: 40px;
+    height: 40px;
+  }
+
+  .cart-body {
+    fill: #f0f0f0;
+    stroke: #999;
+    stroke-width: 1px;
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.2));
+  }
+
+  .cart-wheel {
+    fill: #f0f0f0;
+    stroke: #999;
+    stroke-width: 1px;
+  }
+
+  .cart-add {
+    fill: #5be05b;
+    stroke: #45a045;
+    stroke-width: 1px;
+  }
+
+  .cart-add-symbol {
+    fill: white;
+    stroke: white;
+    stroke-width: 2px;
+  }
+  /* for main part  */
+ section video{
+  width: 400px;
+  height: 300px;
+ }
+
+ .vertical-divider {
+height: 100%;
+width: 1px;
+background-color: #e2e8f0;
+}
+
+#contentLogo {
+max-height: 80px;
+object-fit: contain;
+}
+
+.content-box {
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+transition: box-shadow 0.3s ease;
+}
+
+.content-box:hover {
+box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+/* for main blender and expert part */
+#video-container {
+  position: relative;
+  width: 400px;
+  margin: 100px auto;
+  top: 0;
+  right: 10px;
+}
+video {
+  width: 100%;
+  display: block;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* for circular part */
+.banner-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    position: relative;
+    height: 60px;
+}
+
+.banner-item {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.banner-item.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.card {
+    border-radius: 15px 50px 50px 15px;
+    overflow: hidden;
+}
+
+
+.side{
+  margin-left:30% ;
+}
+/* for REVIEW COUSTOMER */
+.review-container {
+  background-color: #323232;
+}
+
+.gradient-header {
+  background: linear-gradient(90deg, #00A651 0%, #00A8E1 100%);
+  border-radius: 9999px;
+}
+
+.review-card {
+  background-color: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+.logo-circle {
+  border: 2px solid #00A8E1;
+}
+
+.mountain-logo {
+  fill: #00A8E1;
+}
+
+
+/* brand and foorter part */
+.brand-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  overflow: hidden;
+}
+
+.landscape {
+  position: relative;
+}
+
+.landscape::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background-color: #84cc16;
+  border-radius: 0 0 40px 40px;
+}
+
+#map {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.footer-bg {
+  background-color: #374151;
+}
+
+.dots {
+  color: #3b82f6;
+  font-size: 24px;
+  line-height: 1;
+}
+

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobizilla</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./header.css">
+  <style>
+
+
+
+  </style>
+
+</head>
+
+<body class="bg-[#F3F3F3] font-[Inter]">
+  <header class="p-4 flex items-center justify-between flex-wrap bg-[#e6f7f3]">
+    <div class="w-20">
+      <img src="./image/new-removebg-preview-removebg-preview.png" alt="Mobizilla Logo" class="w-full" id="logo" />
+    </div>
+
+    <!-- menu for mobile view -->
+    <button id="menu-btn" class="md:hidden text-3xl text-gray-700">
+      &#9776;
+    </button>
+
+
+    <nav id="nav-links"
+      class="hidden w-full md:w-auto md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 mt-4 md:mt-0 text-lg text-center">
+      <a href="#" class="px-2 py-1 active-nav">Home</a>
+      <a href="#" class="px-2 py-1">Courses</a>
+      <a href="#" class="px-2 py-1">About</a>
+      <a href="#" class="px-2 py-1">Blogs</a>
+      <a href="#" class="px-2 py-1">Contact</a>
+    </nav>
+
+
+    <div class="flex items-center space-x-4 mt-4 md:mt-0">
+
+      <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
+        <a href=""><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg></a>
+      </div>
+
+
+      <div class="relative cursor-pointer">
+        <!-- Custom cart icon that looks like the image -->
+        <a href=""> <svg class="custom-cart" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+            <!-- Cart body -->
+            <path class="cart-body" d="M10,15 L15,32 L35,32 L40,15 Z" />
+            <path class="cart-body" d="M35,32 L40,15 C40,15 45,15 45,15 L45,15 C45,15 45,20 43,20 L40,32 Z" />
+
+            <!-- Cart wheels -->
+            <circle class="cart-wheel" cx="20" cy="40" r="4" />
+            <circle class="cart-wheel" cx="35" cy="40" r="4" />
+
+            <!-- Add button circle -->
+            <circle class="cart-add" cx="18" cy="15" r="8" />
+
+            <!-- Plus symbol -->
+            <path class="cart-add-symbol" d="M18,11 L18,19 M14,15 L22,15" />
+          </svg></a>
+
+        <span id="cart-count"
+          class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- middle line between search-bar -->
+  <div class="gradient-bg h-14 w-full "></div>
+  <!-- duplicate file -->
+  <div class="flex justify-center -mt-7 px-4">
+    <div class="hello lg:w-[600px] md:w-2/3 flex items-center p-1 px-4">
+      <input type="text" class="w-full bg-transparent text-white placeholder-white outline-none p-2" />
+      <button class="p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <!--  -->
+  <!-- place holder for search bar -->
+  <div class="flex justify-center -mt-10 px-4">
+    <div class="search-bar lg:w-[600px] md:w-2/3 flex items-center p-1 px-4">
+      <input type="text" placeholder="Search.."
+        class="w-full bg-transparent text-white placeholder-white outline-none p-2" />
+      <button class="p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main content after search bar -->
+  <section class="py-8 md:py-12 relative max-w-7xl">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col lg:flex-row items-center justify-between relative">
+        <!-- Left side: 3D Blender Video -->
+        <div class=" lg:w-1/3 mb-8 lg:mb-0" id="blenderVideo">
+          <div id="video-container">
+            <video id="myVideo" autoplay muted loop>
+              <source src="./videos/blender.mp4" type="video/mp4">
+
+            </video>
+          </div>
+
+        </div>
+
+        <!-- Middle content: Content Box -->
+        <div class=" w-full lg:w-1/3 mb-8 lg:mb-0">
+          <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full max-w-md mx-auto relative">
+            <!-- Logo Image with vertical line divider -->
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-1/3">
+                <img src="./image/WhatsApp_Image_2025-04-20_at_21.40.14_5f7eba6c-removebg-preview.png"
+                  alt="Mobizilla Logo" class="w-full" id="contentLogo" />
+              </div>
+              <div class="h-16 w-0.5 bg-blue-200 mx-4"></div>
+              <div class="text-left">
+                <h2 class="text-xl md:text-2xl font-bold">Be an Expert with</h2>
+                <h1 class="text-3xl md:text-4xl font-bold text-blue-500" id="mobizillaText">MOBIZILLA</h1>
+              </div>
+            </div>
+
+            <!-- Button centered below -->
+            <div class="text-center mt-4">
+              <a href="#"
+                class="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-md inline-block transition-colors">
+                EXPLORE COURSES
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- right side text -->
+        <div class="side">
+          <div class="w-full lg:w-1/3">
+            <div class="flex flex-col space-y-12 items-center lg:items-start mx-auto max-w-md">
+
+              <!-- Hands-On Training -->
+              <div class="flex flex-col items-center lg:items-start" id="icon1">
+                <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <p class="text-gray-800 font-medium mt-2 text-center lg:text-left whitespace-nowrap">Hands-On Training
+                </p>
+              </div>
+
+              <!-- Certification -->
+              <div class="flex flex-col items-center lg:items-start" id="icon2">
+                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <p class="text-gray-800 font-medium mt-2 text-center lg:text-left">Certification</p>
+              </div>
+
+              <!-- Industry Experts -->
+              <div class="flex flex-col items-center lg:items-start" id="icon3">
+                <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <p class="text-gray-800 font-medium mt-2 text-center lg:text-left">Industry Experts</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- after main  -->
+  <div class="bg-green-50 flex items-center justify-center">
+    <div class="overflow-hidden w-full max-w-7xl">
+      <div id="tag-row" class="flex space-x-4 whitespace-nowrap">
+        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">Certified
+          Training</div>
+        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">
+          Empowering Youth</div>
+        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">Global
+          Opportunities</div>
+        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">
+          Disciplinary Skills</div>
+        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">Immersive
+          Learning</div>
+        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">
+          Accessible Training</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Upskill with Expertise Section -->
+  <section class="bg-green-50 pt-20 pb-16">
+    <div class="text-center mb-12">
+      <p class="text-green-700 text-lg font-semibold">Upskill with Expertise</p>
+      <h2 class="text-4xl font-bold text-gray-900">Tailoring Talent For Excellence</h2>
+    </div>
+
+    <div class="max-w-7xl items-center mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- Card 1 -->
+      <div class=" flex items-center justify-center">
+        <div class="relative bg-[#0583D2] text-white rounded-bl-[2.5rem] rounded-tr-[2.5rem] p-6 w-80">
+          <div class="absolute top-3 -left-4 w-16 h-6 bg-[#D9D9D9]"></div>
+          <h2 class="text-xl font-bold mt-2">Repair Mastery</h2>
+          <p class="text-sm mt-2 leading-snug">
+            Learn advanced mobile and electronic repair techniques from certified experts.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class=" flex items-center justify-center">
+        <div class="relative bg-[#0583D2] text-white rounded-bl-[2.5rem] rounded-tr-[2.5rem] p-6 w-80">
+          <div class="absolute top-3 -left-4 w-16 h-6 bg-[#D9D9D9]"></div>
+          <h2 class="text-xl font-bold mt-2">Repair Mastery</h2>
+          <p class="text-sm mt-2 leading-snug">
+            Learn advanced mobile and electronic repair techniques from certified experts.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class=" flex items-center justify-center">
+        <div class="relative bg-[#1CBE6C] text-white rounded-bl-[2.5rem] rounded-tr-[2.5rem] p-6 w-80">
+          <div class="absolute top-3 -left-4 w-16 h-6 bg-[#D9D9D9]"></div>
+          <h2 class="text-xl font-bold mt-2">Learning Experiences</h2>
+          <p class="text-sm mt-2 leading-snug">
+            Dive into AR/VR-assisted training with gamified skill-building for modern tech.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class=" flex items-center justify-center">
+        <div class="relative bg-[#159546] text-white rounded-bl-[2.5rem] rounded-tr-[2.5rem] p-6 w-80">
+          <div class="absolute top-3 -left-4 w-16 h-6 bg-[#D9D9D9]"></div>
+          <h2 class="text-xl font-bold mt-2">Empower Innovators</h2>
+          <p class="text-sm mt-2 leading-snug">
+            Equip yourself with skills to transform ideas into groundbreaking products.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- HOT TOPIC -->
+  <div class="bg-green-50">
+    <!-- HOT TOPICS Title -->
+    <section class="text-center py-10">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-black border-b-4 border-purple-700 inline-block px-4 pb-1">
+        HOT TOPICS 🔥
+      </h2>
+    </section>
+
+    <!-- Video Cards -->
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12">
+
+      <!-- Card 1 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Replace this with your local video -->
+        <video src="/video-folder/ar-vr.mp4" autoplay loop muted class="w-full h-48 object-cover"></video>
+
+        <div class="p-4">
+          <p class="text-sm text-green-600 font-semibold">Trending Topic</p>
+          <p class="text-sm text-gray-700 mt-1">Master the latest skills in AR/VR development.</p>
+          <button class="mt-4 bg-gray-800 text-white px-4 py-2 rounded font-semibold hover:bg-gray-700">Learn
+            More</button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Replace this with your local video -->
+        <video src="/video-folder/repair-techniques.mp4" autoplay loop muted class="w-full h-48 object-cover"></video>
+
+        <div class="p-4">
+          <p class="text-sm text-teal-600 font-semibold">Advanced Repair Techniques</p>
+          <p class="text-sm text-gray-700 mt-1">Learn chip-level repair with hands-on practice.</p>
+          <button class="mt-4 bg-gray-800 text-white px-4 py-2 rounded font-semibold hover:bg-gray-700">Learn
+            More</button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Replace this with your local video -->
+        <video src="/video-folder/gamified-learning.mp4" autoplay loop muted class="w-full h-48 object-cover"></video>
+
+        <div class="p-4">
+          <p class="text-sm text-green-600 font-semibold">Gamified Learning</p>
+          <p class="text-sm text-gray-700 mt-1">Earn badges and XP while mastering new skills.</p>
+          <button class="mt-4 bg-gray-800 text-white px-4 py-2 rounded font-semibold hover:bg-gray-700">Learn
+            More</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Row Links -->
+    <div class="border-t border-b py-4 bg-white">
+      <div
+        class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between text-center gap-4 text-teal-700 font-semibold text-sm">
+        <span class="flex items-center justify-center gap-1">✨ Explore In-Demand Skills</span>
+        <span class="flex items-center justify-center gap-1">✨ Learn from Industry Leaders</span>
+        <span class="flex items-center justify-center gap-1">✨ Flexibility at Its Best</span>
+      </div>
+    </div>
+
+
+
+
+    <!-- cartoon images  -->
+    <div class="bg-blue-50">
+      <div class="container mx-auto px-4 py-8">
+        <div class="relative">
+          <!-- Main content section -->
+          <div class="flex flex-col md:flex-row items-center justify-between">
+            <!-- Left section with phone and mascot -->
+            <div class="relative w-full md:w-1/2 mb-8 md:mb-0">
+              <!-- Phone mockup -->
+              <div class="w-48 mx-auto md:ml-8">
+                <!-- main images of that cartoon boys -->
+                <img src="./image/WhatsApp Image 2025-04-22 at 20.49.49_8ad37924.jpg"
+                  alt="Mobizilla website on smartphone" class="w-full h-[300px]" />
+              </div>
+            </div>
+
+            <!-- Right section with buttons -->
+            <div class="w-full md:w-1/2 flex flex-col space-y-6 z-10">
+              <!-- Thought bubble -->
+              <div class="relative mb-8">
+                <img src="./image/cloud.png" alt="Thought bubble" class="w-64 mx-auto" />
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <p class="text-green-600 font-bold text-xl">Want to explore more?</p>
+                </div>
+              </div>
+
+              <!-- Gamified Learn button -->
+              <div class="flex items-center">
+                <button
+                  class="bg-teal-500  text-white font-bold py-3 px-8 rounded-full flex items-center space-x-2 w-3/4">
+                  <div class="bg-white rounded-full p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-teal-500" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span class="flex-1 text-center text-lg">Continue Watching...</span>
+                </button>
+                <div class="bg-gray-200 rounded-lg py-2 px-4 ml-4">
+                  <span class="text-gray-800 font-medium text-sm">Gamified Learn</span>
+                </div>
+              </div>
+
+              <!-- Trending Topic button -->
+              <div class="flex items-center">
+                <button
+                  class="bg-teal-500  text-white font-bold py-3 px-8 rounded-full flex items-center space-x-2 w-3/4">
+                  <div class="bg-white rounded-full p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-teal-500" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span class="flex-1 text-center text-lg">Learn More...</span>
+                </button>
+                <div class="bg-gray-200 rounded-lg py-2 px-4 ml-4">
+                  <span class="text-gray-800 font-medium text-sm">Trending Topic</span>
+                </div>
+              </div>
+
+              <!-- Chat With AI button -->
+              <div class="flex items-center">
+                <button
+                  class="bg-teal-500  text-white font-bold py-3 px-8 rounded-full flex items-center space-x-2 w-3/4">
+                  <div class="bg-white rounded-full p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-teal-500" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span class="flex-1 text-center text-lg">Chat With AI</span>
+                </button>
+                <div class="bg-gray-200 rounded-lg py-2 px-4 ml-4">
+                  <span class="text-gray-800 font-medium text-sm">Chat Now</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Platform icons (Android & Apple) -->
+          <div class="absolute top-10 right-10 hidden md:block">
+            <img src="./image/apple.png" alt="Android and Apple icons" class="w-32" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- REVIEW OUR COSTOMER -->
+    <div class="bg-green-50">
+      <div class="w-full p-8">
+        <div class="review-container w-full rounded-lg p-6 relative">
+          <!-- Header -->
+          <div class="gradient-header mb-8 mx-auto w-3/4 py-2 text-center">
+            <h2 class="text-white text-2xl font-bold">Reviews from our Customers</h2>
+          </div>
+
+          <!-- Reviews Carousel -->
+          <div class="flex justify-between items-center">
+            <!-- Left Arrow -->
+            <button class="bg-gray-800 bg-opacity-50 rounded-full p-2 text-white focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+
+            <!-- Reviews -->
+            <div class="flex space-x-4 w-5/6 overflow-hidden">
+              <!-- Review 1 -->
+              <div class="review-card p-4 w-1/3">
+                <div class="flex flex-col items-center mb-3">
+                  <div class="logo-circle bg-white rounded-full p-2 mb-2">
+                    <svg class="w-10 h-10" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                      <path class="mountain-logo"
+                        d="M50 25L25 75H75L50 25ZM40 45L30 65H50L40 45ZM60 45L50 65H70L60 45Z" />
+                    </svg>
+                  </div>
+                  <h3 class="text-green-400 text-xl font-medium">Mallika B</h3>
+                </div>
+                <p class="text-white text-sm">Game-changer! Expert instructors and lifetime access make learning easy
+                  and practical. Highly recommend!</p>
+              </div>
+
+              <!-- Review 2 -->
+              <div class="review-card p-4 w-1/3">
+                <div class="flex flex-col items-center mb-3">
+                  <div class="logo-circle bg-white rounded-full p-2 mb-2">
+                    <svg class="w-10 h-10" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                      <path class="mountain-logo"
+                        d="M50 25L25 75H75L50 25ZM40 45L30 65H50L40 45ZM60 45L50 65H70L60 45Z" />
+                    </svg>
+                  </div>
+                  <h3 class="text-green-400 text-xl font-medium">Subhi M</h3>
+                </div>
+                <p class="text-white text-sm">Flexible and convenient! Great course variety and quality—perfect for
+                  boosting my career.</p>
+              </div>
+
+              <!-- Review 3 -->
+              <div class="review-card p-4 w-1/3">
+                <div class="flex flex-col items-center mb-3">
+                  <div class="logo-circle bg-white rounded-full p-2 mb-2">
+                    <svg class="w-10 h-10" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                      <path class="mountain-logo"
+                        d="M50 25L25 75H75L50 25ZM40 45L30 65H50L40 45ZM60 45L50 65H70L60 45Z" />
+                    </svg>
+                  </div>
+                  <h3 class="text-green-400 text-xl font-medium">Shubham J</h3>
+                </div>
+                <p class="text-white text-sm">Incredible depth and hands-on projects! I feel more confident in my skills
+                  than ever.</p>
+              </div>
+            </div>
+
+            <!-- Right Arrow -->
+            <button class="bg-gray-800 bg-opacity-50 rounded-full p-2 text-white focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- brand and partner -->
+    <div class="w-full bg-gray-50 p-8">
+      <!-- Brand Partners Section -->
+      <div class="max-w-4xl mx-auto mb-8">
+        <h2 class="text-center text-3xl font-medium mb-8 text-green-600">Brand Partners</h2>
+
+        <div class="flex justify-center items-center gap-2 md:gap-4">
+          <!-- Lanrui -->
+          <div class="flex flex-col items-center space-y-2">
+            <p class="text-blue-500 font-normal">Lanrui</p>
+            <div class="brand-circle landscape"></div>
+          </div>
+
+          <div class="dots self-center mx-2">&bull;</div>
+
+          <!-- 2UUL -->
+          <div class="flex flex-col items-center space-y-2">
+            <p class="text-blue-500 font-normal">2UUL</p>
+            <div class="brand-circle">
+              <img src="/api/placeholder/60/60" alt="2UUL Logo" class="w-4/5 h-auto">
+            </div>
+          </div>
+
+          <div class="dots self-center mx-2">&bull;</div>
+
+          <!-- YCS -->
+          <div class="flex flex-col items-center space-y-2">
+            <p class="text-blue-500 font-normal">YCS</p>
+            <div class="brand-circle landscape"></div>
+          </div>
+
+          <div class="dots self-center mx-2">&bull;</div>
+
+          <!-- MIJIN -->
+          <div class="flex flex-col items-center space-y-2">
+            <p class="text-blue-500 font-normal">MIJIN</p>
+            <div class="brand-circle landscape"></div>
+          </div>
+
+          <div class="dots self-center mx-2">&bull;</div>
+
+          <!-- SUNSHINE -->
+          <div class="flex flex-col items-center space-y-2">
+            <p class="text-blue-500 font-normal">SUNSHINE</p>
+            <div class="brand-circle landscape"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="w-full footer-bg text-white p-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between gap-8">
+          <!-- Contact Information -->
+          <div class="md:w-1/2">
+            <h3 class="text-2xl font-semibold mb-4">Get In Touch:</h3>
+            <div class="space-y-2">
+              <p class="text-lg">Mobizilla Training & Technical Institute</p>
+              <p>Newroad, Kathmandu, Nepal</p>
+              <p>Phone: +977-9808450458</p>
+              <p>Email: <a href="mailto:mobizillastore@gmail.com" class="hover:underline">mobizillastore@gmail.com</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div class="md:w-1/2">
+            <h3 class="text-2xl font-semibold mb-4">Locate Us</h3>
+            <div id="map" class="w-full border border-gray-300"></div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="w-full h-px bg-gray-500 my-8"></div>
+
+        <!-- Copyright -->
+        <div class="text-center">
+          <p>&copy; <span id="currentYear"></span> Mobizilla. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <footer class="w-full footer-bg text-white p-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between gap-8">
+          <!-- Contact Information -->
+          <div class="md:w-1/2">
+            <h3 class="text-2xl font-semibold mb-4">Get In Touch:</h3>
+            <div class="space-y-2">
+              <p class="text-lg">Mobizilla Training & Technical Institute</p>
+              <p>Newroad, Kathmandu, Nepal</p>
+              <p>Phone: +977-9808450458</p>
+              <p>Email: <a href="mailto:mobizillastore@gmail.com" class="hover:underline">mobizillastore@gmail.com</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div class="md:w-1/2">
+            <h3 class="text-2xl font-semibold mb-4">Locate Us</h3>
+            <div id="map" class="w-full border border-gray-300">
+              <div class="map-fallback">
+                <iframe width="100%" height="100%" frameborder="0" style="border:0"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.2684461093436!2d85.3078!3d27.7017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDQyJzA2LjEiTiA4NcKwMTgnMjguMSJF!5e0!3m2!1sen!2sus!4v1619450872543!5m2!1sen!2sus"
+                  allowfullscreen="" loading="lazy">
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="w-full h-px bg-gray-500 my-8"></div>
+
+        <!-- Copyright -->
+        <div class="text-center">
+          <p>&copy; <span id="currentYear"></span> Mobizilla. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="header.js"></script>
+</body>
+
+</html>
