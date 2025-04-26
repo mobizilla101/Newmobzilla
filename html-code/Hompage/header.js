@@ -113,18 +113,8 @@ gsap.to("#logo", {
 
 
 
-  // for brand partner and footer with actual date and map
-     // Set current year
-     document.getElementById('currentYear').textContent = new Date().getFullYear();
-      
-      // Load Google Maps API
-      function loadGoogleMapsApi() {
-          const script = document.createElement('script');
-          script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap';
-          script.async = true;
-          script.defer = true;
-          document.head.appendChild(script);
-      }
+
+   
       
       // Initialize Google Map
       function initMap() {
@@ -157,4 +147,6 @@ gsap.to("#logo", {
       // Load the API when the page is ready
       window.addEventListener('load', loadGoogleMapsApi);
       
-      document.getElementById('currentYear').textContent = new Date().getFullYear();  
+      document.getElementById('currentyear').textContent = new Date().getFullYear();
+      
+      

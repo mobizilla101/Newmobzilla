@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="p-4 flex items-center justify-between flex-wrap bg-[#e6f7f3]">
+        <div class="w-20">
+            <img src="../Hompage/image/main-logo.png" alt="Mobizilla Logo" class="w-full" id="logo" />
+        </div>
+
+        <!-- menu for mobile view -->
+        <button id="menu-btn" class="md:hidden text-3xl text-gray-700">
+            &#9776;
+        </button>
+
+
+        <nav id="nav-links"
+            class="hidden w-full md:w-auto md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 mt-4 md:mt-0 text-lg text-center">
+            <a href="#" class="px-2 py-1 active-nav">Home</a>
+            <a href="#" class="px-2 py-1">Courses</a>
+            <a href="#" class="px-2 py-1">About</a>
+            <a href="#" class="px-2 py-1">Blogs</a>
+            <a href="#" class="px-2 py-1">Contact</a>
+        </nav>
+
+
+        <div class="flex items-center space-x-4 mt-4 md:mt-0">
+
+            <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
+                <a href=""><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg></a>
+            </div>
+
+
+            <div class="relative cursor-pointer">
+                <!-- Custom cart icon that looks like the image -->
+                <a href=""> <svg class="custom-cart" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Cart body -->
+                        <path class="cart-body" d="M10,15 L15,32 L35,32 L40,15 Z" />
+                        <path class="cart-body"
+                            d="M35,32 L40,15 C40,15 45,15 45,15 L45,15 C45,15 45,20 43,20 L40,32 Z" />
+
+                        <!-- Cart wheels -->
+                        <circle class="cart-wheel" cx="20" cy="40" r="4" />
+                        <circle class="cart-wheel" cx="35" cy="40" r="4" />
+
+                        <!-- Add button circle -->
+                        <circle class="cart-add" cx="18" cy="15" r="8" />
+
+                        <!-- Plus symbol -->
+                        <path class="cart-add-symbol" d="M18,11 L18,19 M14,15 L22,15" />
+                    </svg></a>
+
+                <span id="cart-count"
+                    class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- middle line between search-bar -->
+    <div class="gradient-bg h-14 w-full "></div>
+
+    <!-- circuit design background part  -->
+
+
+    <section class="relative bg-gray-100">
+        <!-- Background image (replace background manually later) -->
+        <div class="absolute inset-0">
+            <img src="./images/circuit-background.jpg" alt="Background" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Wave Effect Overlay -->
+        <div class="relative bg-white bg-opacity-80 backdrop-blur-sm pt-24 pb-12 rounded-b-[50px]">
+            <div class="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center justify-between">
+
+                <!-- Left Content -->
+                <div class="w-full md:w-1/2 text-center md:text-left">
+                    <h1 class="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
+                        Discover the Best <br> Course for Your Journey
+                    </h1>
+                    <p class="text-gray-600 mb-6">
+                        Explore over 1000 courses tailored to your interests and career goals.
+                    </p>
+
+                    <!-- Search Bar -->
+                    <div class="flex items-center bg-gradient-to-r from-green-400 to-blue-500 rounded-full p-1">
+                        <input type="text" placeholder="Search.."
+                            class="flex-1 p-3 rounded-full outline-none bg-white text-gray-700" />
+                        <button class="p-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2a7.5 7.5 0 010 14.5z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Popular Searches -->
+                    <div class="mt-6 flex flex-wrap gap-2">
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700">VR
+                            Development</button>
+                        <button
+                            class="bg-green-600 text-white px-4 py-2 rounded-full text-sm hover:bg-green-700">Gamified
+                            Learning</button>
+                        <button class="bg-teal-600 text-white px-4 py-2 rounded-full text-sm hover:bg-teal-700">AI
+                            Courses</button>
+                    </div>
+                </div>
+
+                <!-- Right Image (Mobizilla Mascot) -->
+                <div class="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
+                    <img src="./images/mobizilla-cartoon.jpg" alt="Mobizilla Mascot" class="w-64 md:w-80">
+                </div>
+
+            </div>
+
+            <!-- Wave Line -->
+            <div class="mt-8">
+                <svg class="w-full h-12 md:h-16" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="#22c55e" fill-opacity="1"
+                        d="M0,256L60,229.3C120,203,240,149,360,128C480,107,600,117,720,122.7C840,128,960,128,1080,138.7C1200,149,1320,171,1380,181.3L1440,192L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+                    </path>
+                </svg>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- category part -->
+    <div class="category bg-grey-100">
+        <div class="max-w-6xl w-full px-4">
+          <h1 class="text-5xl font-bold text-center mb-16">Category</h1>
+      
+          <div class="content-container">
+            <div class="carousel-container">
+              <div class="carousel-track" id="carouselTrack">
+      
+                <!-- Card 1 -->
+                <div class="carousel-card visible w-64 h-40 mx-3 opacity-80 scale-90 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/400x300/?mobile,repair');">
+                  <div class="p-6 bg-white bg-opacity-70 backdrop-blur-sm rounded-md h-full">
+                    <h2 class="text-xl font-bold mb-2">Mobile Repair</h2>
+                    <p class="text-gray-700 text-sm">Master the art of repairing smartphones and with hands-on training from certified experts.</p>
+                  </div>
+                </div>
+      
+                <!-- Card 2 (Featured/Center) -->
+                <div class="carousel-card visible w-80 h-48 mx-3 z-10 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/400x300/?manufacturing');">
+                  <div class="p-6 bg-white bg-opacity-70 backdrop-blur-sm rounded-md h-full">
+                    <h2 class="text-2xl font-bold mb-2">Advanced Manufacturing</h2>
+                    <p class="text-gray-700 text-sm">Learn the essentials of CNC grinding, 3D design, and modern manufacturing techniques.</p>
+                  </div>
+                </div>
+      
+                <!-- Card 3 -->
+                <div class="carousel-card visible w-64 h-40 mx-3 opacity-80 scale-90 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/400x300/?training,vr');">
+                  <div class="p-6 bg-white bg-opacity-70 backdrop-blur-sm rounded-md h-full">
+                    <h2 class="text-xl font-bold mb-2">Specialized Training</h2>
+                    <p class="text-gray-700 text-sm">Dive into VR/AR-assisted training sessions to gain next-generation skills for modern careers.</p>
+                  </div>
+                </div>
+      
+                <!-- Card 4 -->
+                <div class="carousel-card w-64 h-40 mx-3 opacity-80 scale-90 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/400x300/?data,analysis');">
+                  <div class="p-6 bg-white bg-opacity-70 backdrop-blur-sm rounded-md h-full">
+                    <h2 class="text-xl font-bold mb-2">Data Analysis</h2>
+                    <p class="text-gray-700 text-sm">Master data visualization and analysis techniques for the modern business environment.</p>
+                  </div>
+                </div>
+      
+                <!-- Card 5 -->
+                <div class="carousel-card w-64 h-40 mx-3 opacity-80 scale-90 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/400x300/?cloud,computing');">
+                  <div class="p-6 bg-white bg-opacity-70 backdrop-blur-sm rounded-md h-full">
+                    <h2 class="text-xl font-bold mb-2">Cloud Computing</h2>
+                    <p class="text-gray-700 text-sm">Learn essential skills for deploying and managing cloud infrastructure.</p>
+                  </div>
+                </div>
+      
+              </div>
+            </div>
+      
+            <!-- Navigation Arrows -->
+            <button class="nav-arrow left-4 md:left-12" id="prevBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+      
+            <button class="nav-arrow right-4 md:right-12" id="nextBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+
+
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>
