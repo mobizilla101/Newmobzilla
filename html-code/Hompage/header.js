@@ -86,17 +86,6 @@ gsap.to("#logo", {
   });
 
 
-  gsap.set("#video-container", {
-    x: "3cm"
-  });
-
-  // Animate from 3cm back to original (0)
-  gsap.to("#video-container", {
-    x: "0cm",
-    duration: 3,
-    ease: "power1.inOut"
-  });
-
 
 
   // for circular part 
@@ -110,13 +99,8 @@ gsap.to("#logo", {
     repeat: -1
   });
 
-
-
-
-
-   
       
-      // Initialize Google Map
+      // // Initialize Google Map
       function initMap() {
           // Kathmandu coordinates (you can replace these later)
           const kathmandu = { lat: 27.7172, lng: 85.3240 };
@@ -143,10 +127,30 @@ gsap.to("#logo", {
               map.setCenter(marker.getPosition());
           });
       }
-      
-      // Load the API when the page is ready
+
+
+
+gsap.to("#Video", {
+  x: "-15vw",  // Move full screen to left -100vw
+  duration: 3,  // 30 seconds slow
+  repeat: 0,    // infinite loop
+  ease: "power1.inOut"
+});
+
+// for inner section of mobizilla need to move little bit down from up with slow animation
+gsap.to("#mobizilla",{
+  y:'1vw',
+  duration:5,
+  ease:"linear"
+})
+
+gsap.to("#icon1", { opacity: 1, y: -20, duration: 1, delay: 0.5, ease: "power2.out" });
+gsap.to("#icon2", { opacity: 1, y: -20, duration: 1, delay: 1.5, ease: "power2.out" });
+gsap.to("#icon3", { opacity: 1, y: -20, duration: 1, delay: 2.5, ease: "power2.out" });
+
+
+
+  // Load the API when the page is ready
       window.addEventListener('load', loadGoogleMapsApi);
       
       document.getElementById('currentyear').textContent = new Date().getFullYear();
-      
-      

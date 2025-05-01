@@ -1,1 +1,4 @@
 This file contains the 3d model
+ <div class="w-full mt-16">
+    <div class="h-2 bg-gradient-to-r from-green-500 via-blue-500 to-green-500 w-full"></div>
+  </div>

@@ -50,8 +50,10 @@
   }
   /* for main part  */
  section video{
-  width: 400px;
+  width: 500px;
   height: 300px;
+  
+
  }
 
  .vertical-divider {
@@ -73,22 +75,7 @@ transition: box-shadow 0.3s ease;
 .content-box:hover {
 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
-/* for main blender and expert part */
-#video-container {
-  position: relative;
-  width: 400px;
-  margin: 100px auto;
-  top: 0;
-  right: 10px;
-}
-video {
-  width: 100%;
-  display: block;
-}
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
 
 /* for circular part */
 .banner-container {
@@ -191,3 +178,17 @@ video {
   line-height: 1;
 }
 
+/* for cartoon image */
+.button-label {
+  position: absolute;
+  top: -10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  background-color: #4A5568; /* gray-700 */
+  color: white;
+  font-size: 0.7rem; /* text-xs */
+  font-weight: 600; /* font-semibold */
+  padding: 2px 8px;
+  border-radius: 9999px; /* rounded-full */
+  white-space: nowrap;
+  z-index: 10;
+}
