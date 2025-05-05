@@ -86,8 +86,6 @@ gsap.to("#logo", {
   });
 
 
-
-
   // for circular part 
   const row = document.getElementById("tag-row");
   row.innerHTML += row.innerHTML; // duplicate for loop effect
@@ -98,35 +96,8 @@ gsap.to("#logo", {
     ease: "linear",
     repeat: -1
   });
-
       
       // // Initialize Google Map
-      function initMap() {
-          // Kathmandu coordinates (you can replace these later)
-          const kathmandu = { lat: 27.7172, lng: 85.3240 };
-          
-          // Create map
-          const map = new google.maps.Map(document.getElementById("map"), {
-              zoom: 15,
-              center: kathmandu,
-              mapTypeControl: false,
-              streetViewControl: false,
-              fullscreenControl: true,
-          });
-          
-          // Add marker
-          const marker = new google.maps.Marker({
-              position: kathmandu,
-              map: map,
-              title: "Mobizilla Training & Technical Institute"
-          });
-          
-          // Add click listener to zoom in when marker is clicked
-          marker.addListener("click", () => {
-              map.setZoom(18);
-              map.setCenter(marker.getPosition());
-          });
-      }
 
 
 
@@ -150,7 +121,178 @@ gsap.to("#icon3", { opacity: 1, y: -20, duration: 1, delay: 2.5, ease: "power2.o
 
 
 
+
+// review from our customer
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize variables
+  const textSlides = document.querySelectorAll('[data-type="text"]');
+  const videoSlides = document.querySelectorAll('[data-type="video"]');
+  let textCurrentSlide = 0;
+  let videoCurrentSlide = 0;
+  let textTimer;
+  let videoTimer;
+
+  // Function to show a specific text slide
+  function showTextSlide(index) {
+      // Hide all text slides
+      document.querySelectorAll('.testimonial-container:first-child .testimonial-slide').forEach(slide => {
+          slide.classList.remove('active');
+      });
+      
+      // Show the selected text slide
+      document.querySelectorAll('.testimonial-container:first-child .testimonial-slide')[index].classList.add('active');
+      
+      // Update dot indicators
+      document.querySelectorAll('[data-type="text"]').forEach(dot => {
+          dot.classList.remove('active');
+          dot.classList.add('rounded-full');
+          dot.classList.remove('rounded-md');
+          dot.style.width = '0.5rem';
+          dot.style.backgroundColor = 'rgb(209, 213, 219)'; // gray-300
+      });
+      
+      document.querySelector(`[data-type="text"][data-index="${index}"]`).classList.add('active');
+      document.querySelector(`[data-type="text"][data-index="${index}"]`).classList.remove('rounded-full');
+      document.querySelector(`[data-type="text"][data-index="${index}"]`).classList.add('rounded-md');
+      document.querySelector(`[data-type="text"][data-index="${index}"]`).style.width = '2rem';
+      document.querySelector(`[data-type="text"][data-index="${index}"]`).style.backgroundColor = 'rgb(37, 99, 235)'; // blue-600
+      
+      textCurrentSlide = index;
+  }
+
+  // Function to show a specific video slide
+  function showVideoSlide(index) {
+      // Hide all video slides
+      document.querySelectorAll('.testimonial-container:last-child .testimonial-slide').forEach(slide => {
+          slide.classList.remove('active');
+      });
+      
+      // Pause all videos before switching
+      document.querySelectorAll('.testimonial-container:last-child video').forEach(video => {
+          video.pause();
+          video.currentTime = 0;
+          
+          // Show play button overlay for all videos
+          const videoId = video.id;
+          document.getElementById(`play-overlay-${videoId.split('-')[1]}`).style.display = 'flex';
+      });
+      
+      // Show the selected video slide
+      document.querySelectorAll('.testimonial-container:last-child .testimonial-slide')[index].classList.add('active');
+      
+      // Update dot indicators
+      document.querySelectorAll('[data-type="video"]').forEach(dot => {
+          dot.classList.remove('active');
+          dot.classList.add('rounded-full');
+          dot.classList.remove('rounded-md');
+          dot.style.width = '0.5rem';
+          dot.style.backgroundColor = 'rgb(209, 213, 219)'; // gray-300
+      });
+      
+      document.querySelector(`[data-type="video"][data-index="${index}"]`).classList.add('active');
+      document.querySelector(`[data-type="video"][data-index="${index}"]`).classList.remove('rounded-full');
+      document.querySelector(`[data-type="video"][data-index="${index}"]`).classList.add('rounded-md');
+      document.querySelector(`[data-type="video"][data-index="${index}"]`).style.width = '2rem';
+      document.querySelector(`[data-type="video"][data-index="${index}"]`).style.backgroundColor = 'rgb(37, 99, 235)'; // blue-600
+      
+      videoCurrentSlide = index;
+  }
+
+  // Function to advance to the next text slide
+  function nextTextSlide() {
+      let nextIndex = (textCurrentSlide + 1) % document.querySelectorAll('.testimonial-container:first-child .testimonial-slide').length;
+      showTextSlide(nextIndex);
+  }
+
+  // Function to advance to the next video slide
+  function nextVideoSlide() {
+      let nextIndex = (videoCurrentSlide + 1) % document.querySelectorAll('.testimonial-container:last-child .testimonial-slide').length;
+      showVideoSlide(nextIndex);
+  }
+
+  // Set up click event listeners for text dots
+  textSlides.forEach(dot => {
+      dot.addEventListener('click', function() {
+          clearInterval(textTimer);
+          showTextSlide(parseInt(this.getAttribute('data-index')));
+          textTimer = setInterval(nextTextSlide, 5000);
+      });
+  });
+
+  // Set up click event listeners for video dots
+  videoSlides.forEach(dot => {
+      dot.addEventListener('click', function() {
+          clearInterval(videoTimer);
+          showVideoSlide(parseInt(this.getAttribute('data-index')));
+          videoTimer = setInterval(nextVideoSlide, 5000);
+      });
+  });
+  
+  // Add click event to play buttons to play video
+  document.querySelectorAll('.play-button').forEach(button => {
+      button.addEventListener('click', function() {
+          const videoId = this.getAttribute('data-video');
+          const video = document.getElementById(videoId);
+          const overlay = this.parentElement;
+          
+          // Hide the play button overlay
+          overlay.style.display = 'none';
+          
+          // Play the video
+          video.play();
+          
+          // Pause the auto-sliding for videos while a video is playing
+          clearInterval(videoTimer);
+          
+          // Set event listener for when video ends
+          video.addEventListener('ended', function() {
+              // Show the play button overlay again
+              overlay.style.display = 'flex';
+              
+              // Resume auto-sliding
+              videoTimer = setInterval(nextVideoSlide, 5000);
+          });
+      });
+  });
+
+  // Add event listeners for videos
+  document.querySelectorAll('.testimonial-container:last-child video').forEach(video => {
+      // When video is clicked while playing, pause it
+      video.addEventListener('click', function() {
+          if (!this.paused) {
+              this.pause();
+              const videoId = this.id;
+              document.getElementById(`play-overlay-${videoId.split('-')[1]}`).style.display = 'flex';
+              
+              // Resume auto-sliding
+              videoTimer = setInterval(nextVideoSlide, 5000);
+          }
+      });
+  });
+
+  // Start automatic sliding
+  textTimer = setInterval(nextTextSlide, 5000);
+  videoTimer = setInterval(nextVideoSlide, 5000);
+
+  // Initialize first slides
+  showTextSlide(0);
+  showVideoSlide(0);
+});
+
+
+// new content rotation part
+gsap.to("#rotateXGroup", {
+  rotationX: 15,
+  duration: 3,
+  yoyo: true,
+  repeat: -1,
+  ease: "sine.inOut",
+});
+
+
+
+
+
   // Load the API when the page is ready
       window.addEventListener('load', loadGoogleMapsApi);
       
-      document.getElementById('currentyear').textContent = new Date().getFullYear();

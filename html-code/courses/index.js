@@ -33,69 +33,206 @@ gsap.to("#logo", {
 
 
 //   for category part
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+  let interval;
 
-document.addEventListener('DOMContentLoaded', () => {
-    const track = document.getElementById('carouselTrack');
-    const cards = Array.from(track.children);
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const totalCards = cards.length;
-    
-    let currentIndex = 1; // Start with the second card (index 1) as active/center
-    
-    function updateCarousel() {
-      // Hide all cards first
-      cards.forEach(card => {
-        card.classList.remove('visible');
+  // Initialize slider
+  function initSlider() {
+      updateSlides();
+      startAutoPlay();
+      
+      // Set initial active state
+      dots[0].classList.add('active');
+  }
+
+  // Update slide positions
+  function updateSlides() {
+      slides.forEach((slide, index) => {
+          // Remove all classes first
+          slide.classList.remove('active', 'next', 'prev', 'hidden-right', 'hidden-left');
+          
+          if (index === currentIndex) {
+              slide.classList.add('active');
+          } else if (index === (currentIndex + 1) % totalSlides) {
+              slide.classList.add('next');
+          } else if (index === (currentIndex + 2) % totalSlides) {
+              slide.classList.add('hidden-right');
+          } else if (index === (currentIndex - 1 + totalSlides) % totalSlides) {
+              slide.classList.add('prev');
+          } else {
+              slide.classList.add('hidden-left');
+          }
+          
+          // This ensures the next slide slightly overlaps the active slide
+          if (slide.classList.contains('next')) {
+              slide.style.left = "62%";
+          } else {
+              slide.style.left = "";
+          }
       });
-      
-      // Calculate which cards should be visible (current, prev, next)
-      const prevIndex = (currentIndex - 1 + totalCards) % totalCards;
-      const nextIndex = (currentIndex + 1) % totalCards;
-      
-      // Make only three cards visible
-      cards[prevIndex].classList.add('visible');
-      cards[currentIndex].classList.add('visible');
-      cards[nextIndex].classList.add('visible');
-      
-      // Reset styles for all cards
-      cards.forEach(card => {
-        card.classList.remove('z-10', 'w-80', 'h-48');
-        card.classList.add('w-64', 'h-40', 'opacity-80', 'scale-90');
+
+      // Update active dot
+      dots.forEach((dot, index) => {
+          if (index === currentIndex) {
+              dot.classList.add('active');
+          } else {
+              dot.classList.remove('active');
+          }
       });
-      
-      // Apply specific styles to the center card
-      cards[currentIndex].classList.remove('w-64', 'h-40', 'opacity-80', 'scale-90');
-      cards[currentIndex].classList.add('z-10', 'w-80', 'h-48');
-      
-      // Center the cards in the container
-      const containerWidth = track.parentElement.offsetWidth;
-      const cardWidth = 280; // Approximate width of center card + margins
-      const totalWidth = cardWidth * 3; // Width of 3 visible cards
-      
-      // Position the track
-      const offset = (containerWidth - totalWidth) / 2;
-      track.style.transform = `translateX(${offset}px)`;
-    }
-    
-    // Circular navigation
-    function moveToNext() {
-      currentIndex = (currentIndex + 1) % totalCards;
-      updateCarousel();
-    }
-    
-    function moveToPrev() {
-      currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-      updateCarousel();
-    }
-    
-    // Event listeners
-    nextBtn.addEventListener('click', moveToNext);
-    prevBtn.addEventListener('click', moveToPrev);
-    
-    // Handle window resize
-    window.addEventListener('resize', updateCarousel);
-    
-    // Initial setup
-    updateCarousel();
+  }
+
+  // Auto play slides
+  function startAutoPlay() {
+      interval = setInterval(() => {
+          currentIndex = (currentIndex + 1) % totalSlides;
+          updateSlides();
+      }, 10000); // 10 seconds
+  }
+
+  // Click handlers for dots
+  dots.forEach(dot => {
+      dot.addEventListener('click', function() {
+          const index = parseInt(this.getAttribute('data-index'));
+          currentIndex = index;
+          updateSlides();
+          
+          // Reset autoplay
+          clearInterval(interval);
+          startAutoPlay();
+      });
   });
+
+  // Initialize slider
+  initSlider();
+});
+
+// feature courses
+ // Carousel Navigation
+ // Carousel Navigation
+
+ const container = document.getElementById('courses-container');
+ const coursesGrid = document.getElementById('courses-grid');
+ const viewAllBtn = document.getElementById('view-all-btn');
+ 
+ let isExpanded = false;
+
+ // View All Courses functionality
+ viewAllBtn.addEventListener('click', () => {
+     if (!isExpanded) {
+         coursesGrid.classList.add('show-all');
+         viewAllBtn.innerHTML = '<span>Show Less</span><i class="fas fa-chevron-up ml-2"></i>';
+         isExpanded = true;
+     } else {
+         coursesGrid.classList.remove('show-all');
+         viewAllBtn.innerHTML = '<span>View all Courses</span><i class="fas fa-chevron-down ml-2"></i>';
+         isExpanded = false;
+         
+         // Scroll back to top of courses section
+         container.scrollIntoView({ behavior: 'smooth' });
+     }
+ });
+
+ // Simple slider functionality with visible course tracking
+ const scrollAmount = 300;
+ 
+//  total number students
+ // Wait until document is loaded  // Function to initialize and start counters
+  // Function to initialize and start counters
+  function initCounters(data) {
+    // Use data from backend or fallback to default values
+    const studentsTotal = data?.studentsEnrolled || 420;
+    const coursesTotal = data?.coursesAvailable || 200;
+    const instructorsTotal = data?.expertInstructors || 20;
+    const ratingTotal = data?.averageRating || 4.5;
+    
+    // Create CountUp instances
+    const studentsCounter = new CountUp('students-count', studentsTotal, {
+      duration: 2.5,
+      useEasing: true
+    });
+    
+    const coursesCounter = new CountUp('courses-count', coursesTotal, {
+      duration: 2,
+      useEasing: true
+    });
+    
+    const instructorsCounter = new CountUp('instructors-count', instructorsTotal, {
+      duration: 1.5,
+      useEasing: true
+    });
+    
+    const ratingCounter = new CountUp('rating-count', ratingTotal, {
+      duration: 3,
+      decimalPlaces: 1,
+      useEasing: true
+    });
+    
+    // Start all counters
+    studentsCounter.start();
+    coursesCounter.start();
+    instructorsCounter.start();
+    ratingCounter.start();
+  }
+  
+  // Function to check if element is in viewport
+  function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+  
+  // Example of how to fetch data from your backend and start counters
+  function fetchDataAndStartCounters() {
+    // Replace this with your actual API fetch call
+    // fetch('/api/impact-stats')
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     initCounters(data);
+    //   })
+    //   .catch(error => {
+    //     console.error('Error fetching impact stats:', error);
+    //     initCounters({}); // Use default values on error
+    //   });
+    
+    // For now, just use default values (remove this when connecting to backend)
+    // initCounters({});
+    
+    // IMPORTANT: Don't auto-start counters - will be triggered by your backend
+    // Uncomment the next line only for testing without backend
+    // initCounters({});
+  }
+  
+  // Wait until document is loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize but don't start counters yet
+    fetchDataAndStartCounters();
+    
+    // Optional: Start counters when they come into view
+    const countersContainer = document.querySelector('.grid');
+    
+    // Uncomment this section if you want to start counting on scroll
+    /*
+    function checkScroll() {
+      if (isInViewport(countersContainer)) {
+        fetchDataAndStartCounters();
+        window.removeEventListener('scroll', checkScroll);
+      }
+    }
+    
+    window.addEventListener('scroll', checkScroll);
+    // checkScroll(); // Check on load in case element is already in view
+    */
+  });
+  
+  // Public API for your backend to call
+  window.startImpactCounters = function(data) {
+    initCounters(data);
+  };

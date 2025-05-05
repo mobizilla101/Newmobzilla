@@ -16,38 +16,6 @@
   .active-nav {
     border-bottom: 2px solid #0099cc;
   }
-
-  /* Custom cart icon styles */
-  .custom-cart {
-    position: relative;
-    width: 40px;
-    height: 40px;
-  }
-
-  .cart-body {
-    fill: #f0f0f0;
-    stroke: #999;
-    stroke-width: 1px;
-    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.2));
-  }
-
-  .cart-wheel {
-    fill: #f0f0f0;
-    stroke: #999;
-    stroke-width: 1px;
-  }
-
-  .cart-add {
-    fill: #5be05b;
-    stroke: #45a045;
-    stroke-width: 1px;
-  }
-
-  .cart-add-symbol {
-    fill: white;
-    stroke: white;
-    stroke-width: 2px;
-  }
   /* for main part  */
  section video{
   width: 500px;
@@ -109,29 +77,81 @@ box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   margin-left:30% ;
 }
 /* for REVIEW COUSTOMER */
-.review-container {
-  background-color: #323232;
+.testimonial-container {
+  perspective: 1000px;
 }
 
-.gradient-header {
-  background: linear-gradient(90deg, #00A651 0%, #00A8E1 100%);
-  border-radius: 9999px;
+.testimonial-slide {
+  transition: all 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
 }
 
-.review-card {
-  background-color: rgba(30, 30, 30, 0.7);
-  backdrop-filter: blur(5px);
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+.testimonial-slide.active {
+  opacity: 1;
+  visibility: visible;
 }
 
-.logo-circle {
-  border: 2px solid #00A8E1;
+.dot {
+  transition: all 0.3s ease;
 }
 
-.mountain-logo {
-  fill: #00A8E1;
+.dot.active {
+  width: 2rem;
+  border-radius: 0.5rem;
 }
+
+.play-button {
+  transition: all 0.2s ease;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+}
+
+.text-quote-left {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 3rem;
+  color: #06b6d4;
+}
+
+/* above footer part */
+.button-style {
+  border: 2px solid #0ea5e9;
+  border-radius: 30px;
+  color: #0ea5e9;
+  padding: 10px 24px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: 220px;
+  text-align: center;
+}
+.person-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.wave-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+}
+.text-container {
+  margin-bottom: 30px;
+  text-align: center;
+  max-width: 280px;
+}
+.person-image {
+  margin-bottom: 40px;
+}
+
 
 
 /* brand and foorter part */
@@ -191,4 +211,17 @@ box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   border-radius: 9999px; /* rounded-full */
   white-space: nowrap;
   z-index: 10;
+}
+
+.dot.active {
+  background-color: #3b82f6;
+}
+
+/* new content  */
+.x-rotate-wrapper {
+  perspective: 1200px;
+}
+.x-rotate-target {
+  transform-style: preserve-3d;
+  transform-origin: center;
 }

@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -143,78 +144,396 @@
 
 
 
-
     <!-- category part -->
-    <div class="category bg-grey-100">
-        <div class="max-w-6xl w-full px-4">
-          <h1 class="text-5xl font-bold text-center mb-16">Category</h1>
-      
-          <div class="content-container">
-            <div class="carousel-container">
-              <div class="carousel-track" id="carouselTrack">
-      
-                <!-- Card 1 -->
-                <div class="carousel-card visible w-64 h-40 mx-3 opacity-80 scale-90 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/400x300/?mobile,repair');">
-                  <div class="p-6 bg-white bg-opacity-70 backdrop-blur-sm rounded-md h-full">
-                    <h2 class="text-xl font-bold mb-2">Mobile Repair</h2>
-                    <p class="text-gray-700 text-sm">Master the art of repairing smartphones and with hands-on training from certified experts.</p>
-                  </div>
+    <div class="container">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold">
+                <span class="text-gray-800">Explore</span>
+                <span class="text-emerald-500">Categories</span>
+            </h1>
+            <p class="text-gray-600 mt-2">Find the perfect course for your learning journey</p>
+        </div>
+
+        <div class="slider-wrapper">
+            <div class="slider-container">
+                <!-- Category 1: Mobile Repair -->
+                <div class="slide" id="slide-0">
+                    <img src="../courses/images/slider1.png" alt="Mobile Repair" class="w-full h-full object-cover">
+                    <div class="category-text">Mobile Repair</div>
                 </div>
-      
-                <!-- Card 2 (Featured/Center) -->
-                <div class="carousel-card visible w-80 h-48 mx-3 z-10 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/400x300/?manufacturing');">
-                  <div class="p-6 bg-white bg-opacity-70 backdrop-blur-sm rounded-md h-full">
-                    <h2 class="text-2xl font-bold mb-2">Advanced Manufacturing</h2>
-                    <p class="text-gray-700 text-sm">Learn the essentials of CNC grinding, 3D design, and modern manufacturing techniques.</p>
-                  </div>
+
+                <!-- Category 2: Web Development -->
+                <div class="slide" id="slide-1">
+                    <img src="../courses/images/slider2.png" alt="Web Development" class="w-full h-full object-cover">
+                    <div class="category-text">Web Development</div>
                 </div>
-      
-                <!-- Card 3 -->
-                <div class="carousel-card visible w-64 h-40 mx-3 opacity-80 scale-90 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/400x300/?training,vr');">
-                  <div class="p-6 bg-white bg-opacity-70 backdrop-blur-sm rounded-md h-full">
-                    <h2 class="text-xl font-bold mb-2">Specialized Training</h2>
-                    <p class="text-gray-700 text-sm">Dive into VR/AR-assisted training sessions to gain next-generation skills for modern careers.</p>
-                  </div>
+
+                <!-- Category 3: Digital Marketing -->
+                <div class="slide" id="slide-2">
+                    <img src="../courses/images/slider3.png" alt="Digital Marketing" class="w-full h-full object-cover">
+                    <div class="category-text">Digital Marketing</div>
                 </div>
-      
-                <!-- Card 4 -->
-                <div class="carousel-card w-64 h-40 mx-3 opacity-80 scale-90 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/400x300/?data,analysis');">
-                  <div class="p-6 bg-white bg-opacity-70 backdrop-blur-sm rounded-md h-full">
-                    <h2 class="text-xl font-bold mb-2">Data Analysis</h2>
-                    <p class="text-gray-700 text-sm">Master data visualization and analysis techniques for the modern business environment.</p>
-                  </div>
+
+                <!-- Category 4: Graphic Design -->
+                <div class="slide" id="slide-3">
+                    <img src="../courses/images/slider1.png" alt="Graphic Design" class="w-full h-full object-cover">
+                    <div class="category-text">Graphic Design</div>
                 </div>
-      
-                <!-- Card 5 -->
-                <div class="carousel-card w-64 h-40 mx-3 opacity-80 scale-90 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/400x300/?cloud,computing');">
-                  <div class="p-6 bg-white bg-opacity-70 backdrop-blur-sm rounded-md h-full">
-                    <h2 class="text-xl font-bold mb-2">Cloud Computing</h2>
-                    <p class="text-gray-700 text-sm">Learn essential skills for deploying and managing cloud infrastructure.</p>
-                  </div>
+
+                <!-- Category 5: Data Science -->
+                <div class="slide" id="slide-4">
+                    <img src="../courses/images/slider2.png" alt="Data Science" class="w-full h-full object-cover">
+                    <div class="category-text">Data Science</div>
                 </div>
-      
-              </div>
+
+                <!-- Category 6: Cyber Security -->
+                <div class="slide" id="slide-5">
+                    <img src="../courses/images/slider3.png" alt="Cyber Security" class="w-full h-full object-cover">
+                    <div class="category-text">Cyber Security</div>
+                </div>
+
+                <!-- Category 7: AI & Machine Learning -->
+                <div class="slide" id="slide-6">
+                    <img src="../courses/images/slider1.png" alt="AI & Machine Learning"
+                        class="w-full h-full object-cover">
+                    <div class="category-text">AI & Machine Learning</div>
+                </div>
+
+                <!-- Pagination Dots -->
+                <div class="pagination">
+                    <div class="dot" data-index="0"></div>
+                    <div class="dot" data-index="1"></div>
+                    <div class="dot" data-index="2"></div>
+                    <div class="dot" data-index="3"></div>
+                    <div class="dot" data-index="4"></div>
+                    <div class="dot" data-index="5"></div>
+                    <div class="dot" data-index="6"></div>
+                </div>
             </div>
-      
-            <!-- Navigation Arrows -->
-            <button class="nav-arrow left-4 md:left-12" id="prevBtn">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-              </svg>
+        </div>
+    </div>
+
+<!--feature courses -->
+<div class="bg-gray-100 min-h-screen py-8">
+    <div class="max-w-7xl mx-auto px-8">
+        <!-- Featured Courses Header -->
+        <div class="flex justify-center items-center mb-6">
+            <h2 class="text-2xl font-bold">
+                <span class="text-green-500">Featured</span>
+                <span class="text-gray-800">Courses</span>
+            </h2>
+        </div>
+
+        <!-- Courses Grid -->
+        <div class="carousel-container overflow-hidden" id="courses-container">
+            <div id="courses-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-300">
+                <!-- Course Card 1 -->
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-40 bg-green-100 overflow-hidden">
+                        <img src="../courses/images/slider1.png" alt="Mobile Repair & Electronics" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-base mb-1">Mobile Repair & Electronics</h3>
+                        <p class="text-gray-600 text-xs mb-2">Repairing phones and gadgets with our experts, with great training</p>
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="font-bold text-sm">$40</span>
+                        </div>
+                        <button class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-40 bg-green-100 overflow-hidden">
+                        <img src="../courses/images/slider2.png" alt="Fundamentals of IoT" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-base mb-1">Fundamentals of IoT</h3>
+                        <p class="text-gray-600 text-xs mb-2">Building internet and devices with our experts, with great training</p>
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="font-bold text-sm">$90</span>
+                        </div>
+                        <button class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-40 bg-green-100 overflow-hidden">
+                        <img src="../courses/images/slider3.png" alt="Web Development" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-base mb-1">Web Development</h3>
+                        <p class="text-gray-600 text-xs mb-2">Learn to build modern websites and web applications</p>
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="font-bold text-sm">$65</span>
+                        </div>
+                        <button class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Course Card 4 -->
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-40 bg-green-100 overflow-hidden">
+                        <img src="../courses/images/slider1.png" alt="Data Science Bootcamp" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-base mb-1">Data Science Bootcamp</h3>
+                        <p class="text-gray-600 text-xs mb-2">Master data analysis, machine learning and visualization</p>
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="font-bold text-sm">$120</span>
+                        </div>
+                        <button class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Course Card 5 -->
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-40 bg-green-100 overflow-hidden">
+                        <img src="../courses/images/slider2.png" alt="UI/UX Design" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-base mb-1">UI/UX Design</h3>
+                        <p class="text-gray-600 text-xs mb-2">Create beautiful user interfaces and seamless experiences</p>
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="font-bold text-sm">$75</span>
+                        </div>
+                        <button class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Course Card 6 -->
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-40 bg-green-100 overflow-hidden">
+                        <img src="../courses/images/slider3.png" alt="Mobile App Development" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-base mb-1">Mobile App Development</h3>
+                        <p class="text-gray-600 text-xs mb-2">Build iOS and Android apps with React Native</p>
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="font-bold text-sm">$85</span>
+                        </div>
+                        <button class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Hidden courses (will show on "View all Courses" click) -->
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses">
+                    <div class="h-40 bg-green-100 overflow-hidden">
+                        <img src="../courses/images/slider1.png" alt="Blockchain Development" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-base mb-1">Blockchain Development</h3>
+                        <p class="text-gray-600 text-xs mb-2">Learn to build decentralized applications and smart contracts</p>
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="font-bold text-sm">$110</span>
+                        </div>
+                        <button class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll Now</button>
+                    </div>
+                </div>
+
+
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses">
+                    <div class="h-40 bg-green-100 overflow-hidden">
+                        <img src="../courses/images/slider1.png" alt="Blockchain Development" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-base mb-1">Blockchain Development</h3>
+                        <p class="text-gray-600 text-xs mb-2">Learn to build decentralized applications and smart contracts</p>
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="font-bold text-sm">$110</span>
+                        </div>
+                        <button class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses">
+                    <div class="h-40 bg-green-100 overflow-hidden">
+                        <img src="../courses/images/slider2.png" alt="Cloud Computing" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-base mb-1">Cloud Computing</h3>
+                        <p class="text-gray-600 text-xs mb-2">Master AWS, Azure, and Google Cloud platforms</p>
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="font-bold text-sm">$95</span>
+                        </div>
+                        <button class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll Now</button>
+                    </div>
+                </div>
+
+
+
+
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses">
+                    <div class="h-40 bg-green-100 overflow-hidden">
+                        <img src="../courses/images/slider1.png" alt="Cybersecurity Fundamentals" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-base mb-1">Cybersecurity Fundamentals</h3>
+                        <p class="text-gray-600 text-xs mb-2">Learn to protect systems and networks from digital attacks</p>
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="font-bold text-sm">$105</span>
+                        </div>
+                        <button class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll Now</button>
+                    </div>
+                </div>
+
+
+
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses">
+                    <div class="h-40 bg-green-100 overflow-hidden">
+                        <img src="../courses/images/slider3.png" alt="Digital Marketing" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-base mb-1">Digital Marketing</h3>
+                        <p class="text-gray-600 text-xs mb-2">Master SEO, social media, and content marketing strategies</p>
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="font-bold text-sm">$70</span>
+                        </div>
+                        <button class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View All Courses Button -->
+        <div class="text-center mt-6">
+            <button id="view-all-btn" class="bg-blue-500 text-white px-6 py-2 text-sm rounded-md hover:bg-blue-600 transition flex items-center mx-auto">
+                <span>View all Courses</span>
+                <i class="fas fa-chevron-down ml-2"></i>
             </button>
-      
-            <button class="nav-arrow right-4 md:right-12" id="nextBtn">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+        </div>
+    </div>
+
+
+</div>
+
+
+<!-- total students -->
+<div class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+    <div class="max-w-5xl w-full mx-auto px-4">
+        <div class="card-shadow rounded-lg py-8 px-6 overflow-hidden" style="background-image: url('../courses/images/soft\ texture.png'); background-size: cover; background-position: center;">
+          <div class="text-center mb-6">
+            <h1 class="text-4xl font-bold mb-2">
+              <span class="text-gray-900">Our </span>
+              <span class="text-green-600">Impact</span>
+              <span class="text-gray-900"> in </span>
+              <span class="text-blue-500">Numbers</span>
+            </h1>
+            <p class="text-gray-700 text-lg">Join our growing community of Learners</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+            <div class="p-3">
+              <h2 class="text-4xl md:text-5xl font-bold mb-2 impact-number">
+                <span id="students-count">0</span>k+
+              </h2>
+              <p class="text-gray-800 font-medium text-lg">Students Enrolled</p>
+            </div>
+            
+            <div class="p-3">
+              <h2 class="text-4xl md:text-5xl font-bold mb-2 impact-number">
+                <span id="courses-count">0</span>+
+              </h2>
+              <p class="text-gray-800 font-medium text-lg">Course Available</p>
+            </div>
+            
+            <div class="p-3">
+              <h2 class="text-4xl md:text-5xl font-bold mb-2 impact-number">
+                <span id="instructors-count">0</span>+
+              </h2>
+              <p class="text-gray-800 font-medium text-lg">Expert Instructors</p>
+            </div>
+            
+            <div class="p-3">
+              <h2 class="text-4xl md:text-5xl font-bold mb-2 impact-number">
+                <span id="rating-count">0</span>/5
+              </h2>
+              <p class="text-gray-800 font-medium text-lg">Average Rating</p>
+            </div>
           </div>
         </div>
       </div>
-      
-
-
-
+    
+    
+</div>
 
     <script src="index.js"></script>
 </body>
