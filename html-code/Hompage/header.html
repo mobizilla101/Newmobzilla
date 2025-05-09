@@ -113,9 +113,11 @@
                   id="contentLogo" />
               </div>
               <div class="h-16 w-0.5 bg-blue-200 mx-4"></div>
-              <div class="text-left">
+              <div class="text-left"> 
                 <h2 class="text-xl md:text-2xl font-bold">Be an Expert with</h2>
-                <h1 class="text-3xl md:text-4xl font-bold text-blue-500" id="mobizillaText">MOBIZILLA</h1>
+                <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 bg-clip-text text-transparent" id="mobizillaText">
+                  MOBIZILLA
+                </h1>
               </div>
             </div>
 
@@ -187,6 +189,48 @@
       </div>
     </div>
   </section>
+
+
+
+
+  <!-- chatbot  -->
+   <!-- <section class="hey">
+    <div class="chatbot-container" id="chatbot">
+      <div class="chatbot-icon" id="chatbotIcon">
+        <div class="chat-icon">
+          <div class="chat-bubble"></div>
+          <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="status-dot"></div>
+      </div>
+      <div class="message-bubble" id="messageBubble">Hi there! Need help?</div>
+    </div>
+    
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <div>Chat Support</div>
+        <div class="close-btn" id="closeChat">×</div>
+      </div>
+      <div class="chat-body" id="chatBody">
+        <div class="message bot-message">
+          Hello! How can I help you today?
+        </div>
+      </div>
+      <div class="chat-footer">
+        <input type="text" class="chat-input" placeholder="Type your message..." id="chatInput">
+        <button class="send-btn" id="sendBtn">→</button>
+      </div>
+    </div>
+
+</section> -->
+
+
+
+
 
   <!-- after main  -->
   <div class="bg-green-50 flex items-center justify-center">
@@ -328,94 +372,102 @@
       </div>
     </div>
 
-    <!-- cartoon images  -->
-
-    <div
-      class="relative bg-white w-full h-full p-6 md:p-8 rounded-lg shadow-lg w-full h-[70vh] md:h-[80vh] overflow-hidden flex flex-col">
-
-      <!-- Top Right Image (Apple/Android) -->
-      <div class="absolute top-4 right-4 md:top-6 md:right-6 z-30 -translate-x-20 translate-y-10">
-        <img src="../Hompage/image/android-cartoon.png" alt="Apple and Android mascots on a bench"
-          class="h-40 md:h-35 lg:h-40">
-      </div>
-
-      <!-- Cloud Image -->
-      <div
-        class="absolute top-6 left-1/4 md:left-[15%] w-48 md:w-56 z-40 transform translate-y-15 translate-x-40 md:translate-x-32">
-        <img src="../Hompage/image/cloud.png" alt="Thought bubble" class="w-full drop-shadow-md">
-        <div class="absolute inset-0 flex items-center justify-center pb-4 md:pb-6">
-          <p class="text-center text-sm md:text-base font-semibold text-gray-800 px-4">
-            Want to explore more?
-          </p>
-        </div>
-      </div>
-
-      <!-- Main Content Area -->
-      <div class="flex-grow relative mt-24 md:mt-16">
-
-        <!-- Dinosaur and Phone Image -->
-        <div
-          class="absolute bottom-[-20px] md:bottom-[-30px] left-4 md:left-8 z-20 w-2/5 md:w-1/3 max-w-sm  translate-x-12">
-          <img src="../Hompage/image/cartoon-image.jpg" alt="Mobizilla mascot with phone showing website"
-            class="w-full h-auto">
+    <!-- question part   -->
+    <div class="bg-gray-50 font-sans">
+      <div class="container-custom mx-auto px-6 py-20 flex flex-col md:flex-row gap-16">
+        <!-- Left Column -->
+        <div class="md:w-2/5 space-y-8 fade-in-left">
+          <div class="space-y-6">
+            <h1 class="text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 bg-clip-text text-transparent">
+              Got Questions?<br>We've<br>Got Answers.
+            </h1>
+            <p class="text-lg text-indigo-900 max-w-md">
+              Can't find what you're looking for? Contact us, and we'll gladly help with any questions you have!
+            </p>
+          </div>
+          <div class="pt-6">
+            <button id="touchBtn"
+              class="get-in-touch px-8 py-4 bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold rounded-lg text-lg">Get
+              in touch</button>
+          </div>
         </div>
 
-        <!-- Button Group -->
-        <div
-          class="absolute top-[15%] md:top-[10%] right-4 md:right-[10%] w-auto flex flex-col items-end gap-6 md:gap-8 z-10 translate-y-30 md:-translate-x-40">
-          <!-- Button 1 -->
-          <div class="relative ">
-            <span
-              class="absolute -top-3 right-2 z-10 bg-slate-600 text-white text-[10px] md:text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
-              Gamified Learn
-            </span>
-            <a href="#"
-              class="flex items-center gap-3  bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-bold py-2.5 md:py-3 px-5 md:px-6 rounded-full shadow-md hover:opacity-90 transition duration-200 min-w-[200px] md:min-w-[240px] max-w-full w-full md:w-auto justify-center text-sm md:text-base">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                class="w-5 h-5 md:w-6 md:h-6">
-                <path fill-rule="evenodd"
-                  d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"
-                  clip-rule="evenodd" />
-              </svg>
-              <span class="p-1">Continue Watching...</span>
-            </a>
+        <!-- Right Column -->
+        <div class="md:w-3/5 space-y-6 fade-in-right">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item bg-white rounded-lg shadow-sm p-6 hover:shadow-md">
+            <div class="question-container flex justify-between items-center cursor-pointer py-2"
+              onclick="toggleAnswer(this)">
+              <h3 class="font-semibold text-lg md:text-xl">Do you work with businesses of all sizes?</h3>
+              <div class="question-arrow bg-amber-400 p-2 rounded-full flex-shrink-0 ml-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+            <div class="answer">
+              <p class="text-gray-700">Yes. Our portfolio is diverse. We provide website design, progressive web apps
+                development and mobile app development solutions for small to medium-sized businesses and large
+                enterprises.</p>
+            </div>
           </div>
 
-
-          <!-- Button 2 -->
-          <div class="relative">
-            <span
-              class="absolute -top-3 right-2 z-10 bg-slate-600 text-white text-[10px] md:text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
-              Trending Topic
-            </span>
-            <a href="#"
-              class="flex items-center gap-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-bold py-2.5 md:py-3 px-5 md:px-6 rounded-full shadow-md hover:opacity-90 transition duration-200 min-w-[200px] md:min-w-[240px] justify-center text-sm md:text-base">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                class="w-5 h-5 md:w-6 md:h-6">
-                <path fill-rule="evenodd"
-                  d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"
-                  clip-rule="evenodd" />
-              </svg>
-              <span class="p-1">Learn More...</span>
-            </a>
+          <!-- FAQ Item 2 -->
+          <div class="faq-item bg-white rounded-lg shadow-sm p-6 hover:shadow-md">
+            <div class="question-container flex justify-between items-center cursor-pointer py-2"
+              onclick="toggleAnswer(this)">
+              <h3 class="font-semibold text-lg md:text-xl">What services do you provide?</h3>
+              <div class="question-arrow bg-amber-400 p-2 rounded-full flex-shrink-0 ml-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+            <div class="answer">
+              <p class="text-gray-700">We provide a comprehensive range of digital services including web design, web
+                development, mobile app development, UI/UX design, e-commerce solutions, and digital marketing
+                strategies.</p>
+            </div>
           </div>
 
-          <!-- Button 3 -->
-          <div class="relative">
-            <span
-              class="absolute -top-3 right-2 z-10 bg-slate-600 text-white text-[10px] md:text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
-              Chat Now
-            </span>
-            <a href="#"
-              class="flex items-center gap-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-bold py-2.5 md:py-3 px-5 md:px-6 rounded-full shadow-md hover:opacity-90 transition duration-200 min-w-[200px] md:min-w-[240px] justify-center text-sm md:text-base">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                class="w-5 h-5 md:w-6 md:h-6">
-                <path fill-rule="evenodd"
-                  d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"
-                  clip-rule="evenodd" />
-              </svg>
-              <span class="p-1">Chat With AI</span>
-            </a>
+          <!-- FAQ Item 3 -->
+          <div class="faq-item bg-white rounded-lg shadow-sm p-6 hover:shadow-md">
+            <div class="question-container flex justify-between items-center cursor-pointer py-2"
+              onclick="toggleAnswer(this)">
+              <h3 class="font-semibold text-lg md:text-xl">What areas do you specialise in?</h3>
+              <div class="question-arrow bg-amber-400 p-2 rounded-full flex-shrink-0 ml-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+            <div class="answer">
+              <p class="text-gray-700">We specialize in creating responsive websites, progressive web apps, native
+                mobile applications, custom CMS solutions, e-commerce platforms, and enterprise-level web applications
+                with focus on performance and user experience.</p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="faq-item bg-white rounded-lg shadow-sm p-6 hover:shadow-md">
+            <div class="question-container flex justify-between items-center cursor-pointer py-2"
+              onclick="toggleAnswer(this)">
+              <h3 class="font-semibold text-lg md:text-xl">What Are the Steps Involved in App Development?</h3>
+              <div class="question-arrow bg-amber-400 p-2 rounded-full flex-shrink-0 ml-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+            <div class="answer">
+              <p class="text-gray-700">Our app development process includes discovery and planning, UI/UX design,
+                development, quality assurance testing, deployment, and post-launch support and maintenance. We follow
+                an agile methodology to ensure transparent communication throughout the project.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -423,155 +475,148 @@
     </div>
 
 
+
+
     <!-- review from our customer -->
-    <div class="bg-gray-100 flex items-center justify-center h-screen p-4">
-      
-      <div class="max-w-6xl w-full mx-auto">
-        <div class="w-full flex justify-center">
-          <h2 class="w-full max-w-xl text-3xl font-bold text-white text-center py-4 mb-6 rounded-lg bg-gradient-to-r from-green-500 to-blue-500 shadow-md">
-            REVIEW OUR CUSTOMER
-          </h2>
-        </div>
-        <div class="flex flex-col md:flex-row gap-6 items-stretch">
-          
-          <!-- Text Testimonials Container -->
-          <div class="testimonial-container relative bg-white rounded-lg shadow-lg p-6 w-full md:w-1/2 h-80">
-            
-            <!-- Text Slide 1 -->
-            <div class="testimonial-slide h-full flex flex-col justify-between relative p-4">
-              <div>
-                <div class="text-cyan-500 text-6xl font-serif">
-                  <img src="../Hompage/image/main-section-logo.png" alt="" class="w-18 h-12">
-                </div>
-                <p class="text-gray-700 pt-4 break-words w-full max-w-full">
-                 Incrediable depth and hands-on projects!. 
-                 These experiences have transformed my learning journey.Each has boosted my confidence and helped me grow in ways i never thought possible.
-                </p>
+    <div class="testimonial-section">
+      <div class="title-container">
+        <h2 class="section-title">REVIEW OUR CUSTOMER</h2>
+      </div>
+
+      <div class="testimonials-content">
+        <!-- Text Testimonials Container -->
+        <div class="testimonial-box testimonial-container">
+          <!-- Text Slide 1 -->
+          <div class="testimonial-slide active h-full flex flex-col justify-between relative">
+            <div>
+              <div class="mb-4">
+                <img src="../Hompage/image/main-logo.png" alt="Company Logo" class="w-24 h-8">
               </div>
-              <div class="mt-4 flex items-center text-left absolute top-50">
-                <img src="../Hompage/image/person2.png" alt="Sameer Pradhan" class="rounded-full w-12 h-12 mr-4">
-                <div>
-                  <h4 class="font-bold text-gray-800 text-green-500">Aayush R</h4>
-                  <p class="text-sm text-gray-600">Web Development Training</p>
-                </div>
-              </div>
+              <p class="text-gray-700 break-words">
+                Incredible depth and hands-on projects!
+                These experiences have transformed my learning journey. Each has boosted my confidence and helped me
+                grow in ways I never thought possible.
+              </p>
             </div>
-
-           
-            <!-- Text Slide 2 -->
-            <div class="testimonial-slide h-full flex flex-col justify-between relative p-4">
+            <div class="mt-6 pb-8 flex items-center">
+              <img src="../Hompage/image/person1.png" alt="Aayush R" class="rounded-full w-12 h-12 mr-4">
               <div>
-                <div class="text-cyan-500 text-6xl font-serif">
-                  <img src="../Hompage/image/main-section-logo.png" alt="" class="w-18 h-12">
-                </div>
-                <p class="text-gray-700 pt-4 break-words w-full max-w-full">
-                  Incrediable depth and hands-on projects!. 
-                 These experiences have transformed my learning journey.Each has boosted my confidence and helped me grow in ways i never thought possible.
-                </p>
+                <h4 class="font-bold text-green-500">Aayush R</h4>
+                <p class="text-sm text-gray-600">Web Development Training</p>
               </div>
-              <div class="mt-4 flex items-center text-left absolute top-50">
-                <img src="../Hompage/image/person2.png" alt="Sameer Pradhan" class="rounded-full w-12 h-12 mr-4">
-                <div>
-                  <h4 class="font-bold text-gray-800 text-green-500">Aayush R</h4>
-                  <p class="text-sm text-gray-600">Web Development Training</p>
-                </div>
-              </div>
-            </div>
-
-
-            <!-- Text Slide 3 -->
-            <div class="testimonial-slide h-full flex flex-col justify-between relative p-4">
-              <div>
-                <div class="text-cyan-500 text-6xl font-serif">
-                  <img src="../Hompage/image/main-section-logo.png" alt="" class="w-18 h-12">
-                </div>
-                <p class="text-gray-700 pt-4 break-words w-full max-w-full">
-                  Incrediable depth and hands-on projects!. 
-                 These experiences have transformed my learning journey.Each has boosted my confidence and helped me grow in ways i never thought possible.
-                </p>
-              </div>
-              <div class="mt-4 flex items-center text-left absolute top-50">
-                <img src="../Hompage/image/person2.png" alt="Sameer Pradhan" class="rounded-full w-12 h-12 mr-4">
-                <div>
-                  <h4 class="font-bold text-gray-800 text-green-500">Aayush R</h4>
-                  <p class="text-sm text-gray-600">Web Development Training</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Dots navigation for text testimonials -->
-            <div class="absolute -bottom-8 left-0 right-0 flex justify-center gap-2">
-              <button class="dot active h-2 w-8 bg-blue-600 rounded-md" data-index="0" data-type="text"></button>
-              <button class="dot h-2 w-2 bg-gray-300 rounded-full" data-index="1" data-type="text"></button>
-              <button class="dot h-2 w-2 bg-gray-300 rounded-full" data-index="2" data-type="text"></button>
             </div>
           </div>
 
-          <!-- Video Testimonials Container -->
-          <div class="testimonial-container relative bg-white rounded-lg shadow-lg p-6 w-full md:w-1/2 h-80">
-            <!-- Video Slide 1 -->
-            <div class="testimonial-slide active h-full relative">
-              <video id="video-1" class="w-130 h-70 object-cover rounded"  poster="/api/placeholder/400/320">
-                <source src="../videos/blender.mp4" type="video/mp4" >
-                Your browser does not support the video tag.
-              </video>
-              <div class="absolute inset-0 flex items-center justify-center" id="play-overlay-1">
-                <button
-                  class="play-button bg-cyan-400 text-white rounded-full w-20 h-20 flex items-center justify-center"
-                  data-video="video-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                      clip-rule="evenodd" />
-                  </svg>
-                </button>
+          <!-- Text Slide 2 -->
+          <div class="testimonial-slide h-full flex flex-col justify-between relative">
+            <div>
+              <div class="mb-4">
+                <img src="../Hompage/image/main-logo.png" alt="Company Logo" class="w-24 h-8">
+              </div>
+              <p class="text-gray-700 break-words">
+                The practical approach to teaching has been a game-changer.
+              
+              </p>
+            </div>
+            <div class="mt-6 pb-8 flex items-center">
+              <img src="../Hompage/image/person2.png" alt="Priya M" class="rounded-full w-12 h-12 mr-4">
+              <div>
+                <h4 class="font-bold text-green-500">Priya M</h4>
+                <p class="text-sm text-gray-600">Data Science Bootcamp</p>
               </div>
             </div>
+          </div>
 
-            <!-- Video Slide 2 -->
-            <div class="testimonial-slide h-full relative">
-              <video id="video-2" class="w-130 h-70 object-cover rounded" poster="/api/placeholder/400/320">
-                <source src="../videos/blender.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-              <div class="absolute inset-0 flex items-center justify-center" id="play-overlay-2">
-                <button
-                  class="play-button bg-cyan-400 text-white rounded-full w-20 h-20 flex items-center justify-center"
-                  data-video="video-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                      clip-rule="evenodd" />
-                  </svg>
-                </button>
+          <!-- Text Slide 3 -->
+          <div class="testimonial-slide h-full flex flex-col justify-between relative">
+            <div>
+              <div class="mb-4">
+                <img src="/api/placeholder/120/40" alt="Company Logo" class="w-24 h-8">
+              </div>
+              <p class="text-gray-700 break-words">
+                The instructors truly care about your success.
+                They're always available to answer questions and provide guidance. I went from knowing nothing to
+                landing my dream job in just six months!
+              </p>
+            </div>
+            <div class="mt-6 pb-8 flex items-center">
+              <img src="/api/placeholder/48/48" alt="Rahul K" class="rounded-full w-12 h-12 mr-4">
+              <div>
+                <h4 class="font-bold text-green-500">Rahul K</h4>
+                <p class="text-sm text-gray-600">UI/UX Design Course</p>
               </div>
             </div>
+          </div>
 
-            <!-- Video Slide 3 -->
-            <div class="testimonial-slide h-full relative">
-              <video id="video-3" class="w-full h-full object-cover rounded" poster="/api/placeholder/400/320">
-                <source src="https://example.com/video3.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-              <div class="absolute inset-0 flex items-center justify-center" id="play-overlay-3">
-                <button
-                  class="play-button bg-cyan-400 text-white rounded-full w-20 h-20 flex items-center justify-center"
-                  data-video="video-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                      clip-rule="evenodd" />
-                  </svg>
-                </button>
-              </div>
-            </div>
+          <!-- Dots navigation for text testimonials -->
+          <div class="dots-navigation">
+            <button class="dot active h-2 w-8 bg-blue-600 rounded-md" data-index="0" data-type="text"></button>
+            <button class="dot h-2 w-2 bg-gray-300 rounded-full" data-index="1" data-type="text"></button>
+            <button class="dot h-2 w-2 bg-gray-300 rounded-full" data-index="2" data-type="text"></button>
+          </div>
+        </div>
 
-            <!-- Dots navigation for video testimonials -->
-            <div class="absolute -bottom-8 left-0 right-0 flex justify-center gap-2">
-              <button class="dot active h-2 w-8 bg-blue-600 rounded-md" data-index="0" data-type="video"></button>
-              <button class="dot h-2 w-2 bg-gray-300 rounded-full" data-index="1" data-type="video"></button>
-              <button class="dot h-2 w-2 bg-gray-300 rounded-full" data-index="2" data-type="video"></button>
+        <!-- Video Testimonials Container -->
+        <div class="testimonial-box testimonial-container">
+          <!-- Video Slide 1 -->
+          <div class="testimonial-slide active h-full relative">
+            <video id="video-1" class="w-140px h-75 object-cover rounded" poster="/api/placeholder/400/320">
+              <source src="../videos/blender.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="absolute inset-0 flex items-center justify-center" id="play-overlay-1">
+              <button class="play-button bg-cyan-400 text-white rounded-full w-16 h-16 flex items-center justify-center"
+                data-video="video-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                    clip-rule="evenodd" />
+                </svg>
+              </button>
             </div>
+          </div>
+
+          <!-- Video Slide 2 -->
+          <div class="testimonial-slide h-full relative">
+            <video id="video-2" class="w-full h-full object-cover rounded" poster="/api/placeholder/400/320">
+              <source src="../videos/blender.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="absolute inset-0 flex items-center justify-center" id="play-overlay-2">
+              <button class="play-button bg-cyan-400 text-white rounded-full w-16 h-16 flex items-center justify-center"
+                data-video="video-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                    clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Video Slide 3 -->
+          <div class="testimonial-slide h-full relative">
+            <video id="video-3" class="w-full h-full object-cover rounded" poster="/api/placeholder/400/320">
+              <source src="../videos/testimonial3.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="absolute inset-0 flex items-center justify-center" id="play-overlay-3">
+              <button class="play-button bg-cyan-400 text-white rounded-full w-16 h-16 flex items-center justify-center"
+                data-video="video-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                    clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dots navigation for video testimonials -->
+          <div class="dots-navigation">
+            <button class="dot active h-2 w-8 bg-blue-600 rounded-md" data-index="0" data-type="video"></button>
+            <button class="dot h-2 w-2 bg-gray-300 rounded-full" data-index="1" data-type="video"></button>
+            <button class="dot h-2 w-2 bg-gray-300 rounded-full" data-index="2" data-type="video"></button>
           </div>
         </div>
       </div>
@@ -582,19 +627,17 @@
 
 
     <!-- brand and partner -->
-    <div class="w-full bg-gray-50 p-8">
+    <div class="w-full bg-gray-50 px-4 sm:px-6 lg:px-8 py-12">
       <!-- Brand Partners Section -->
-      <div class="max-w-4xl mx-auto mb-8">
-        <h2 class="text-center text-3xl font-medium mb-8 text-green-600">Brand Partners</h2>
-
-        <div class="flex justify-center items-center gap-2 md:gap-4">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-center text-3xl font-medium mb-12 text-green-600">Brand Partners</h2>
+        <!-- while adding more content , gap has to reduce in x-axiss -->
+        <div class="flex flex-wrap justify-center items-center gap-y-10 gap-x-20 lg:gap-x-40">
           <!-- Lanrui -->
           <div class="flex flex-col items-center space-y-2">
             <p class="text-blue-500 font-normal">Lanrui</p>
             <div class="brand-circle landscape"></div>
           </div>
-
-          <div class="dots self-center mx-2">&bull;</div>
 
           <!-- 2UUL -->
           <div class="flex flex-col items-center space-y-2">
@@ -604,23 +647,17 @@
             </div>
           </div>
 
-          <div class="dots self-center mx-2">&bull;</div>
-
           <!-- YCS -->
           <div class="flex flex-col items-center space-y-2">
             <p class="text-blue-500 font-normal">YCS</p>
             <div class="brand-circle landscape"></div>
           </div>
 
-          <div class="dots self-center mx-2">&bull;</div>
-
           <!-- MIJIN -->
           <div class="flex flex-col items-center space-y-2">
             <p class="text-blue-500 font-normal">MIJIN</p>
             <div class="brand-circle landscape"></div>
           </div>
-
-          <div class="dots self-center mx-2">&bull;</div>
 
           <!-- SUNSHINE -->
           <div class="flex flex-col items-center space-y-2">
@@ -633,114 +670,60 @@
 
 
 
-    <!-- new content added -->
-    <!-- <div class="bg-white text-gray-800 pb-12  ">
-      <div class="relative max-w-7xl mx-auto px-4 py-20 ">
 
-       
-        <img src="../Hompage/image/connection.png" alt="Connection Line"
-          class="absolute top-39 left-[12%] w-[30%] h-[80%] z-0 pointer-events-none" />
 
-     
-        <img src="../Hompage/image/right-connection.png" alt="Connection Line"
-          class="absolute top-49 left-[49%] w-[30%] h-[80%] z-0 pointer-events-none" />
+    <!-- new content with rotation -->
+    <div class="bg-white text-gray-800 overflow-hidden">
+      <div class="x-rotate-wrapper w-full min-h-screen flex items-center justify-center">
+        <!-- Rotating group -->
+        <div id="rotateXGroup" class="x-rotate-target w-full max-w-7xl px-4 py-10 relative">
 
-     
-        <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 text-center gap-10">
+          <!-- Connection images -->
+          <img src="../Hompage/image/connection.png" alt="Connection"
+            class="absolute mt-14 md:mt-28 ml-39 w-[35%] h-auto z-0 pointer-events-none" />
+          <img src="../Hompage/image/right-connection.png" alt="Right Connection"
+            class="absolute mt-19 md:mt-38 ml-168 w-[35%] h-auto z-0 pointer-events-none" />
 
-       
-          <div class="flex flex-col items-center">
-            <p class="text-sm max-w-xs mb-4 absolute -top-10 left-[1%]">
-              In the world of tech wonders, explore courses designed for everyone—from beginners to pros.
-            </p>
-            <img src="../Hompage/image/person1.png" alt="Person 1" class="w-40  h-auto mb-4 z-10  absolute left-[1%]" />
-            <h3
-              class="text-base font-semibold border-2 border-cyan-500 px-4 py-1 rounded-full inline-block absolute top-40 left-[1%]">
-              Learn with Ease
-            </h3>
+          <!-- Grid layout -->
+          <div class="grid grid-cols-1 md:grid-cols-3 text-center gap-10 relative z-10">
+
+            <!-- Person 1 -->
+            <div class="flex flex-col items-center -ml-50">
+              <p class="text-sm max-w-xs mb-4">
+                In the world of tech wonders, explore courses designed for everyone—from beginners to pros.
+              </p>
+              <img src="../Hompage/image/person1.png" alt="Person 1" class="w-40 h-auto mb-4 z-10" />
+              <h3 class="text-base font-semibold border-2 border-cyan-500 px-4 py-1 rounded-full">
+                Learn with Ease
+              </h3>
+            </div>
+
+            <!-- Person 2 -->
+            <div class="flex flex-col items-center mt-13 md:mt-26">
+              <p class="text-sm max-w-xs -mb-2 ml-32">
+                Dive into lessons that teach you how to repair, replace, and restore mobile parts.
+              </p>
+              <img src="../Hompage/image/person2.png" alt="Person 2" class="w-40 h-auto mb-4 z-10" />
+              <h3 class="text-base font-semibold border-2 border-cyan-500 px-4 py-1 rounded-full">
+                Unlock Secrets
+              </h3>
+            </div>
+
+            <!-- Person 3 -->
+            <div class="flex flex-col items-center -mr-50">
+              <p class="text-sm max-w-xs mb-4">
+                Find out about the latest mobile components and where to get the best deals.
+              </p>
+              <img src="../Hompage/image/person3.png" alt="Person 3" class="w-40 h-auto mb-4 z-10" />
+              <h3 class="text-base font-semibold border-2 border-cyan-500 px-4 py-1 rounded-full">
+                Stay Updated
+              </h3>
+            </div>
+
           </div>
-
-       
-          <div class="flex flex-col items-center">
-            <p class="text-sm max-w-xs mb-4 absolute top-20 left-[44%] ">
-              Dive into lessons that teach you how to repair, replace, and restore mobile parts.
-            </p>
-            <img src="../Hompage/image/person2.png" alt="Person 2"
-              class="w-40 absolute top-20 right-[49%] h-auto mb-4 z-10" />
-            <h3
-              class="text-base font-semibold border-2 border-cyan-500 px-4 py-1 rounded-full inline-block absolute top-60 left-[39.5%] ">
-              Unlock Secrets
-            </h3>
-          </div>
-
-         
-          <div class="flex flex-col items-center">
-            <p class="text-sm max-w-xs mb-4 absolute -top-10 -right-[2%]">
-              Find out about the latest mobile components and where to get the best deals.
-            </p>
-            <img src="../Hompage/image/person3.png" alt="Person 3" class="w-40 h-auto mb-4 z-10" />
-            <h3
-              class="text-base font-semibold border-2 border-cyan-500 px-4 py-1 rounded-full inline-block absolute top-40 right-[10%]">
-              Stay Updated
-            </h3>
-          </div>
-
         </div>
-      </div>
-    </div> -->
-
-<!-- new content with rotation -->
-<div class="bg-white text-gray-800 overflow-hidden">
-  <div class="x-rotate-wrapper w-full min-h-screen flex items-center justify-center">
-    <!-- Rotating group -->
-    <div id="rotateXGroup" class="x-rotate-target w-full max-w-7xl px-4 py-10 relative">
-
-      <!-- Connection images -->
-      <img src="../Hompage/image/connection.png" alt="Connection"
-        class="absolute mt-14 md:mt-28 ml-39 w-[35%] h-auto z-0 pointer-events-none" />
-      <img src="../Hompage/image/right-connection.png" alt="Right Connection"
-        class="absolute mt-19 md:mt-38 ml-168 w-[35%] h-auto z-0 pointer-events-none" />
-
-      <!-- Grid layout -->
-      <div class="grid grid-cols-1 md:grid-cols-3 text-center gap-10 relative z-10">
-
-        <!-- Person 1 -->
-        <div class="flex flex-col items-center -ml-50">
-          <p class="text-sm max-w-xs mb-4">
-            In the world of tech wonders, explore courses designed for everyone—from beginners to pros.
-          </p>
-          <img src="../Hompage/image/person1.png" alt="Person 1" class="w-40 h-auto mb-4 z-10" />
-          <h3 class="text-base font-semibold border-2 border-cyan-500 px-4 py-1 rounded-full">
-            Learn with Ease
-          </h3>
-        </div>
-
-        <!-- Person 2 -->
-        <div class="flex flex-col items-center mt-13 md:mt-26">
-          <p class="text-sm max-w-xs -mb-2 ml-32">
-            Dive into lessons that teach you how to repair, replace, and restore mobile parts.
-          </p>
-          <img src="../Hompage/image/person2.png" alt="Person 2" class="w-40 h-auto mb-4 z-10" />
-          <h3 class="text-base font-semibold border-2 border-cyan-500 px-4 py-1 rounded-full">
-            Unlock Secrets
-          </h3>
-        </div>
-
-        <!-- Person 3 -->
-        <div class="flex flex-col items-center -mr-50">
-          <p class="text-sm max-w-xs mb-4">
-            Find out about the latest mobile components and where to get the best deals.
-          </p>
-          <img src="../Hompage/image/person3.png" alt="Person 3" class="w-40 h-auto mb-4 z-10" />
-          <h3 class="text-base font-semibold border-2 border-cyan-500 px-4 py-1 rounded-full">
-            Stay Updated
-          </h3>
-        </div>
-
       </div>
     </div>
-  </div>
-</div>
 
 
 
@@ -808,7 +791,7 @@
       </div>
     </footer>
 
-    <!-- Script to auto-update year -->
+  
 
 
 
