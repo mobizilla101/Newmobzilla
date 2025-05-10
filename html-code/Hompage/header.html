@@ -8,70 +8,193 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <link rel="stylesheet" href="./header.css">
 
 </head>
 
 <body class="bg-[#F3F3F3] font-[Inter]">
-  <header class="p-4 flex items-center justify-between flex-wrap bg-[#e6f7f3]">
+  <header class="sticky top-0 z-50 p-4 flex items-center justify-between flex-wrap bg-[#e6f7f3] shadow-md">
     <div class="w-20">
       <img src="../Hompage/image/main-logo.png" alt="Mobizilla Logo" class="w-full" id="logo" />
     </div>
 
-    <!-- menu for mobile view -->
+    <!-- Mobile menu button -->
     <button id="menu-btn" class="md:hidden text-3xl text-gray-700">
       &#9776;
     </button>
 
-
     <nav id="nav-links"
       class="hidden w-full md:w-auto md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 mt-4 md:mt-0 text-lg text-center">
       <a href="#" class="px-2 py-1 active-nav">Home</a>
+      <a href="#" class="px-2 py-1">Offers</a>
       <a href="#" class="px-2 py-1">Courses</a>
-      <a href="#" class="px-2 py-1">About</a>
-      <a href="#" class="px-2 py-1">Blogs</a>
-      <a href="#" class="px-2 py-1">Contact</a>
+      <a href="#" class="px-2 py-1">UpcomingClasses</a>
+      <a href="#" class="px-2 py-1">Blog</a>
+      <a href="#" class="px-2 py-1">ContactUs</a>
+      <a href="#" class="px-2 py-1">Carrier</a>
+      <a href="#" class="px-2 py-1">Fixit</a>
     </nav>
-
 
     <div class="flex items-center space-x-4 mt-4 md:mt-0">
 
-      <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
+      <!-- Wishlist Heart Icon -->
+      <div class="relative cursor-pointer">
         <a href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M5.121 17.804A8.966 8.966 0 0112 15c2.136 0 4.09.75 5.588 1.996M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M12 21C6.477 21 2 16.523 2 11S6.477 1 12 1s10 4.477 10 10-4.477 10-10 10z" />
-          </svg>
+          <i class="fa-regular fa-heart text-2xl text-gray-700"></i>
         </a>
       </div>
 
-
-
+      <!-- Cart Icon (from image) -->
       <div class="relative cursor-pointer">
         <a href="#">
-          <!-- Heroicons Shopping Cart -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-700 hover:text-gray-900 transition"
-            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.6 8M17 13l1.6 8M6 21a1 1 0 100-2 1 1 0 000 2zm12 0a1 1 0 100-2 1 1 0 000 2z" />
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#1c2d4a" viewBox="0 0 24 24">
+            <path
+              d="M7 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0 2a.001.001 0 0 0 0 0h0zm10-2c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0 2a.001.001 0 0 0 0 0h0zM7.24 14l.94-2h8.24a1 1 0 0 0 .96-.73l2.5-8A1 1 0 0 0 18 2H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44A1.992 1.992 0 0 0 4 15c0 1.104.896 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.07-.25z">
+            </path>
           </svg>
         </a>
-
-        <!-- Cart count badge -->
         <span id="cart-count"
           class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
           0
         </span>
       </div>
 
+      <!-- Clean User Icon (large, solid black) -->
+      <a title="Go to about me page" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-7 text-black" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+        </svg>
+      </a>
+
     </div>
   </header>
 
+
   <!-- middle line between search-bar -->
-  <div class="gradient-bg h-14 w-full "></div>
+  <!-- Add this to your gradient background div -->
+  <div class="gradient-bg h-14 w-full flex items-center">
+    <button id="menuToggle"
+      class="menu-button ml-6 text-white hover:bg-white/20 rounded-full w-10 h-10 flex items-center justify-center">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+
+    <!-- Your existing search box here -->
+  </div>
+
+  <!-- Add this after your navbar and gradient bar -->
+  <div class="flex relative">
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar closed text-white">
+      <!-- Sidebar Header -->
+      <div class="p-4 flex items-center">
+        <img src="../Hompage/image/main-logo.png" alt="Mobizilla Logo" class="h-8 w-8 mr-2" />
+        <span class="font-bold text-xl">Mobizilla</span>
+      </div>
+
+      <!-- Sidebar Content -->
+      <div class="sidebar-content">
+        <ul class="space-y-1">
+          <li>
+            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+              <i class="fas fa-home mr-4"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+              <i class="fas fa-play-circle mr-4"></i>
+              <span>Subscription</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+              <i class="fas fa-fire mr-4"></i>
+              <span>Lorem</span>
+            </a>
+          </li>
+
+          <li class="border-t border-white/30 my-2"></li>
+
+          <li>
+            <div class="flex items-center justify-between px-4 py-3 hover:bg-white/20 cursor-pointer">
+              <div class="flex items-center">
+                <i class="fas fa-user mr-4"></i>
+                <span>You</span>
+              </div>
+              <i class="fas fa-chevron-down text-sm"></i>
+            </div>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+              <i class="fas fa-history mr-4"></i>
+              <span>History</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+              <i class="fas fa-video mr-4"></i>
+              <span>Your videos</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+              <i class="fas fa-clock mr-4"></i>
+              <span>Watch Later</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+              <i class="fas fa-bookmark mr-4"></i>
+              <span>Saved</span>
+            </a>
+          </li>
+
+          <li class="border-t border-white/30 my-2"></li>
+
+          <li>
+            <div class="px-4 py-2 text-white/80 text-sm">Subscriptions</div>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+              <div class="w-6 h-6 rounded-full bg-red-500 mr-4 flex items-center justify-center text-white">1</div>
+              <span>Channel 1</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+              <div class="w-6 h-6 rounded-full bg-blue-500 mr-4 flex items-center justify-center text-white">2</div>
+              <span>Channel 2</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+              <div class="w-6 h-6 rounded-full bg-green-500 mr-4 flex items-center justify-center text-white">3</div>
+              <span>Channel 3</span>
+            </a>
+          </li>
+
+          <li class="border-t border-white/30 my-2"></li>
+
+          <li>
+            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+              <i class="fas fa-cog mr-4"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+              <i class="fas fa-user-circle mr-4"></i>
+              <span>Your profile</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Your existing content container here -->
+  </div>
   <!--  search bar    duplicate file -->
   <div class="flex justify-center   -mt-7 px-4">
     <div class="hello w-[full] lg:w-[600px] md:w-2/3 flex items-center p-6 px-4">
@@ -105,37 +228,16 @@
         <!-- Middle Content Box with Video Overlapping -->
         <!-- Middle Content Box with Video Overlapping -->
         <div class="w-full lg:w-[40%] mb-8 lg:mb-0 relative translate-x-32">
-          <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full max-w-4xl mx-auto relative z-10">
-            <!-- Logo and Heading -->
-            <div class="flex items-center justify-between mb-6 ">
-              <div class="w-1/3">
-                <img src="../Hompage/image/main-section-logo.png" alt="Mobizilla Logo" class="w-full"
-                  id="contentLogo" />
-              </div>
-              <div class="h-16 w-0.5 bg-blue-200 mx-4"></div>
-              <div class="text-left"> 
-                <h2 class="text-xl md:text-2xl font-bold">Be an Expert with</h2>
-                <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 bg-clip-text text-transparent" id="mobizillaText">
-                  MOBIZILLA
-                </h1>
-              </div>
-            </div>
-
-            <!-- Button -->
-            <div class="text-center mt-4">
-              <a href="#"
-                class="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-md inline-block transition-colors">
-                EXPLORE COURSES
-              </a>
-            </div>
-          </div>
+          
 
           <!-- Blender Video Overlapping -->
-          <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none" id="Video">
-            <video id="myVideo" autoplay muted loop class="w-full h-full object-cover rounded-lg -translate-x-65">
-              <source src="../videos/blender.mp4" type="video/mp4">
-            </video>
+          <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none h-[500px] -mt-40"
+            id="Video">
+            <img src="../videos/bg remove phone.gif" alt="Animated background"
+              class="w-full h-full object-cover rounded-lg -translate-x-65" />
           </div>
+
+
         </div>
 
 
@@ -194,7 +296,7 @@
 
 
   <!-- chatbot  -->
-   <!-- <section class="hey">
+  <!-- <section class="hey">
     <div class="chatbot-container" id="chatbot">
       <div class="chatbot-icon" id="chatbotIcon">
         <div class="chat-icon">
@@ -375,13 +477,15 @@
     <!-- question part   -->
     <div class="bg-gray-50 font-sans">
       <div class="container-custom mx-auto px-6 py-20 flex flex-col md:flex-row gap-16">
-        <!-- Left Column -->
+
         <div class="md:w-2/5 space-y-8 fade-in-left">
           <div class="space-y-6">
-            <h1 class="text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 bg-clip-text text-transparent">
-              Got Questions?<br>We've<br>Got Answers.
+            <h1 class="text-5xl lg:text-6xl font-bold leading-tight text-black">
+              Got Questions?<br>
+              We've<br>
+              <span class="aurora-text">Got Answers.</span>
             </h1>
-            <p class="text-lg text-indigo-900 max-w-md">
+            <p class="text-lg  max-w-md text-black">
               Can't find what you're looking for? Contact us, and we'll gladly help with any questions you have!
             </p>
           </div>
@@ -480,7 +584,7 @@
     <!-- review from our customer -->
     <div class="testimonial-section">
       <div class="title-container">
-        <h2 class="section-title">REVIEW OUR CUSTOMER</h2>
+        <h2 class="section-title">REVIEW FROM CUSTOMER</h2>
       </div>
 
       <div class="testimonials-content">
@@ -515,7 +619,7 @@
               </div>
               <p class="text-gray-700 break-words">
                 The practical approach to teaching has been a game-changer.
-              
+
               </p>
             </div>
             <div class="mt-6 pb-8 flex items-center">
@@ -628,10 +732,8 @@
 
     <!-- brand and partner -->
     <div class="w-full bg-gray-50 px-4 sm:px-6 lg:px-8 py-12">
-      <!-- Brand Partners Section -->
       <div class="max-w-7xl mx-auto">
         <h2 class="text-center text-3xl font-medium mb-12 text-green-600">Brand Partners</h2>
-        <!-- while adding more content , gap has to reduce in x-axiss -->
         <div class="flex flex-wrap justify-center items-center gap-y-10 gap-x-20 lg:gap-x-40">
           <!-- Lanrui -->
           <div class="flex flex-col items-center space-y-2">
@@ -672,58 +774,83 @@
 
 
 
-    <!-- new content with rotation -->
-    <div class="bg-white text-gray-800 overflow-hidden">
-      <div class="x-rotate-wrapper w-full min-h-screen flex items-center justify-center">
-        <!-- Rotating group -->
-        <div id="rotateXGroup" class="x-rotate-target w-full max-w-7xl px-4 py-10 relative">
+    <!-- person connected with wave -->
+    <div class="relative bg-white text-gray-800 overflow-hidden">
+      <!-- Positioned wave segments -->
+      <img src="../Hompage/image/connection.png" alt="Wave 1"
+        class="absolute top-[11rem] left-[17%] w-[10%] h-auto z-0 pointer-events-none" />
+      <img src="../Hompage/image/right-connection.png" alt="Wave 2"
+        class="absolute top-[7rem] left-[23%] w-[20%] h-auto z-0 pointer-events-none" />
+      <img src="../Hompage/image/connection.png" alt="Wave 3"
+        class="absolute top-[7rem] left-[40%] w-[20%] h-auto z-0 pointer-events-none" />
+      <img src="../Hompage/image/right-connection.png" alt="Wave 4"
+        class="absolute top-[7rem] left-[57%] w-[20%] h-auto z-0 pointer-events-none" />
+      <img src="../Hompage/image/connection.png" alt="Wave 5"
+        class="absolute top-[7rem] left-[74%] w-[20%] h-auto z-0 pointer-events-none" />
 
-          <!-- Connection images -->
-          <img src="../Hompage/image/connection.png" alt="Connection"
-            class="absolute mt-14 md:mt-28 ml-39 w-[35%] h-auto z-0 pointer-events-none" />
-          <img src="../Hompage/image/right-connection.png" alt="Right Connection"
-            class="absolute mt-19 md:mt-38 ml-168 w-[35%] h-auto z-0 pointer-events-none" />
+      <!-- Main content -->
+      <div class="relative z-10 max-w-[1280px] mx-auto px-4 py-20">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
 
-          <!-- Grid layout -->
-          <div class="grid grid-cols-1 md:grid-cols-3 text-center gap-10 relative z-10">
-
-            <!-- Person 1 -->
-            <div class="flex flex-col items-center -ml-50">
-              <p class="text-sm max-w-xs mb-4">
-                In the world of tech wonders, explore courses designed for everyone—from beginners to pros.
-              </p>
-              <img src="../Hompage/image/person1.png" alt="Person 1" class="w-40 h-auto mb-4 z-10" />
-              <h3 class="text-base font-semibold border-2 border-cyan-500 px-4 py-1 rounded-full">
-                Learn with Ease
-              </h3>
-            </div>
-
-            <!-- Person 2 -->
-            <div class="flex flex-col items-center mt-13 md:mt-26">
-              <p class="text-sm max-w-xs -mb-2 ml-32">
-                Dive into lessons that teach you how to repair, replace, and restore mobile parts.
-              </p>
-              <img src="../Hompage/image/person2.png" alt="Person 2" class="w-40 h-auto mb-4 z-10" />
-              <h3 class="text-base font-semibold border-2 border-cyan-500 px-4 py-1 rounded-full">
-                Unlock Secrets
-              </h3>
-            </div>
-
-            <!-- Person 3 -->
-            <div class="flex flex-col items-center -mr-50">
-              <p class="text-sm max-w-xs mb-4">
-                Find out about the latest mobile components and where to get the best deals.
-              </p>
-              <img src="../Hompage/image/person3.png" alt="Person 3" class="w-40 h-auto mb-4 z-10" />
-              <h3 class="text-base font-semibold border-2 border-cyan-500 px-4 py-1 rounded-full">
-                Stay Updated
-              </h3>
-            </div>
-
+          <!-- Person 1 -->
+          <div class="flex flex-col items-center">
+            <p class="text-sm max-w-xs mb-4">
+              In the world of tech wonders, explore courses designed for everyone—from beginners to pros.
+            </p>
+            <img src="../Hompage/image/person1.png" alt="Person 1" class="w-28 h-auto mb-2" />
+            <h3 class="text-sm font-semibold border-2 border-cyan-500 px-3 py-1 rounded-full">Learn with Ease</h3>
           </div>
+
+          <!-- Person 2 -->
+          <div class="flex flex-col items-center absolute top-[10rem] left-[5%] ">
+            <p class="text-sm max-w-xs mb-4">
+              Dive into lessons that teach you how to repair, replace, and restore mobile parts.
+            </p>
+            <img src="../Hompage/image/person2.png" alt="Person 2" class="w-28 h-auto mb-2" />
+            <h3 class="text-sm font-semibold border-2 border-cyan-500 px-3 py-1 rounded-full">Unlock Secrets</h3>
+          </div>
+
+          <!-- Person 3 -->
+          <div class="flex flex-col items-center">
+            <p class="text-sm max-w-xs mb-4">
+              Find out about the latest mobile components and where to get the best deals.
+            </p>
+            <img src="../Hompage/image/person3.png" alt="Person 3" class="w-28 h-auto mb-2" />
+            <h3 class="text-sm font-semibold border-2 border-cyan-500 px-3 py-1 rounded-full">Stay Updated</h3>
+          </div>
+
+          <!-- Person 4 -->
+          <div class="flex flex-col items-center">
+            <p class="text-sm max-w-xs mb-4">
+              See it, fix it, master it: Video guides and step-by-step instructions await.
+            </p>
+            <img src="../courses/images/slider1.png" alt="Person 4" class="w-28 h-auto mb-2" />
+            <h3 class="text-sm font-semibold border-2 border-cyan-500 px-3 py-1 rounded-full">Hands-On Tutorials</h3>
+          </div>
+
+          <!-- Person 5 -->
+          <div class="flex flex-col items-center">
+            <p class="text-sm max-w-xs mb-4">
+              Complete courses and get certifications to boost your career.
+            </p>
+            <img src="../courses/images/slider2.png" alt="Person 5" class="w-28 h-auto mb-2" />
+            <h3 class="text-sm font-semibold border-2 border-cyan-500 px-3 py-1 rounded-full">Certify Your Skills</h3>
+          </div>
+
+          <!-- Person 6 -->
+          <div class="flex flex-col items-center">
+            <p class="text-sm max-w-xs mb-4">
+              Chat with pros and solve complex repair issues in real time!
+            </p>
+            <img src="../courses/images/slider3.png" alt="Person 6" class="w-28 h-auto mb-2" />
+            <h3 class="text-sm font-semibold border-2 border-cyan-500 px-3 py-1 rounded-full">Expert Help on Demand</h3>
+          </div>
+
         </div>
       </div>
     </div>
+
+
 
 
 
@@ -791,7 +918,7 @@
       </div>
     </footer>
 
-  
+
 
 
 
@@ -801,6 +928,8 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+
+
     </script>
     <script src="header.js"></script>
 </body>

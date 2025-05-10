@@ -30,6 +30,42 @@ gsap.to("#logo", {
     updateCartCount(1);
   }, 2000);
 
+
+
+
+
+
+  
+// menu button of that side bar
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('content'); // Make sure you have a content div with id="content"
+        
+        menuToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('closed');
+            menuToggle.classList.toggle('active');
+            
+            // Optional: If you want the content to move when sidebar opens
+            if (!sidebar.classList.contains('closed')) {
+                mainContent.classList.add('ml-64'); // Add margin when sidebar is open
+            } else {
+                mainContent.classList.remove('ml-64'); // Remove margin when sidebar is closed
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
   document.addEventListener('DOMContentLoaded', function () {
     // Set initial states for animations
     gsap.set("#icon1, #icon2, #icon3", { opacity: 0, y: 20 });
@@ -102,7 +138,7 @@ gsap.to("#logo", {
 
 
 gsap.to("#Video", {
-  x: "-15vw",  // Move full screen to left -100vw
+  x: "-7vw",  // Move full screen to left -100vw
   duration: 3,  // 30 seconds slow
   repeat: 0,    // infinite loop
   ease: "power1.inOut"
@@ -281,13 +317,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // new content rotation part
-gsap.to("#rotateXGroup", {
-  rotationX: 15,
-  duration: 3,
-  yoyo: true,
-  repeat: -1,
-  ease: "sine.inOut",
-});
+// gsap.to("#rotateXGroup", {
+//   rotationX: 15,
+//   duration: 3,
+//   yoyo: true,
+//   repeat: -1,
+//   ease: "sine.inOut",
+// });
 
 
 // question part 
@@ -762,6 +798,7 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
 
 
 
