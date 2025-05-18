@@ -32,6 +32,26 @@ gsap.to("#logo", {
 
 
 
+  // menu button of that side bar
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('content'); // Make sure you have a content div with id="content"
+        
+        menuToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('closed');
+            menuToggle.classList.toggle('active');
+            
+            // Optional: If you want the content to move when sidebar opens
+            if (!sidebar.classList.contains('closed')) {
+                mainContent.classList.add('ml-64'); // Add margin when sidebar is open
+            } else {
+                mainContent.classList.remove('ml-64'); // Remove margin when sidebar is closed
+            }
+        });
+    });
+
+
 //   for category part
 document.addEventListener('DOMContentLoaded', function() {
   const slides = document.querySelectorAll('.slide');
@@ -236,3 +256,125 @@ document.addEventListener('DOMContentLoaded', function() {
   window.startImpactCounters = function(data) {
     initCounters(data);
   };
+
+// last one
+ document.addEventListener('DOMContentLoaded', function() {
+            const slideContainer = document.getElementById('slide-container');
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+            let slideWidth, activeSlideWidth, inactiveSlideWidth;
+            
+            // Initialize sizes and positions
+            function initializeCarousel() {
+                const containerWidth = slideContainer.parentElement.clientWidth;
+                
+                // Calculate slide widths
+                activeSlideWidth = containerWidth * 0.45; // Active slide width - 45% of container
+                inactiveSlideWidth = containerWidth * 0.2; // Inactive slide width - 20% of container
+                
+                // Set slide heights based on whether active or inactive
+                slides.forEach((slide, index) => {
+                    if (index === currentSlide) {
+                        slide.style.width = `${activeSlideWidth}px`;
+                        slide.style.height = '16rem'; // Active slide height (h-64)
+                        slide.classList.add('z-10');
+                    } else {
+                        slide.style.width = `${inactiveSlideWidth}px`;
+                        slide.style.height = '12rem'; // Inactive slide height
+                        slide.classList.remove('z-10');
+                    }
+                });
+                
+                // Position slides
+                positionSlides();
+            }
+            
+            // Position slides based on current active slide
+            function positionSlides() {
+                const containerWidth = slideContainer.parentElement.clientWidth;
+                const containerCenter = containerWidth / 2;
+                const halfActiveWidth = activeSlideWidth / 2;
+                
+                let translateX = containerCenter - halfActiveWidth;
+                
+                // Calculate offset for current slide
+                for (let i = 0; i < currentSlide; i++) {
+                    if (i === currentSlide - 1) {
+                        translateX -= inactiveSlideWidth * 0.8; // Partial visibility for adjacent slide
+                    } else {
+                        translateX -= inactiveSlideWidth;
+                    }
+                }
+                
+                slideContainer.style.transform = `translateX(${translateX}px)`;
+            }
+            
+            // Update dots to reflect current slide
+            function updateDots() {
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('bg-emerald-500', 'w-16');
+                        dot.classList.remove('bg-gray-300', 'w-4');
+                    } else {
+                        dot.classList.add('bg-gray-300', 'w-4');
+                        dot.classList.remove('bg-emerald-500', 'w-16');
+                    }
+                });
+            }
+            
+            // Go to specific slide
+            function goToSlide(slideIndex) {
+                currentSlide = slideIndex;
+                
+                // Update slide sizes and positions
+                slides.forEach((slide, index) => {
+                    if (index === currentSlide) {
+                        slide.style.width = `${activeSlideWidth}px`;
+                        slide.style.height = '16rem';
+                        slide.classList.add('z-10');
+                    } else {
+                        slide.style.width = `${inactiveSlideWidth}px`;
+                        slide.style.height = '12rem';
+                        slide.classList.remove('z-10');
+                    }
+                });
+                
+                positionSlides();
+                updateDots();
+            }
+            
+            // Add click events to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+            
+            // Auto-slide functionality
+            function autoSlide() {
+                const nextSlide = (currentSlide + 1) % totalSlides;
+                goToSlide(nextSlide);
+            }
+            
+            // Initialize carousel
+            initializeCarousel();
+            
+            // Set up auto-sliding
+            const slideInterval = setInterval(autoSlide, 5000);
+            
+            // Handle window resize
+            window.addEventListener('resize', initializeCarousel);
+            
+            // Pause auto-slide on hover
+            slideContainer.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            // Resume auto-slide when mouse leaves
+            slideContainer.addEventListener('mouseleave', () => {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(autoSlide, 5000);
+            });
+        });

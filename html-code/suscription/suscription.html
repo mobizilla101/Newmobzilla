@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <title>Mobizilla Courses</title>
+   <link rel="stylesheet" href="suscription.css">
+</head>
+<body>
+    <div class="wrapper relative flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Cloud decorations -->
+        <img src="../suscription/images/cloudpricing.png" alt="Cloud" class="cloud-left" id="cloudLeft">
+        <img src="../suscription/images/cloudpricing.png" alt="Cloud" class="cloud-right" id="cloudRight">
+
+
+        <!-- Bottom Static Clouds -->
+    <img src="../suscription/images/cloudpricing.png" alt="Cloud" class="static-cloud-left">
+    <img src="../suscription/images/cloudpricing.png" alt="Cloud" class="static-cloud-right">
+        
+        <div class="max-w-7xl w-full space-y-8 relative z-10">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-2 heading">Select Version of your Courses</h1>
+                <p class="text-xl text-white">With Mobizilla Intermediate and Advance you gain more lesson</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-6">
+                <!-- Basic Plan -->
+                <div class="card">
+                    <div class="green-border-top"></div>
+                    <div class="white-line"></div>
+                    
+                    <div class="card-top"></div>
+                    
+                    <div class="icon-container">
+                        <div class="icon-shadow"></div>
+                        <div class="icon-circle">
+                            <img src="../suscription/images/icon1pricing.png" alt="Basic" class="icon-img">
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <h2 class="plan-title">Basic</h2>
+                        <p class="plan-price">$0 / month</p>
+                        
+                        <div class="feature-items-container">
+                            <div class="feature-item">
+                                Learn components, electronics, and safety.
+                            </div>
+                            <div class="feature-item">
+                                Practice disassembly and simple repairs.
+                            </div>
+                            <div class="feature-item">
+                                Use tools like multimeters and tweezers.
+                            </div>
+                        </div>
+                        
+                        <div class="get-started-container">
+                            <button class="get-started-btn" data-dino>
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="wave-bg"></div>
+                </div>
+                
+            <!-- Intermediate Plan -->
+                <div class="card relative">
+                    <div class="green-border-top"></div>
+                    <div class="white-line"></div>
+                    
+                    <div class="card-top"></div>
+                    
+                    <div class="icon-container">
+                        <div class="icon-shadow"></div>
+                        <div class="icon-circle">
+                            <img src="../suscription/images/icon2pricing.png" alt="Intermediate" class="icon-img">
+                            <!-- Hidden dinosaur that will animate in the icon circle -->
+                            <img src="../suscription/images/dino ballon.png" alt="Hidden Dino" class="hidden-dino" id="hiddenDino">
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <h2 class="plan-title">Intermediate</h2>
+                        <p class="plan-price">$50 / month</p>
+                        
+                        <div class="feature-items-container">
+                            <div class="feature-item">
+                                Diagnose faults with schematics and multimeters.
+                            </div>
+                            <div class="feature-item">
+                                Perform soldering, IC replacements, and software fixes.
+                            </div>
+                            <div class="feature-item">
+                                Use hot air guns and troubleshoot biometrics.
+                            </div>
+                        </div>
+                        
+                        <div class="get-started-container ">
+                            <button class="get-started-btn intermediate-btn" data-dino>
+                                <span class="rocket-icon">🚀</span>
+                                Get Started
+                            </button>
+                            
+                            <!-- Visible dinosaur below the button -->
+                            <img src="../suscription/images/dino button.png" alt="Dino Mascot" class="visible-dino" id="visibleDino">
+                        </div>
+                    </div>
+                    
+                    <div class="wave-bg"></div>
+                </div>
+                
+                <!-- Advanced Plan -->
+                <div class="card">
+                    <div class="green-border-top"></div>
+                    <div class="white-line"></div>
+                    
+                    <div class="card-top"></div>
+                    
+                    <div class="icon-container">
+                        <div class="icon-shadow"></div>
+                        <div class="icon-circle">
+                            <img src="../suscription/images/icon3pricing.png" alt="Advanced" class="icon-img">
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <h2 class="plan-title">Advance</h2>
+                        <p class="plan-price">$100 / month</p>
+                        
+                        <div class="feature-items-container">
+                            <div class="feature-item">
+                                Master PCB, reballing, and logic board repairs.
+                            </div>
+                            <div class="feature-item">
+                                Use oscilloscopes, thermal cameras, and program chips.
+                            </div>
+                            <div class="feature-item">
+                                Handle complex cases and firmware issues.
+                            </div>
+                        </div>
+                        
+                        <div class="get-started-container">
+                            <button class="get-started-btn" data-dino>
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="wave-bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <script src="suscription.js"></script>
+</body>
+</html>

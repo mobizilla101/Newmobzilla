@@ -64,7 +64,7 @@ gsap.to("#logo", {
 
 
 
-
+// blender video at main part
 
   document.addEventListener('DOMContentLoaded', function () {
     // Set initial states for animations
@@ -122,7 +122,7 @@ gsap.to("#logo", {
   });
 
 
-  // for circular part 
+  // for circular part moving part
   const row = document.getElementById("tag-row");
   row.innerHTML += row.innerHTML; // duplicate for loop effect
 
@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // });
 
 
-// question part 
+// question part from company 
 document.addEventListener('DOMContentLoaded', function() {
   // Initial animations
   gsap.from('.fade-in-left', {

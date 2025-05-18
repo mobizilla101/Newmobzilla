@@ -16,205 +16,205 @@
 
 <body class="bg-[#F3F3F3] font-[Inter]">
   <div class="sticky-wrapper sticky top-0 z-50">
-  <header class=" p-4 flex items-center justify-between flex-wrap bg-[#e6f7f3] shadow-md">
-    <div class="w-20">
-      <img src="../Hompage/image/main-logo.png" alt="Mobizilla Logo" class="w-full" id="logo" />
-    </div>
-
-    <!-- Mobile menu button -->
-    <button id="menu-btn" class="md:hidden text-3xl text-gray-700">
-      &#9776;
-    </button>
-
-    <nav id="nav-links"
-      class="hidden w-full md:w-auto md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 mt-4 md:mt-0 text-lg text-center">
-      <a href="#" class="px-2 py-1 active-nav">Home</a>
-      <a href="#" class="px-2 py-1">Offers</a>
-      <a href="#" class="px-2 py-1">Courses</a>
-      <a href="#" class="px-2 py-1">UpcomingClasses</a>
-      <a href="#" class="px-2 py-1">Blog</a>
-      <a href="#" class="px-2 py-1">ContactUs</a>
-      <a href="#" class="px-2 py-1">Carrier</a>
-      <a href="#" class="px-2 py-1">Fixit</a>
-    </nav>
-
-    <div class="flex items-center space-x-4 mt-4 md:mt-0">
-
-      <!-- Wishlist Heart Icon -->
-      <div class="relative cursor-pointer">
-        <a href="#">
-          <i class="fa-regular fa-heart text-2xl text-gray-700"></i>
-        </a>
+    <header class=" p-4 flex items-center justify-between flex-wrap bg-[#e6f7f3] shadow-md">
+      <div class="w-20">
+        <img src="../Hompage/image/main-logo.png" alt="Mobizilla Logo" class="w-full" id="logo" />
       </div>
 
-      <!-- Cart Icon (from image) -->
-      <div class="relative cursor-pointer">
-        <a href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#1c2d4a" viewBox="0 0 24 24">
-            <path
-              d="M7 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0 2a.001.001 0 0 0 0 0h0zm10-2c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0 2a.001.001 0 0 0 0 0h0zM7.24 14l.94-2h8.24a1 1 0 0 0 .96-.73l2.5-8A1 1 0 0 0 18 2H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44A1.992 1.992 0 0 0 4 15c0 1.104.896 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.07-.25z">
-            </path>
+      <!-- Mobile menu button -->
+      <button id="menu-btn" class="md:hidden text-3xl text-gray-700">
+        &#9776;
+      </button>
+
+      <nav id="nav-links"
+        class="hidden w-full md:w-auto md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 mt-4 md:mt-0 text-lg text-center">
+        <a href="#" class="px-2 py-1 active-nav">Home</a>
+        <a href="#" class="px-2 py-1">Offers</a>
+        <a href="#" class="px-2 py-1">Courses</a>
+        <a href="#" class="px-2 py-1">UpcomingClasses</a>
+        <a href="#" class="px-2 py-1">Blog</a>
+        <a href="#" class="px-2 py-1">ContactUs</a>
+        <a href="#" class="px-2 py-1">Carrier</a>
+        <a href="#" class="px-2 py-1">Fixit</a>
+      </nav>
+
+      <div class="flex items-center space-x-4 mt-4 md:mt-0">
+
+        <!-- Wishlist Heart Icon -->
+        <div class="relative cursor-pointer">
+          <a href="#">
+            <i class="fa-regular fa-heart text-2xl text-gray-700"></i>
+          </a>
+        </div>
+
+        <!-- Cart Icon (from image) -->
+        <div class="relative cursor-pointer">
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#1c2d4a" viewBox="0 0 24 24">
+              <path
+                d="M7 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0 2a.001.001 0 0 0 0 0h0zm10-2c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0 2a.001.001 0 0 0 0 0h0zM7.24 14l.94-2h8.24a1 1 0 0 0 .96-.73l2.5-8A1 1 0 0 0 18 2H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44A1.992 1.992 0 0 0 4 15c0 1.104.896 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.07-.25z">
+              </path>
+            </svg>
+          </a>
+          <span id="cart-count"
+            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+            0
+          </span>
+        </div>
+
+        <!-- Clean User Icon (large, solid black) -->
+        <a title="Go to about me page" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-7 text-black" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
           </svg>
         </a>
-        <span id="cart-count"
-          class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-          0
-        </span>
+
       </div>
-
-      <!-- Clean User Icon (large, solid black) -->
-      <a title="Go to about me page" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-7 text-black" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-        </svg>
-      </a>
-
-    </div>
-  </header>
+    </header>
 
 
-  <!-- middle line between search-bar -->
-  <!-- Add this to your gradient background div -->
-  <div class="gradient-bg h-14 w-full flex items-center">
-    <button id="menuToggle"
-      class="menu-button  ml-6 text-white hover:bg-white/20 rounded-full w-10 h-10 flex items-center justify-center">
-      <i class="fas fa-bars text-2xl"></i>
-    </button>
-
-    <!-- Your existing search box here -->
-  </div>
-
-  <!-- Add this after your navbar and gradient bar -->
-  <div class="flex relative">
-    <!-- Sidebar -->
-    <div id="sidebar" class="sidebar closed text-white"  style="margin-top: 1rem;">
-      <!-- Sidebar Header -->
-      <div class="p-4 flex items-center">
-        <img src="../Hompage/image/main-logo.png" alt="Mobizilla Logo" class="h-8 w-8 mr-2" />
-        <span class="font-bold text-xl">Mobizilla</span>
-      </div>
-
-      <!-- Sidebar Content -->
-      <div class="sidebar-content pb-4">
-        <ul class="space-y-1">
-          <li>
-            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-              <i class="fas fa-home mr-4"></i>
-              <span>Home</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-              <i class="fas fa-play-circle mr-4"></i>
-              <span>Subscription</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-              <i class="fas fa-fire mr-4"></i>
-              <span>Lorem</span>
-            </a>
-          </li>
-
-          <li class="border-t border-white/30 my-2"></li>
-
-          <li>
-            <div class="flex items-center justify-between px-4 py-3 hover:bg-white/20 cursor-pointer">
-              <div class="flex items-center">
-                <i class="fas fa-user mr-4"></i>
-                <span>You</span>
-              </div>
-              <i class="fas fa-chevron-down text-sm"></i>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-              <i class="fas fa-history mr-4"></i>
-              <span>History</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-              <i class="fas fa-video mr-4"></i>
-              <span>Your videos</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-              <i class="fas fa-clock mr-4"></i>
-              <span>Watch Later</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-              <i class="fas fa-bookmark mr-4"></i>
-              <span>Saved</span>
-            </a>
-          </li>
-
-          <li class="border-t border-white/30 my-2"></li>
-
-          <li>
-            <div class="px-4 py-2 text-white/80 text-sm">Subscriptions</div>
-          </li>
-          <li>
-            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-              <div class="w-6 h-6 rounded-full bg-red-500 mr-4 flex items-center justify-center text-white">1</div>
-              <span>Channel 1</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-              <div class="w-6 h-6 rounded-full bg-blue-500 mr-4 flex items-center justify-center text-white">2</div>
-              <span>Channel 2</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-              <div class="w-6 h-6 rounded-full bg-green-500 mr-4 flex items-center justify-center text-white">3</div>
-              <span>Channel 3</span>
-            </a>
-          </li>
-
-          <li class="border-t border-white/30 my-2"></li>
-
-          <li>
-            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-              <i class="fas fa-cog mr-4"></i>
-              <span>Settings</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-              <i class="fas fa-user-circle mr-4"></i>
-              <span>Your profile</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Your existing content container here -->
-  </div>
-  <!--  search bar    duplicate file -->
-  <div class="flex justify-center   -mt-7 px-4">
-    <div class="hello w-[full] lg:w-[600px] md:w-2/3 flex items-center p-6 px-4">
-    </div>
-  </div>
-  <!-- place holder for search bar -->
-  <div class="flex justify-center -mt-10 px-4">
-    <div class="search-bar lg:w-[600px] md:w-2/3 flex items-center p-1 px-4">
-      <input type="text" placeholder="Search.."
-        class="w-full bg-transparent text-white placeholder-white outline-none p-2" />
-      <button class="p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
+    <!-- middle line between search-bar -->
+    <!-- Add this to your gradient background div -->
+    <div class="gradient-bg h-14 w-full flex items-center">
+      <button id="menuToggle"
+        class="menu-button  ml-6 text-white hover:bg-white/20 rounded-full w-10 h-10 flex items-center justify-center">
+        <i class="fas fa-bars text-2xl"></i>
       </button>
+
+      <!-- Your existing search box here -->
     </div>
-  </div>
+
+    <!-- Add this after your navbar and gradient bar -->
+    <div class="flex relative">
+      <!-- Sidebar -->
+      <div id="sidebar" class="sidebar closed text-white" style="margin-top: 1.2rem;">
+        <!-- Sidebar Header -->
+        <div class="p-4 flex items-center">
+          <img src="../Hompage/image/main-logo.png" alt="Mobizilla Logo" class="h-8 w-8 mr-2" />
+          <span class="font-bold text-xl">Mobizilla</span>
+        </div>
+
+        <!-- Sidebar Content -->
+        <div class="sidebar-content pb-4">
+          <ul class="space-y-1">
+            <li>
+              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+                <i class="fas fa-home mr-4"></i>
+                <span>Home</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+                <i class="fas fa-play-circle mr-4"></i>
+                <span>Subscription</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+                <i class="fas fa-fire mr-4"></i>
+                <span>Lorem</span>
+              </a>
+            </li>
+
+            <li class="border-t border-white/30 my-2"></li>
+
+            <li>
+              <div class="flex items-center justify-between px-4 py-3 hover:bg-white/20 cursor-pointer">
+                <div class="flex items-center">
+                  <i class="fas fa-user mr-4"></i>
+                  <span>You</span>
+                </div>
+                <i class="fas fa-chevron-down text-sm"></i>
+              </div>
+            </li>
+            <li>
+              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+                <i class="fas fa-history mr-4"></i>
+                <span>History</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+                <i class="fas fa-video mr-4"></i>
+                <span>Your videos</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+                <i class="fas fa-clock mr-4"></i>
+                <span>Watch Later</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+                <i class="fas fa-bookmark mr-4"></i>
+                <span>Saved</span>
+              </a>
+            </li>
+
+            <li class="border-t border-white/30 my-2"></li>
+
+            <li>
+              <div class="px-4 py-2 text-white/80 text-sm">Subscriptions</div>
+            </li>
+            <li>
+              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+                <div class="w-6 h-6 rounded-full bg-red-500 mr-4 flex items-center justify-center text-white">1</div>
+                <span>Channel 1</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+                <div class="w-6 h-6 rounded-full bg-blue-500 mr-4 flex items-center justify-center text-white">2</div>
+                <span>Channel 2</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+                <div class="w-6 h-6 rounded-full bg-green-500 mr-4 flex items-center justify-center text-white">3</div>
+                <span>Channel 3</span>
+              </a>
+            </li>
+
+            <li class="border-t border-white/30 my-2"></li>
+
+            <li>
+              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+                <i class="fas fa-cog mr-4"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
+                <i class="fas fa-user-circle mr-4"></i>
+                <span>Your profile</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Your existing content container here -->
+    </div>
+    <!--  search bar    duplicate file -->
+    <div class="flex justify-center   -mt-7 px-4">
+      <div class="hello w-[full] lg:w-[600px] md:w-2/3 flex items-center p-6 px-4">
+      </div>
+    </div>
+    <!-- place holder for search bar -->
+    <div class="flex justify-center -mt-10 px-4">
+      <div class="search-bar lg:w-[600px] md:w-2/3 flex items-center p-1 px-4">
+        <input type="text" placeholder="Search.."
+          class="w-full bg-transparent text-white placeholder-white outline-none p-2" />
+        <button class="p-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+      </div>
+    </div>
 
 
 
@@ -240,7 +240,7 @@
               <!-- Left: Logo -->
               <div class="flex flex-col items-center mr-6">
                 <img src="../Hompage/image/main-section-logo.png" alt="Mobizilla Logo" class="w-24 md:w-32 mb-4"
-                  id="contentLogo"  />
+                  id="contentLogo" />
               </div>
 
               <!-- Middle: Vertical Line -->
@@ -829,7 +829,7 @@
           <!-- Person 1 -->
           <div class="flex flex-col items-center  mt-15 -ml-[90%]">
             <p class="text-sm max-w-xs mb-4 ml-[10%]">
-              In the world of tech  wonders, explore courses designed for everyone—from beginners to pros.
+              In the world of tech wonders, explore courses designed for everyone—from beginners to pros.
             </p>
             <img src="../Hompage/image/person1.png" alt="Person 1" class="w-28 h-auto mb-2" />
             <h3 class="text-sm font-semibold border-2 border-cyan-500 px-3 py-1 rounded-full">Learn with Ease</h3>
