@@ -86,7 +86,7 @@
         /* Green border below white border */
         .green-border-top {
             position: absolute;
-            top: 4px;
+            top: 2px;
             left: 0;
             right: 0;
             height: 8px;
@@ -104,22 +104,41 @@
             z-index: 10;
         }
 
-        .icon-shadow {
+        .iconbbb-shadow {
             position: absolute;
             bottom: -10px;
-            left: 10px;
+            left: 16px;
             /* Adjusted shadow for icon to make it smaller and darker */
             width: 80px;
             /* Reduced from 100px */
             height: 15px;
             /* Reduced from 20px */
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(11, 1, 1, 0.945);
             /* Made darker */
             border-radius: 50%;
             filter: blur(5px);
             /* Less blur for harder shadow */
-            z-index: 1;
+            z-index: -5;
         }
+
+
+   .icon-shadow {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+
+    width: 120px;
+    height: 120px;
+
+    background-color: #0e0101;
+    border-radius: 50%;
+    filter: blur(5px);
+
+    z-index: -1;
+}
+
+        
 
         .icon-circle {
             width: 100%;
@@ -135,8 +154,8 @@
         }
 
         .icon-img {
-            width: 70px;
-            height: 70px;
+            width: 90px;
+            height: 90px;
             object-fit: contain;
         }
 
@@ -181,7 +200,8 @@
             background-color: #007bff;
             border: none;
             color: white;
-            width: 60%;
+            width: 55%;
+            height: 40px;
             padding: 10px 20px;
             font-size: 15px;
         }
@@ -193,22 +213,22 @@
 
         /* Dinosaur shown in UI */
         .dino {
-            width: 100px;
-            height: 90px;
+            width: 130px;
+            height: 100px;
             position: absolute;
-            bottom: 33.5px;
-            left: 40%;
+            bottom: 18px;
+            left: 40.7%;
             z-index: 6;
         }
 
         .hidden-dino {
-            width: 100px;
+            width: 140px;
             /* Increased size */
-            height: 90px;
+            height: 130px;
             /* Increased size */
             position: absolute;
             bottom: 475px;
-            left: 50%;
+            left: 52%;
             transform: translateX(-50%);
             z-index: 2;
             opacity: 0;
@@ -334,7 +354,7 @@
 
                     <div class="card-top"></div>
 
-                    <div class="icon-container">
+                    <div class="icon-container" >
                         <div class="icon-shadow"></div>
                         <div class="icon-circle">
                             <img src="../suscription/images/icon1pricing.png" alt="Basic" class="icon-img">
