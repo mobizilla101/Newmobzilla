@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course UI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    body {
+      background: url('../category/images/dino\ course.png') no-repeat center center;
+      background-size: cover;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center">
+
+  <div class="w-full max-w-7xl px-4 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
+      <!-- Left Content -->
+      <div class="space-y-6">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800">
+          Discover the Best<br />
+          <span class="text-black">Course for Your Journey</span>
+        </h1>
+        <p class="text-gray-600">Explore over 1000 courses tailored to your interests and career goals.</p>
+
+        <!-- Search Bar -->
+        <div class="relative max-w-md">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="w-full rounded-full px-5 py-3 border-none shadow focus:outline-none bg-green-500 text-white placeholder-white"
+          />
+          <button
+            class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-cyan-500 px-4 py-2 rounded-full text-white font-semibold"
+          >
+            🔍
+          </button>
+        </div>
+
+        <!-- Popular Searches -->
+        <div class="flex gap-3 pt-4 flex-wrap">
+          <span class="bg-blue-500 text-white px-4 py-1 rounded-full text-sm">Web Development</span>
+          <span class="bg-blue-500 text-white px-4 py-1 rounded-full text-sm">Artificial Learning</span>
+          <span class="bg-blue-500 text-white px-4 py-1 rounded-full text-sm">AI Courses</span>
+        </div>
+      </div>
+
+      <!-- Dino Character -->
+      <div class="hidden md:block">
+        <img id="dino" src="" alt="Dino Mascot" class="max-w-sm mx-auto" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // GSAP Dino Animation
+    gsap.fromTo("#dino", 
+      { x: -100 }, 
+      { x: 0, duration: 2, ease: "bounce.out" }
+    );
+  </script>
+</body>
+</html>
