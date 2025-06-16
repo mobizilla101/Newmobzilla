@@ -227,10 +227,14 @@
     .module-dropdown:hover .module-dropdown-content {
       display: block;
     }
+    .module-dropdown-content:hover {
+      display: block;
+    }
     .module-dropdown-item {
       padding: 8px 16px;
       cursor: pointer;
       transition: background-color 0.2s;
+      position: relative;
     }
     .module-dropdown-item:hover {
       background-color: #f3f4f6;
@@ -253,6 +257,9 @@
       margin-left: 5px;
     }
     .module-dropdown-item:hover .topic-dropdown-content {
+      display: block;
+    }
+    .topic-dropdown-content:hover {
       display: block;
     }
     .topic-dropdown-item {
@@ -280,7 +287,13 @@
       top: 100%;
       margin-top: 5px;
     }
+    .settings-container {
+      position: relative;
+    }
     .settings-container:hover .settings-dropdown {
+      display: block;
+    }
+    .settings-dropdown:hover {
       display: block;
     }
     .settings-item {
@@ -290,6 +303,9 @@
     }
     .settings-item:hover {
       background-color: #f3f4f6;
+    }
+    .understood-btn {
+      transition: all 0.3s;
     }
     @media (max-width: 768px) {
       .module-dropdown-content {
@@ -372,9 +388,9 @@
               <div class="settings-container relative">
                 <button class="control-btn" id="settings-btn"><i class="fas fa-cog"></i></button>
                 <div class="settings-dropdown">
-                  <div class="settings-item">Quality</div>
-                  <div class="settings-item">Playback Speed</div>
-                  <div class="settings-item">Subtitles</div>
+                  <div class="settings-item">Quality: Auto</div>
+                  <div class="settings-item">Playback Speed: Normal</div>
+                  <div class="settings-item">Subtitles: Off</div>
                 </div>
               </div>
               <button class="control-btn" id="fullscreen-btn"><i class="fas fa-expand"></i></button>
@@ -389,7 +405,7 @@
         <p class="text-gray-400 text-sm mt-1">👨‍🏫 Prof. Don J Ujolatek | 📅 Updated: <span id="upload-date">2025-05-15</span></p>
 
         <div class="flex gap-2 mt-3">
-          <button onclick="markAsUnderstood()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded">✓ Mark as Understood</button>
+          <button id="understood-btn" onclick="toggleUnderstood()" class="understood-btn bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded">✓ Mark as Understood</button>
           <button onclick="askQuestion()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded">❓ Ask a Question</button>
         </div>
       </div>
@@ -463,7 +479,7 @@
       <div class="flex gap-2 bg-white p-2 rounded-lg">
         <div class="module-dropdown">
           <div class="sidebar-header-tab active" id="module-tab">
-            <i class="fas fa-book mr-2"></i>Module
+            <i class="fas fa-book mr-2"></i><span id="current-module-name">Module 3: AI Assistance</span>
           </div>
           <div class="module-dropdown-content">
             <div class="module-dropdown-item" onclick="switchModule(1)">
@@ -498,17 +514,33 @@
         </div>
       </div>
       
-      <!-- Module 3 Content -->
+      <!-- Module Content -->
       <div class="module-content active" id="module-3-content">
         <div class="module-section p-4">
-          <h4 class="text-md font-bold mb-3">Module 3: AI Assistance</h4>
-          <div class="space-y-2 mb-4">
-            <div class="p-3 bg-blue-50 rounded border border-blue-200 cursor-pointer" onclick="showModuleTopics('mobile-repairing')">
-              <p class="text-sm font-medium">Mobile Repairing</p>
-              <p class="text-xs text-gray-500 mt-1">The support system, infrastructure of mobile operating, mobile apparel.</p>
+          <h4 id="module-title" class="text-md font-bold mb-3">Module 3: AI Assistance - Mobile Repairing</h4>
+          <div id="module-topics" class="space-y-3">
+            <div onclick="playLesson('mobile-repairing', 'understanding-mobile-repairing')" class="cursor-pointer border p-3 rounded hover:bg-gray-50 transition-colors bg-blue-50 border-blue-200">
+              <p class="text-sm font-medium">Understanding Mobile Repairing with Electronics</p>
+              <p class="text-xs text-gray-400 mt-1">Updated: 2025-05-15</p>
+              <div class="flex items-center mt-2 text-xs text-gray-500">
+                <span>Duration: 4:14</span>
+              </div>
+            </div>
+            <div onclick="playLesson('mobile-repairing', 'networking-part1')" class="cursor-pointer border p-3 rounded hover:bg-gray-50 transition-colors">
+              <p class="text-sm font-medium">Introduction to Networking - Part 1</p>
+              <p class="text-xs text-gray-400 mt-1">Updated: 2025-05-16</p>
+              <div class="flex items-center mt-2 text-xs text-gray-500">
+                <span>Duration: 4:14</span>
+              </div>
+            </div>
+            <div onclick="playLesson('mobile-repairing', 'networking-part2')" class="cursor-pointer border p-3 rounded hover:bg-gray-50 transition-colors">
+              <p class="text-sm font-medium">Introduction to Networking - Part 2</p>
+              <p class="text-xs text-gray-400 mt-1">Updated: 2025-05-17</p>
+              <div class="flex items-center mt-2 text-xs text-gray-500">
+                <span>Duration: 4:14</span>
+              </div>
             </div>
           </div>
-          <div id="module-topics" class="space-y-3"></div>
         </div>
       </div>
       
@@ -638,6 +670,8 @@
   let nextCommentId = 10;
   let isMuted = false;
   let currentVolume = 1;
+  let understoodLessons = {};
+  let isUnderstood = false;
 
   // =============================================
   // DOM ELEMENT REFERENCES
@@ -650,6 +684,7 @@
   const progressBarVideo = document.getElementById('progress-bar-video');
   const timeDisplay = document.getElementById('time-display');
   const fullscreenBtn = document.getElementById('fullscreen-btn');
+  const understoodBtn = document.getElementById('understood-btn');
 
   // =============================================
   // VIDEO PLAYER FUNCTIONS
@@ -762,6 +797,10 @@
       item.classList.toggle('active', item.getAttribute('onclick') === `switchModule(${moduleId})`);
     });
     
+    // Update current module name in header
+    const module = courseStructure[moduleId];
+    document.getElementById('current-module-name').textContent = module.title;
+    
     // Show correct module content
     document.querySelectorAll('.module-content').forEach(content => {
       content.classList.toggle('active', content.id === `module-${moduleId}-content`);
@@ -780,24 +819,28 @@
     
     if (!topic) return;
     
-    // Render the lessons for this topic
-    const lessonsHtml = topic.lessons.map(lesson => `
-      <div onclick="playLesson('${topicId}', '${lesson.id}')" 
-           class="cursor-pointer border p-3 rounded hover:bg-gray-50 transition-colors ${currentVideo?.topicId === topicId && currentVideo?.lessonId === lesson.id ? 'bg-blue-50 border-blue-200' : ''}">
-        <p class="text-sm font-medium">${lesson.title}</p>
-        <p class="text-xs text-gray-400 mt-1">Updated: ${lesson.date}</p>
-        <div class="flex items-center mt-2 text-xs text-gray-500">
-          <span>Duration: ${Math.floor(lesson.duration/60)}:${(lesson.duration%60).toString().padStart(2,'0')}</span>
-          ${watchTimes[`${topicId}-${lesson.id}`] ? `<span class="ml-2 text-green-600">• Watched</span>` : ''}
-        </div>
-      </div>
-    `).join('');
+    // Update module title with topic
+    document.getElementById('module-title').textContent = `${module.title} - ${topic.title}`;
     
-    document.getElementById('module-topics').innerHTML = `
-      <h5 class="text-sm font-semibold mb-2">${topic.title}</h5>
-      <p class="text-xs text-gray-500 mb-3">${topic.description}</p>
-      <div class="space-y-3">${lessonsHtml}</div>
-    `;
+    // Render the lessons for this topic
+    const lessonsHtml = topic.lessons.map(lesson => {
+      const isCurrent = currentVideo?.topicId === topicId && currentVideo?.lessonId === lesson.id;
+      const isUnderstood = understoodLessons[`${topicId}-${lesson.id}`];
+      
+      return `
+        <div onclick="playLesson('${topicId}', '${lesson.id}')" 
+             class="cursor-pointer border p-3 rounded hover:bg-gray-50 transition-colors ${isCurrent ? 'bg-blue-50 border-blue-200' : ''} ${isUnderstood ? 'border-green-200' : ''}">
+          <p class="text-sm font-medium">${lesson.title} ${isUnderstood ? '✓' : ''}</p>
+          <p class="text-xs text-gray-400 mt-1">Updated: ${lesson.date}</p>
+          <div class="flex items-center mt-2 text-xs text-gray-500">
+            <span>Duration: ${Math.floor(lesson.duration/60)}:${(lesson.duration%60).toString().padStart(2,'0')}</span>
+            ${watchTimes[`${topicId}-${lesson.id}`] ? `<span class="ml-2 text-green-600">• Watched</span>` : ''}
+          </div>
+        </div>
+      `;
+    }).join('');
+    
+    document.getElementById('module-topics').innerHTML = lessonsHtml;
     
     // Also update mobile view
     renderMobileTopics();
@@ -820,13 +863,42 @@
       videoComments[`${topicId}-${lessonId}`] = [];
     }
     
+    // Update understood button state
+    isUnderstood = understoodLessons[`${topicId}-${lessonId}`] || false;
+    updateUnderstoodButton();
+    
     renderComments();
     updateCommentCount();
     updateProgress();
     renderMobileTopics();
+    showModuleTopics(topicId);
     
     // Play the video
     videoElement.play();
+  }
+
+  function toggleUnderstood() {
+    if (!currentVideo) return;
+    
+    const videoKey = `${currentVideo.topicId}-${currentVideo.lessonId}`;
+    isUnderstood = !isUnderstood;
+    understoodLessons[videoKey] = isUnderstood;
+    
+    updateUnderstoodButton();
+    showModuleTopics(currentVideo.topicId);
+    renderMobileTopics();
+  }
+
+  function updateUnderstoodButton() {
+    if (isUnderstood) {
+      understoodBtn.innerHTML = '✓ Marked as Understood';
+      understoodBtn.classList.add('bg-green-600');
+      understoodBtn.classList.remove('bg-green-500');
+    } else {
+      understoodBtn.innerHTML = '✓ Mark as Understood';
+      understoodBtn.classList.add('bg-green-500');
+      understoodBtn.classList.remove('bg-green-600');
+    }
   }
 
   // =============================================
@@ -845,24 +917,29 @@
     });
     
     const topicsToShow = showingAllMobileTopics ? lessons : lessons.slice(0, mobileTopicsVisible);
-    const list = topicsToShow.map(lesson => `
-      <div onclick="playLesson('${lesson.topicId}', '${lesson.id}')" 
-           class="topic-card cursor-pointer bg-white border p-4 rounded-lg shadow-sm hover:shadow-md transition-all ${currentVideo?.topicId === lesson.topicId && currentVideo?.lessonId === lesson.id ? 'border-blue-300' : ''}">
-        <div class="flex gap-4">
-          <div class="w-1/3">
-            <img src="${lesson.thumbnail}" alt="${lesson.title}" class="w-full h-24 object-cover rounded">
-          </div>
-          <div class="w-2/3">
-            <h4 class="text-sm font-semibold">${lesson.title}</h4>
-            <p class="text-xs text-gray-500 mt-1">Updated: ${lesson.date}</p>
-            <div class="flex items-center mt-2 text-xs text-gray-500">
-              <span>Duration: ${Math.floor(lesson.duration/60)}:${(lesson.duration%60).toString().padStart(2,'0')}</span>
-              ${watchTimes[`${lesson.topicId}-${lesson.id}`] ? `<span class="ml-2 text-green-600">• Watched</span>` : ''}
+    const list = topicsToShow.map(lesson => {
+      const isCurrent = currentVideo?.topicId === lesson.topicId && currentVideo?.lessonId === lesson.id;
+      const isUnderstood = understoodLessons[`${lesson.topicId}-${lesson.id}`];
+      
+      return `
+        <div onclick="playLesson('${lesson.topicId}', '${lesson.id}')" 
+             class="topic-card cursor-pointer bg-white border p-4 rounded-lg shadow-sm hover:shadow-md transition-all ${isCurrent ? 'border-blue-300' : ''} ${isUnderstood ? 'border-green-300' : ''}">
+          <div class="flex gap-4">
+            <div class="w-1/3">
+              <img src="${lesson.thumbnail}" alt="${lesson.title}" class="w-full h-24 object-cover rounded">
+            </div>
+            <div class="w-2/3">
+              <h4 class="text-sm font-semibold">${lesson.title} ${isUnderstood ? '✓' : ''}</h4>
+              <p class="text-xs text-gray-500 mt-1">Updated: ${lesson.date}</p>
+              <div class="flex items-center mt-2 text-xs text-gray-500">
+                <span>Duration: ${Math.floor(lesson.duration/60)}:${(lesson.duration%60).toString().padStart(2,'0')}</span>
+                ${watchTimes[`${lesson.topicId}-${lesson.id}`] ? `<span class="ml-2 text-green-600">• Watched</span>` : ''}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
     
     document.getElementById('mobile-modules').innerHTML = list;
     

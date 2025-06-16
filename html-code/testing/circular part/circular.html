@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Tags with Dinos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    .dino-container {
+      position: fixed;
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .dino-image {
+      width: 150px;
+      height: auto;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    }
+    .tag-item {
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      margin: 0 15px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .tag-item:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    #tags-wrapper {
+      position: relative;
+      overflow: hidden;
+      width: calc(100% - 60px);
+      margin: 0 auto;
+      max-width: 1400px;
+      padding: 20px 0;
+    }
+    #tag-row {
+      display: inline-flex;
+      align-items: center;
+    }
+    body {
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body class="bg-green-50 flex items-center justify-center min-h-screen">
+  <!-- Dino containers -->
+  <div class="dino-container" id="dino-under-container">
+    <img class="dino-image" id="dino-under" src="../../Hompage/image/dino.png" alt="Dino Under Tag" style="opacity:0;">
+  </div>
+  <div class="dino-container" id="dino-over-container">
+    <img class="dino-image" id="dino-over" src="../../Hompage/image/person1.png" alt="Dino Over Tag" style="opacity:0;">
+  </div>
+
+  <!-- Tags container -->
+  <div id="tags-wrapper">
+    <div id="tag-row">
+      <div class="tag-item bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-8 py-4 rounded-lg">Certified Training</div>
+      <div class="tag-item bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-8 py-4 rounded-lg">Accessible Training</div>
+      <div class="tag-item bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-8 py-4 rounded-lg">Empowering Youth</div>
+      <div class="tag-item bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-8 py-4 rounded-lg">Global Opportunities</div>
+      <div class="tag-item bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-8 py-4 rounded-lg">Disciplinary Skills</div>
+      <div class="tag-item bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-8 py-4 rounded-lg">Immersive Learning</div>
+    </div>
+  </div>
+
+  <script>
+    // Duplicate tags for seamless animation (5 copies for smoother loop)
+    const row = document.getElementById("tag-row");
+    const originalHTML = row.innerHTML;
+    row.innerHTML = originalHTML + originalHTML + originalHTML + originalHTML + originalHTML;
+    
+    // GSAP animation for infinite scrolling (faster and smoother)
+    gsap.to("#tag-row", {
+      xPercent: -100,
+      duration: 500,
+      ease: "none",
+      repeat: -1,
+      modifiers: {
+        xPercent: gsap.utils.wrap(-100, 0)
+      }
+    });
+
+    // Get elements
+    const dinoUnder = document.getElementById('dino-under');
+    const dinoOver = document.getElementById('dino-over');
+    const dinoUnderContainer = document.getElementById('dino-under-container');
+    const dinoOverContainer = document.getElementById('dino-over-container');
+    
+    // Position config - carefully tuned values
+    const dinoConfig = {
+      under: {
+        xOffset: -770,  // Horizontal position (-left, +right)
+        yOffset: -436,   // Vertical position (+down, -up)
+        zIndex: 5,
+        scale: 0.9
+      },
+      over: {
+        xOffset: -770,
+        yOffset: -429,
+        zIndex: 15,
+        scale: 1.1
+      }
+    };
+    
+    // Track hover state
+    let activeTag = null;
+    let animationFrame;
+    let hoverTimeout;
+    
+    // Smooth position updater
+    function updateDinoPosition() {
+      if (!activeTag) return;
+      
+      const rect = activeTag.getBoundingClientRect();
+      const centerX = rect.left + rect.width/2;
+      const centerY = rect.top + rect.height/2;
+      
+      // Under dino position (below tag)
+      dinoUnderContainer.style.transform = `
+        translate(${centerX + dinoConfig.under.xOffset}px, ${rect.bottom + dinoConfig.under.yOffset}px)
+        scale(${dinoConfig.under.scale})
+      `;
+      dinoUnderContainer.style.zIndex = dinoConfig.under.zIndex;
+      
+      // Over dino position (above tag)
+      dinoOverContainer.style.transform = `
+        translate(${centerX + dinoConfig.over.xOffset}px, ${rect.top + dinoConfig.over.yOffset}px)
+        scale(${dinoConfig.over.scale})
+      `;
+      dinoOverContainer.style.zIndex = dinoConfig.over.zIndex;
+      
+      animationFrame = requestAnimationFrame(updateDinoPosition);
+    }
+    
+    // Handle hover events
+    function setupTagHover(tag) {
+      tag.addEventListener('mouseenter', () => {
+        activeTag = tag;
+        
+        // Change tag style
+        tag.classList.remove('from-green-500', 'to-blue-500');
+        tag.classList.add('from-purple-500', 'to-pink-500');
+        
+        // Show under dino immediately
+        dinoUnderContainer.style.opacity = '1';
+        dinoUnder.style.opacity = '1';
+        
+        // Show over dino after 100ms
+        clearTimeout(hoverTimeout);
+        hoverTimeout = setTimeout(() => {
+          dinoOverContainer.style.opacity = '1';
+          dinoOver.style.opacity = '1';
+          dinoUnder.style.opacity = '0';
+        }, 1000);
+        
+        // Start position updates
+        updateDinoPosition();
+      });
+      
+      tag.addEventListener('mouseleave', () => {
+        // Reset tag style
+        tag.classList.add('from-green-500', 'to-blue-500');
+        tag.classList.remove('from-purple-500', 'to-pink-500');
+        
+        // Hide dinos immediately
+        dinoUnderContainer.style.opacity = '0';
+        dinoOverContainer.style.opacity = '0';
+        dinoUnder.style.opacity = '0';
+        dinoOver.style.opacity = '0';
+        
+        // Clean up
+        activeTag = null;
+        clearTimeout(hoverTimeout);
+        cancelAnimationFrame(animationFrame);
+      });
+    }
+    
+    // Initialize all tags
+    document.querySelectorAll('.tag-item').forEach(setupTagHover);
+  </script>
+</body>
+</html>

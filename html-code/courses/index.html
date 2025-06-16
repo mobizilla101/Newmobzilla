@@ -284,77 +284,81 @@
   </section>
 
 
+<!-- caregory part -->
+<div class="bg-gray-50 p-8">
+  <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                Explore <span class="text-green-500">Categories</span>
+            </h1>
+            <p class="text-gray-600 text-lg">Find the perfect course for your learning journey</p>
+        </div>
 
+        <!-- Fixed Slides Container -->
+        <div class="carousel-container relative w-full h-80 mb-16">
+            <!-- Left Slide - Partially visible -->
+            <div class="slide-container absolute bg-white rounded-lg shadow-lg overflow-hidden border-r-4 border-green-500" 
+                 style="width: 280px; height: 200px; left: 10px; top: 50%; transform: translateY(-50%); z-index: 10;">
+                <div class="slide-content relative h-full">
+                    <img id="left-image" src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Category" class="w-full h-full object-cover">
+                    <div class="absolute left-0 top-0 h-full w-12 bg-black bg-opacity-70 flex items-center justify-center">
+                        <span id="left-text" class="vertical-text text-white font-bold text-sm tracking-wider">Graphic Design</span>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Center Slide - Active/Main -->
+            <div class="slide-container absolute bg-white rounded-lg shadow-lg overflow-hidden border-l-4 border-r-4 border-green-500" 
+                 style="width: 350px; height: 250px; left: 45%; top: 50%; transform: translateX(-50%) translateY(-50%); z-index: 20;">
+                <div class="slide-content relative h-full">
+                    <img id="center-image" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Category" class="w-full h-full object-cover">
+                    <div class="absolute left-0 top-0 h-full w-12 bg-black bg-opacity-70 flex items-center justify-center">
+                        <span id="center-text" class="vertical-text text-white font-bold text-sm tracking-wider">Mobile Repair</span>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Right Slide -->
+            <div class="slide-container absolute bg-white rounded-lg shadow-lg overflow-hidden border-r-4 border-green-500" 
+                 style="width: 280px; height: 200px; left: 38%; margin-left: 220px; top: 50%; transform: translateY(-50%); z-index: 1000;">
+                <div class="slide-content relative h-full">
+                    <img id="right-image" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Category" class="w-full h-full object-cover">
+                    <div class="absolute left-0 top-0 h-full w-12 bg-black bg-opacity-70 flex items-center justify-center">
+                        <span id="right-text" class="vertical-text text-white font-bold text-sm tracking-wider">Web Development</span>
+                    </div>
+                </div>
+            </div>
 
-  <!-- category part -->
-  <div class="container">
-    <div class="text-center mb-8">
-      <h1 class="text-3xl font-bold">
-        <span class="text-gray-800">Explore</span>
-        <span class="text-emerald-500">Categories</span>
-      </h1>
-      <p class="text-gray-600 mt-2">Find the perfect course for your learning journey</p>
+            <!-- Far Right Slide - Partially visible -->
+            <div class="slide-container absolute bg-white rounded-lg shadow-lg overflow-hidden border-r-4 border-green-500" 
+                 style="width: 280px; height: 200px; right: -110px; top: 50%; transform: translateY(-50%); ">
+                <div class="slide-content relative h-full">
+                    <img id="far-right-image" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Category" class="w-full h-full object-cover">
+                    <div class="absolute left-0 top-0 h-full w-12 bg-black bg-opacity-70 flex items-center justify-center">
+                        <span id="far-right-text" class="vertical-text text-white font-bold text-sm tracking-wider">Digital Marketing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Dots -->
+        <div class="flex justify-center space-x-2 mt-8">
+            <button id="dot-0" class="h-2 rounded-full dot-active transition-all duration-300" onclick="goToSlide(0)" style="width: 32px;"></button>
+            <button id="dot-1" class="w-2 h-2 rounded-full dot-inactive transition-all duration-300" onclick="goToSlide(1)"></button>
+            <button id="dot-2" class="w-2 h-2 rounded-full dot-inactive transition-all duration-300" onclick="goToSlide(2)"></button>
+            <button id="dot-3" class="w-2 h-2 rounded-full dot-inactive transition-all duration-300" onclick="goToSlide(3)"></button>
+            <button id="dot-4" class="w-2 h-2 rounded-full dot-inactive transition-all duration-300" onclick="goToSlide(4)"></button>
+        </div>
     </div>
+</div>
 
-    <div class="slider-wrapper">
-      <div class="slider-container">
-        <!-- Category 1: Mobile Repair -->
-        <div class="slide" id="slide-0">
-          <img src="../courses/images/slider1.png" alt="Mobile Repair" class="w-full h-full object-cover">
-          <div class="category-text">Mobile Repair</div>
-        </div>
 
-        <!-- Category 2: Web Development -->
-        <div class="slide" id="slide-1">
-          <img src="../courses/images/slider2.png" alt="Web Development" class="w-full h-full object-cover">
-          <div class="category-text">Web Development</div>
-        </div>
+ 
 
-        <!-- Category 3: Digital Marketing -->
-        <div class="slide" id="slide-2">
-          <img src="../courses/images/slider3.png" alt="Digital Marketing" class="w-full h-full object-cover">
-          <div class="category-text">Digital Marketing</div>
-        </div>
 
-        <!-- Category 4: Graphic Design -->
-        <div class="slide" id="slide-3">
-          <img src="../courses/images/slider1.png" alt="Graphic Design" class="w-full h-full object-cover">
-          <div class="category-text">Graphic Design</div>
-        </div>
 
-        <!-- Category 5: Data Science -->
-        <div class="slide" id="slide-4">
-          <img src="../courses/images/slider2.png" alt="Data Science" class="w-full h-full object-cover">
-          <div class="category-text">Data Science</div>
-        </div>
-
-        <!-- Category 6: Cyber Security -->
-        <div class="slide" id="slide-5">
-          <img src="../courses/images/slider3.png" alt="Cyber Security" class="w-full h-full object-cover">
-          <div class="category-text">Cyber Security</div>
-        </div>
-
-        <!-- Category 7: AI & Machine Learning -->
-        <div class="slide" id="slide-6">
-          <img src="../courses/images/slider1.png" alt="AI & Machine Learning" class="w-full h-full object-cover">
-          <div class="category-text">AI & Machine Learning</div>
-        </div>
-
-        <!-- Pagination Dots -->
-        <div class="pagination">
-          <div class="dot" data-index="0"></div>
-          <div class="dot" data-index="1"></div>
-          <div class="dot" data-index="2"></div>
-          <div class="dot" data-index="3"></div>
-          <div class="dot" data-index="4"></div>
-          <div class="dot" data-index="5"></div>
-          <div class="dot" data-index="6"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
 
   <!--feature courses -->
   <div class="bg-gray-100 min-h-screen py-8">
@@ -773,7 +777,7 @@
 
 
 
-
+<!-- footer part -->
   <footer class="bg-gray-800 text-white py-10 px-4">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
 
@@ -837,137 +841,8 @@
     </div>
   </footer>
 
-
-  <!-- trying to make a explore pages just like that ui design -->
-
-  <div class="bg-gray-100 min-h-screen flex flex-col justify-center items-center p-6">
-    <div class="text-center mb-6">
-      <h2 class="text-2xl font-bold">
-        Explore <span class="text-green-600">Categories</span>
-      </h2>
-      <p class="text-sm text-gray-500">
-        Find the perfect course for your learning journey
-      </p>
-    </div>
-
-    <div class="relative w-full max-w-6xl overflow-hidden">
-      <div class="flex items-center space-x-6 transition-all duration-500">
-        <!-- Slide 1 (half visible) -->
-        <div class="relative h-72 w-40 flex-shrink-0 overflow-hidden rounded-lg bg-cover bg-center"
-          style="background-image: url('../courses/images/slider1.png')">
-          <div class="absolute right-0 top-0 w-1 h-full bg-green-500"></div>
-          <p class="absolute left-0 top-4 text-white text-sm font-semibold vertical-text">
-            Mobile Repair
-          </p>
-        </div>
-
-        <!-- Slide 2 (absolute on slide 3) -->
-        <div
-          class="relative -ml-20 z-20 h-64 w-48 flex-shrink-0 overflow-hidden rounded-lg bg-cover bg-center shadow-md"
-          style="background-image: url('../courses/images/slider2.png')">
-          <div class="absolute right-0 top-0 w-1 h-full bg-green-500"></div>
-          <p class="absolute left-0 top-4 text-white text-sm font-semibold vertical-text">
-            Advance Technology
-          </p>
-        </div>
-
-        <!-- Slide 3 (active, larger) -->
-        <div class="relative z-10 h-72 w-60 flex-shrink-0 overflow-hidden rounded-lg bg-cover bg-center shadow-xl"
-          style="background-image: url('../courses/images/slider3.png')">
-          <div class="absolute right-0 top-0 w-1 h-full bg-green-500"></div>
-          <p class="absolute left-0 top-4 text-white text-sm font-semibold vertical-text">
-            Internet System
-          </p>
-        </div>
-
-        <!-- Slide 4 (inactive) -->
-        <div class="relative h-64 w-48 flex-shrink-0 overflow-hidden rounded-lg bg-cover bg-center shadow-md"
-          style="background-image: url('../courses/images/slider3.png')">
-          <div class="absolute right-0 top-0 w-1 h-full bg-green-500"></div>
-          <p class="absolute left-0 top-4 text-white text-sm font-semibold vertical-text">
-            Digital Device
-          </p>
-        </div>
-      </div>
-
-      <!-- Dots Navigation -->
-      <div class="absolute right-4 bottom-4 flex items-center space-x-2">
-        <span class="h-2 w-2 bg-green-500 rounded-full"></span>
-        <span class="h-2 w-2 bg-gray-400 rounded-full"></span>
-        <span class="h-2 w-2 bg-gray-400 rounded-full"></span>
-        <span class="h-2 w-2 bg-gray-400 rounded-full"></span>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-  <!-- last one -->
-  <div class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="container mx-auto px-4 py-8">
-        <!-- Header -->
-        <div class="mb-4">
-            <h1 class="text-3xl font-bold">Explore <span class="text-emerald-500">Categories</span></h1>
-            <p class="text-gray-600">Find the perfect course for your learning journey</p>
-        </div>
-
-        <!-- Carousel Container -->
-        <div class="relative overflow-hidden my-8">
-            <div class="slide-container flex items-center" id="slide-container">
-                <!-- Slide 1 -->
-                <div class="slide h-64 bg-gray-300" id="slide-1">
-                    <div class="category-title">Web Development</div>
-                    <img src="../courses/images/slider1.png" alt="Web Development" class="w-full h-full object-cover">
-                </div>
-                
-                <!-- Slide 2 -->
-                <div class="slide h-64 bg-gray-300" id="slide-2">
-                    <div class="category-title">Mobile Repair</div>
-                    <img src="../courses/images/slider2.png" alt="Mobile Repair" class="w-full h-full object-cover">
-                </div>
-                
-                <!-- Slide 3 -->
-                <div class="slide h-64 bg-gray-300" id="slide-3">
-                    <div class="category-title">Advanced Soldering</div>
-                    <img src="../courses/images/slider3.png" alt="Advanced Soldering" class="w-full h-full object-cover">
-                </div>
-                
-                <!-- Slide 4 -->
-                <div class="slide h-64 bg-gray-300" id="slide-4">
-                    <div class="category-title">Personal Finance</div>
-                    <img src="../courses/images/slider1.png" alt="Personal Finance" class="w-full h-full object-cover">
-                </div>
-                
-                <!-- Slide 5 -->
-                <div class="slide h-64 bg-gray-300" id="slide-5">
-                    <div class="category-title">Digital Marketing</div>
-                    <img src="../courses/images/slider1.png" alt="Digital Marketing" class="w-full h-full object-cover">
-                </div>
-            </div>
-
-            <!-- Navigation Dots -->
-            <div class="absolute right-4 bottom-4 flex flex-col space-y-2" id="dots-container">
-                <button class="dot w-16 h-2 bg-emerald-500 rounded-full" data-slide="1"></button>
-                <button class="dot w-4 h-2 bg-gray-300 rounded-full" data-slide="2"></button>
-                <button class="dot w-4 h-2 bg-gray-300 rounded-full" data-slide="3"></button>
-                <button class="dot w-4 h-2 bg-gray-300 rounded-full" data-slide="4"></button>
-                <button class="dot w-4 h-2 bg-gray-300 rounded-full" data-slide="5"></button>
-            </div>
-        </div>
-    </div>
-
-
-  </div>
-
-
-
-
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-
   </script>
 
   <script src="index.js"></script>
