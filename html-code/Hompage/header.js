@@ -802,6 +802,27 @@ document.head.appendChild(style);
 
 
 
+
+
+//foter with dino
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+    const dinoImage = document.getElementById('dino-image');
+    const hiMessage = document.getElementById('hi-message');
+
+    let timeoutId;
+
+    dinoImage.addEventListener('mouseenter', () => {
+        clearTimeout(timeoutId); // Clear any previous timer
+
+        hiMessage.classList.add('show');
+
+        timeoutId = setTimeout(() => {
+            hiMessage.classList.remove('show');
+        }, 4000);
+    });
+
+
   // Load the API when the page is ready
       window.addEventListener('load', loadGoogleMapsApi);
       

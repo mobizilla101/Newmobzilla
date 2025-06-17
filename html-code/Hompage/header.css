@@ -97,85 +97,78 @@ section video {
 }
 
 .vertical-divider {
-  height: 100%;
-  width: 1px;
-  background-color: #e2e8f0;
-}
+            height: 100%;
+            width: 1px;
+            background-color: #e2e8f0;
+        }
 
-#contentLogo {
-  width: 200px;
-  height: auto;
-  object-fit: contain;
-}
+        #contentLogo {
+            width: 250px;
+            height: auto;
+            object-fit: contain;
+        }
 
-.content-box {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
+        .content-box {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
 
-.content-box:hover {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-}
+        .content-box:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
 
-/* .aurora-text {
-  background: linear-gradient(90deg, #7f5af0, #2cb67d, #7f5af0);
-  background-size: 200% 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: aurora 5s ease infinite;
-} */
-
-/* @keyframes aurora {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-} */
-
-
-
-
-
-
-
-
-        
-        /* Aurora text effect */
         .aurora-text {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background: linear-gradient(90deg, #7f5af0, #2cb67d, #7f5af0);
+            background-size: 200% 200%;
             background-clip: text;
-            animation: aurora 3s ease-in-out infinite;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: aurora 5s ease infinite;
         }
-        
+
         @keyframes aurora {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
-        
-        /* Enhanced button with hover effect */
+
+        .vertical-line {
+            width: 3px;
+            height: 140px;
+            background: #00bcd4;
+            border-radius: 2px;
+        }
+
+        /* Fixed Button styling - no layout shifting */
         .explore-btn {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+            background: #00bcd4;
+            color: white;
+            padding: 14px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+            white-space: nowrap;
+            width: 240px; /* Fixed width to prevent layout shift */
+            text-align: center;
         }
-        
+
         .explore-btn::after {
             content: '→';
             position: absolute;
@@ -185,25 +178,89 @@ section video {
             font-size: 18px;
             font-weight: bold;
         }
-        
+
         .explore-btn:hover {
-            background: linear-gradient(135deg, #5a67d8 0%, #667eea 100%);
+            background: #0097a7;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-            padding-right: 3rem;
+            box-shadow: 0 6px 25px rgba(0, 188, 212, 0.4);
         }
-        
+
         .explore-btn:hover::after {
-            right: 16px;
+            right: 20px;
             opacity: 1;
         }
-        
+
         .explore-btn:hover .btn-text {
-            transform: translateX(-8px);
+            transform: translateX(-15px);
         }
-        
+
         .btn-text {
             transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        /* Container styling */
+        .main-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Text styling */
+        .subtitle-text {
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        /* Logo placeholder styling */
+        .logo-placeholder {
+            width: 250px;
+            height: 200px;
+            background: linear-gradient(135deg, #00bcd4, #0097a7);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .aurora-text {
+                font-size: 2rem;
+            }
+            .subtitle-text {
+                font-size: 1.25rem;
+            }
+            .vertical-line {
+                height: 100px;
+            }
+            .logo-placeholder {
+                width: 200px;
+                height: 160px;
+                font-size: 1.5rem;
+            }
+            .explore-btn {
+                width: 250px;
+            }
+            .flex-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .left-section, .right-section {
+                width: 100% !important;
+            }
+            .vertical-line {
+                width: 100px;
+                height: 3px;
+            }
         }
 /* circular orignal part */
 
@@ -239,6 +296,12 @@ section video {
 .side {
   margin-left: 30%;
 }
+
+
+
+
+
+
 
 
 
@@ -295,40 +358,66 @@ section video {
   position: relative;
 }
 
+
+/* review our customer */
+
 .title-container {
-  position: relative;
-  margin-bottom: 3rem;
+    position: relative;
+    margin-bottom: 3rem;
 }
 
-.section-title {
-  background: linear-gradient(to right, #10b981, #3b82f6);
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  font-size: 1.75rem;
-  font-weight: 700;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  top: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  width: 100%;
-  height: 50px;
-  max-width: 400px;
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  /* 🔽 Flexbox to center text vertically and horizontally */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.section-titlee {
+    background: linear-gradient(to right, #10b981, #3b82f6);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;              /* Back to absolute positioning */
+    top: 2rem;                       /* Back to original positioning */
+    left: 50%;                       /* Back to original positioning */
+    transform: translateX(-50%);     /* Back to original positioning */
+    z-index: 10;
+    width: 100%;
+    height: 50px;
+    max-width: 600px;                /* Increased from 400px to 600px */
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.dino-containerr {
+    position: absolute;
+    right: -2px;
+    top: 30%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
+    z-index: 11;
+}
 
+.dino {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: dinoWave 0.6s infinite;
+}
+
+@keyframes dinoWave {
+    0%, 50% {
+        background-image: url('../Hompage/image/review-dino-1.png');
+    }
+    51%, 100% {
+        background-image: url('../Hompage/image/review-dino-2.png');
+    }
+}
 
 .testimonials-content {
   display: flex;
@@ -364,6 +453,17 @@ section video {
   gap: 0.5rem;
   padding: 0.5rem 0;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 /* above footer part */
 .button-style {
@@ -877,4 +977,174 @@ section video {
     height: 70vh;
     bottom: 80px;
   }
+}
+
+
+
+
+/* wave part revolving border */
+.revolving-dashed-border {
+    position: relative;
+    display: inline-block;
+}
+
+/* Animated outer green dashed border that moves clockwise around blue border */
+.revolving-dashed-border::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 2px dashed #10b981; /* Green color */
+    border-radius: 50px;
+    animation: move-clockwise 3s linear infinite;
+    z-index: -1;
+}
+
+/* Static blue solid border (middle layer) */
+.revolving-dashed-border::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 2px solid #06b6d4; /* Blue border stays blue */
+    border-radius: 50px;
+    background: white;
+    z-index: -1;
+}
+
+@keyframes move-clockwise {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.inner-button {
+    position: relative;
+    z-index: 1;
+    background: white;
+    pointer-events: none;
+}
+
+/* Disable all hover effects and tooltips */
+.revolving-dashed-border,
+.revolving-dashed-border *,
+.inner-button,
+.inner-button * {
+    pointer-events: none !important;
+}
+
+.revolving-dashed-border {
+    pointer-events: auto;
+}
+
+.revolving-dashed-border::before,
+.revolving-dashed-border::after,
+.inner-button {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+
+
+
+/* footer part with dino  at the end */
+footer {
+    position: relative;
+    overflow: visible;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    margin-left: 0.5px;
+    margin-right: 0.5px;
+}
+
+/* ✅ Make sure the container doesn’t restrict width */
+.dino-container {
+    position: absolute;
+    top: -207.8px; /* ⬅ Pushes dino higher above the footer */
+    right: 20px;
+    z-index: 10;
+    cursor: pointer;
+    width: auto;
+    max-width: none;
+}
+
+/* ✅ Increase dino size and enforce width */
+.dino-image {
+    width: 200px !important; /* ⬅ Force apply width */
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    display: block;
+    max-width: none; /* ⬅ Prevent image from shrinking */
+}
+
+/* ✅ Bubble message styling */
+.hi-message {
+    position: absolute;
+    top: -50px;
+    right: 40px;
+    background-color: white;
+    color: black;
+    padding: 6px 12px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* ✅ Show message on hover with delayed fade-out */
+.dino-container:hover .hi-message {
+    opacity: 1;
+    pointer-events: auto;
+    animation: fadeOutDelayed 0.5s ease-in 4s forwards;
+}
+
+@keyframes fadeOutDelayed {
+    to {
+        opacity: 0;
+    }
+}
+
+
+
+
+
+/* Learn More Button Styles */
+/* Learn More Button - Final Version */
+.learn-more-btn {
+    position: relative;
+    display: inline-block;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    padding: 10px 24px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600; /* Bold text */
+    overflow: hidden;
+    transition: background-color 0.6s ease; /* Slower transition */
+}
+
+.learn-more-btn:hover {
+    background-color: #e0e0e0; /* Light gray background */
+    color: #000; /* Black text */
+}
+
+/* Remove the sliding animation parts */
+.learn-more-btn span,
+.learn-more-btn .hover-text {
+    display: inline; /* Keep text in one line */
+    transition: none; /* Remove text transitions */
 }
