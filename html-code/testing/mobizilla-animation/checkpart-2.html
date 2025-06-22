@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOBIZILLA Frame Animation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .text-content {
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .explore-btn {
+            display: inline-block;
+            background-color: #ff6b00;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .explore-btn:hover {
+            background-color: #e05d00;
+        }
+        
+        .frame-animation {
+            position: relative;
+            width: 300px;
+            height: 500px;
+        }
+        
+        .frame-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .frame-image.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-content">
+            <h1>Be an Expert with MOBIZILLA</h1>
+            <a href="#" class="explore-btn">EXPLORE COURSES</a>
+        </div>
+        
+        <div class="frame-animation">
+            <!-- Your 8 frame images -->
+            <img src="../../Hompage/image/mobizilla-animation/varient-1.png" alt="Frame 1" class="frame-image" id="frame1">
+            <img src="../../Hompage/image/mobizilla-animation/varient-1.png" alt="Frame 2" class="frame-image" id="frame2">
+            <img src="../../Hompage/image/mobizilla-animation/varient-1.png" alt="Frame 3" class="frame-image" id="frame3">
+            <img src="../../Hompage/image/mobizilla-animation/varient-1.png" alt="Frame 4" class="frame-image" id="frame4">
+            <img src="../../Hompage/image/mobizilla-animation/varient-1.png" alt="Frame 5" class="frame-image" id="frame5">
+            <img src="../../Hompage/image/mobizilla-animation/varient-1.png" alt="Frame 6" class="frame-image" id="frame6">
+            <img src="../../Hompage/image/mobizilla-animation/varient-1.png" alt="Frame 7" class="frame-image" id="frame7">
+            <img src="../../Hompage/image/mobizilla-animation/varient-1.png" alt="Frame 8" class="frame-image" id="frame8">
+        </div>
+    </div>
+
+    <script>
+        // Frame images animation
+        const frameImages = document.querySelectorAll('.frame-image');
+        let currentFrameIndex = 0;
+        const totalFrames = frameImages.length;
+        let animationInterval;
+        
+        function animateFrames() {
+            // Hide all frame images
+            frameImages.forEach(img => img.classList.remove('active'));
+            
+            // Show current frame image
+            frameImages[currentFrameIndex].classList.add('active');
+            
+            // Move to next image
+            currentFrameIndex++;
+            
+            // Stop at last frame
+            if (currentFrameIndex >= totalFrames) {
+                clearInterval(animationInterval);
+                return;
+            }
+        }
+        
+        function startAnimation() {
+            // Reset to first frame
+            currentFrameIndex = 0;
+            
+            // Hide all images initially
+            frameImages.forEach(img => img.classList.remove('active'));
+            
+            // Show first frame immediately
+            frameImages[0].classList.add('active');
+            
+            // Clear any existing interval
+            clearInterval(animationInterval);
+            
+            // Start new interval (500ms = 0.5 seconds)
+            animationInterval = setInterval(animateFrames, 500);
+        }
+        
+        // Start animation when page loads
+        window.addEventListener('DOMContentLoaded', startAnimation);
+    </script>
+</body>
+</html>

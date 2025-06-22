@@ -1,3 +1,4 @@
+//upper logo animation
 gsap.to("#logo", {
     y: -5,
     duration: 1,
@@ -15,12 +16,14 @@ gsap.to("#logo", {
     });
   });
 
-  // made for resp
+  // made for responsive
   document.getElementById("menu-btn").addEventListener("click", () => {
     const nav = document.getElementById("nav-links");
     nav.classList.toggle("hidden");
   });
 
+
+  //cart count upper part
   let cartCount = 0;
   function updateCartCount(newCount) {
     cartCount = newCount;
@@ -123,15 +126,15 @@ gsap.to("#logo", {
 
 
   // for circular part moving part
-  const row = document.getElementById("tag-row");
-  row.innerHTML += row.innerHTML; // duplicate for loop effect
+  // const row = document.getElementById("tag-row");
+  // row.innerHTML += row.innerHTML; // duplicate for loop effect
 
-  gsap.to("#tag-row", {
-    xPercent: -50,
-    duration: 20,
-    ease: "linear",
-    repeat: -1
-  });
+  // gsap.to("#tag-row", {
+  //   xPercent: -50,
+  //   duration: 20,
+  //   ease: "linear",
+  //   repeat: -1
+  // });
       
       // // Initialize Google Map
 
@@ -804,7 +807,7 @@ document.head.appendChild(style);
 
 
 
-//foter with dino
+//foter with dino hii
   document.getElementById('year').textContent = new Date().getFullYear();
 
     const dinoImage = document.getElementById('dino-image');
@@ -821,6 +824,13 @@ document.head.appendChild(style);
             hiMessage.classList.remove('show');
         }, 4000);
     });
+
+
+
+
+
+    
+//RUNNING DINO AT THE  TOP JUST ABOVE THE MENU-TOGGLE BUTTON
 
 
   // Load the API when the page is ready

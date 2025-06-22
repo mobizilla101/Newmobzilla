@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino Animation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 56px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            overflow: visible; /* Changed from hidden to visible */
+            position: relative;
+        }
+
+        .dino-animation-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: visible; /* Changed from hidden to visible */
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .dino-runner {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .running-dino {
+            position: absolute;
+            left: 70px; /* Start after the toggle button */
+            height: 50px;
+            width: auto;
+            z-index: 11;
+            top: -10px; /* Move dino up slightly */
+        }
+
+        .dino-frame {
+            position: absolute;
+            height: 50px;
+            width: auto;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .dino-frame.active {
+            opacity: 1;
+        }
+
+        .waving-dino {
+            position: absolute;
+            right: 20px;
+            height: 50px;
+            width: auto;
+            z-index: 11;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            top: -10px;
+        }
+
+        .waving-dino.active {
+            opacity: 1;
+        }
+
+        .waving-dino.active img {
+            animation: pureWave 1s ease-in-out infinite;
+            transform-origin: 70% 70%; /* Focus on the arm area */
+        }
+
+        @keyframes pureWave {
+            0%, 100% {
+                transform: scaleY(1);
+            }
+            50% {
+                transform: scaleY(1.05) scaleX(0.98); /* Subtle squash/stretch */
+            }
+        }
+
+        .menu-button {
+            position: absolute;
+            left: 24px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .menu-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hidden {
+            opacity: 0 !important;
+        }
+
+        /* Your actual images will be used */
+        .running-dino img,
+        .waving-dino img,
+        .dino-frame img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .running-dino, .waving-dino {
+                height: 40px;
+                top: -5px;
+            }
+            
+            .running-dino img,
+            .waving-dino img,
+            .dino-frame img {
+                height: 40px;
+            }
+            
+            .running-dino {
+                left: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .running-dino, .waving-dino {
+                height: 35px;
+                top: -3px;
+            }
+            
+            .running-dino img,
+            .waving-dino img,
+            .dino-frame img {
+                height: 35px;
+            }
+            
+            .running-dino {
+                left: 55px;
+            }
+            
+            .gradient-bg {
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg">
+        <!-- Dino Animation Container -->
+        <div class="dino-animation-container">
+            <div class="dino-runner">
+                <!-- Running Dino with multiple frames for walking animation -->
+                <div class="running-dino">
+                    <div class="dino-frame frame1 active">
+                        <img src="../../Hompage/running-dino.png" alt="Running Dino Frame 1">
+                    </div>
+                    <div class="dino-frame frame2">
+                        <img src="../../Hompage/middle-running-dino.png.png" alt="Running Dino Frame 2">
+                    </div>
+                    <div class="dino-frame frame3">
+                        <img src="../../Hompage/running-dino.png" alt="Running Dino Frame 3">
+                    </div>
+                </div>
+                
+                <!-- Waving Dino (second image - initially hidden) -->
+                <div class="waving-dino hidden">
+                    <img src="../../Hompage/end-dino.png" alt="Waving Dino">
+                </div>
+            </div>
+        </div>
+
+        <button id="menuToggle" class="menu-button">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
+    </div>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const runningDino = document.querySelector('.running-dino');
+        const wavingDino = document.querySelector('.waving-dino');
+        const dinoFrames = document.querySelectorAll('.dino-frame');
+        
+        if (!runningDino || !wavingDino) return;
+
+        // Calculate end position (viewport width minus dino width and gaps)
+        const dinoWidth = 60; // Approximate width including the dino
+        const rightGap = 20;
+        const leftGap = 70; // Account for menu button width + margin
+        const endPosition = window.innerWidth - dinoWidth - rightGap;
+        const animationDuration = 12000; // Changed from 8000 to 12000 (12 seconds) for slower movement
+
+        // Walking animation variables
+        let currentFrame = 0;
+        let frameInterval;
+        const frameCount = dinoFrames.length;
+        const frameDuration = 200; // milliseconds between frames
+
+        // Function to animate the dino walking
+        const animateWalking = () => {
+            // Hide all frames
+            dinoFrames.forEach(frame => frame.classList.remove('active'));
+            
+            // Show current frame
+            dinoFrames[currentFrame].classList.add('active');
+            
+            // Move to next frame
+            currentFrame = (currentFrame + 1) % frameCount;
+        };
+
+        // Start the animation sequence
+        const startAnimation = () => {
+            // Reset initial state
+            runningDino.style.left = leftGap + 'px';
+            runningDino.classList.remove('hidden');
+            wavingDino.classList.remove('active');
+            wavingDino.classList.add('hidden');
+            
+            // Reset frames
+            dinoFrames.forEach((frame, index) => {
+                frame.classList.toggle('active', index === 0);
+            });
+            currentFrame = 0;
+            
+            // Start walking animation
+            clearInterval(frameInterval);
+            frameInterval = setInterval(animateWalking, frameDuration);
+            
+            // Start moving the dino after a short delay
+            setTimeout(() => {
+                runningDino.style.transition = `left ${animationDuration/1000}s linear`;
+                runningDino.style.left = endPosition + 'px';
+            }, 100);
+            
+            // When animation completes
+            setTimeout(() => {
+                // Stop walking animation
+                clearInterval(frameInterval);
+                
+                // Hide running dino
+                runningDino.classList.add('hidden');
+                
+                // Show and activate waving dino
+                wavingDino.classList.remove('hidden');
+                setTimeout(() => {
+                    wavingDino.classList.add('active');
+                }, 100);
+            }, animationDuration + 100); // Now 12.1 seconds total
+        };
+
+        // Start the animation
+        startAnimation();
+
+        // Optional: Restart animation on window resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            clearInterval(frameInterval);
+            resizeTimeout = setTimeout(() => {
+                startAnimation();
+            }, 300);
+        });
+    });
+</script>
+</body>
+</html>

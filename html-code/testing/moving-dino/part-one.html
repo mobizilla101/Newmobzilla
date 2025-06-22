@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .gradient-bg {
+  background: linear-gradient(90deg, #00a4bd 0%, #00c996 100%);
+  
+}
+
+.dino-animation-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.dino-runner {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.running-dino {
+  position: absolute;
+  left: 0;
+ 
+  height: 50px;
+  width: auto;
+  transition: transform 30s linear; /* Made much slower (30 seconds) */
+  z-index: 11;
+}
+
+@keyframes runAcross {
+  0% {
+    transform: translateX(-100px);
+  }
+  90% {
+    transform: translateX(calc(100vw - 100px));
+    opacity: 1;
+  }
+  91% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+}
+
+
+    </style>
+</head>
+<body>
+     <div class="gradient-bg h-14 w-full flex items-center overflow-hidden ">
+      <!-- Added relative for positioning context -->
+      <!-- Dino Animation Container 
+       Adjust 'top' value to move up/down (-value for up, +value for down)
+       Adjust 'left' and 'right' for side gaps -->
+      <div class="dino-animation-container">
+        <div class="dino-runner">
+          <!-- Running Dino (first image) -->
+          <img src="../../Hompage/running-dino.png" alt="Running Dino" class="running-dino">
+
+          <!-- Waving Dino (second image - initially hidden) -->
+          <img src="../../Hompage/end-dino.png" alt="Waving Dino" class="waving-dino hidden">
+        </div>
+      </div>
+
+      <button id="menuToggle"
+        class="menu-button ml-6 text-white hover:bg-white/20 rounded-full w-10 h-10 flex items-center justify-center z-10">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+  const runningDino = document.querySelector('.running-dino');
+  const wavingDino = document.querySelector('.waving-dino');
+  
+  if (!runningDino || !wavingDino) return;
+
+  // Calculate end position (viewport width minus dino width and 20px gap)
+  const endPosition = window.innerWidth - runningDino.offsetWidth - 20;
+
+  // Start the animation (runs only once per page load)
+  const startAnimation = () => {
+    // Reset positions
+    runningDino.style.transform = 'translateX(0)';
+    wavingDino.classList.remove('active');
+    wavingDino.classList.add('hidden');
+    runningDino.classList.remove('hidden');
+    
+    // Start moving very slowly
+    setTimeout(() => {
+      runningDino.style.transform = `translateX(${endPosition}px)`;
+    }, 50);
+    
+    // When animation completes
+    const animationDuration = 30000; // 30 seconds (matches CSS)
+    setTimeout(() => {
+      runningDino.classList.add('hidden');
+      wavingDino.classList.remove('hidden');
+      wavingDino.classList.add('active');
+    }, animationDuration);
+  };
+
+  // Start the animation only once
+  startAnimation();
+});
+
+    </script>
+</body>
+</html>

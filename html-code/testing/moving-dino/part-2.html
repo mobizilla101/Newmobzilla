@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino Animation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 56px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .dino-animation-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .dino-runner {
+            position: relative;
+            height: 100%;
+           
+            display: flex;
+            align-items: center;
+        }
+
+        .running-dino {
+            position: absolute;
+            left: 20px; /* Start with 20px gap from left */
+            height: 50px;
+            
+            width: auto;
+            transition: left 8s ease-in-out; /* 8 second smooth animation */
+            z-index: 11;
+            opacity: 1;
+        }
+
+        .waving-dino {
+            position: absolute;
+            right: 20px; /* 20px gap from right side */
+            height: 50px;
+            width: auto;
+            z-index: 11;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .waving-dino.active {
+            opacity: 1;
+            animation: wavingEffect 2s ease-in-out infinite;
+        }
+
+        @keyframes wavingEffect {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+        }
+
+        .menu-button {
+            position: absolute;
+            left: 24px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .menu-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hidden {
+            opacity: 0 !important;
+        }
+
+        /* Your actual images will be used */
+        .running-dino img,
+        .waving-dino img {
+            height: 50px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg">
+        <!-- Dino Animation Container -->
+        <div class="dino-animation-container">
+            <div class="dino-runner">
+                <!-- Running Dino (first image) -->
+                <div class="running-dino">
+                    <img src="../../Hompage/running-dino.png" alt="Running Dino">
+                </div>
+                
+                <!-- Waving Dino (second image - initially hidden) -->
+                <div class="waving-dino hidden">
+                    <img src="../../Hompage/end-dino.png" alt="Waving Dino">
+                </div>
+            </div>
+        </div>
+
+        <button id="menuToggle" class="menu-button">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const runningDino = document.querySelector('.running-dino');
+            const wavingDino = document.querySelector('.waving-dino');
+            
+            if (!runningDino || !wavingDino) return;
+
+            // Calculate end position (viewport width minus dino width and gaps)
+            const dinoWidth = 60; // Approximate width including the dino
+            const rightGap = 20;
+            const leftGap = 20;
+            const endPosition = window.innerWidth - dinoWidth - rightGap - leftGap;
+
+            // Start the animation sequence
+            const startAnimation = () => {
+                // Reset initial state
+                runningDino.style.left = leftGap + 'px';
+                runningDino.classList.remove('hidden');
+                wavingDino.classList.remove('active');
+                wavingDino.classList.add('hidden');
+                
+                // Start moving the first dino after a short delay
+                setTimeout(() => {
+                    runningDino.style.left = (window.innerWidth - dinoWidth - rightGap) + 'px';
+                }, 500);
+                
+                // When animation completes (8 seconds + buffer)
+                setTimeout(() => {
+                    // Hide running dino
+                    runningDino.classList.add('hidden');
+                    
+                    // Show and activate waving dino
+                    wavingDino.classList.remove('hidden');
+                    setTimeout(() => {
+                        wavingDino.classList.add('active');
+                    }, 100);
+                }, 8500); // 8.5 seconds total
+            };
+
+            // Start the animation
+            startAnimation();
+
+            // Optional: Restart animation on window resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    startAnimation();
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

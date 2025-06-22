@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: sans-serif;
+  }
+
+  body.loading {
+    overflow: hidden;
+  }
+  
+  #loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    background: white;
+    padding: 1rem 2rem;
+    z-index: 10;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+  }
+
+  /* Pin the Three.js canvas */
+  .fixed-canvas {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50vw;
+    height: 100vh;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  /* Scroll sections sit on the left half */
+  #scroll-pages {
+    position: relative;
+    z-index: 1;
+    width: 50vw;
+  }
+  
+  .page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .page:nth-child(odd)  { background: #eaeaea; }
+  .page:nth-child(even) { background: #d4d4d4; }
+  

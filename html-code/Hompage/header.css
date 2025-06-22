@@ -19,11 +19,7 @@
 }
 
 
-
 /*  menu part */
-.gradient-bg {
-  background: linear-gradient(90deg, #00a4bd 0%, #00c996 100%);
-}
 
 .sidebar {
   width: 250px;
@@ -266,7 +262,7 @@ section video {
 
 
 /* for circular part */
-.banner-container {
+/* .banner-container {
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -295,7 +291,7 @@ section video {
 
 .side {
   margin-left: 30%;
-}
+} */
 
 
 
@@ -981,7 +977,7 @@ section video {
 
 
 
-
+/* wave part check once */
 /* wave part revolving border */
 .revolving-dashed-border {
     position: relative;
@@ -1140,6 +1136,7 @@ footer {
 .learn-more-btn:hover {
     background-color: #e0e0e0; /* Light gray background */
     color: #000; /* Black text */
+    border: 2px solid black;
 }
 
 /* Remove the sliding animation parts */
@@ -1147,4 +1144,12 @@ footer {
 .learn-more-btn .hover-text {
     display: inline; /* Keep text in one line */
     transition: none; /* Remove text transitions */
+}
+
+
+/* running dino at the top */
+/* Dino Animation Styles */
+.gradient-bg {
+  background: linear-gradient(90deg, #00a4bd 0%, #00c996 100%);
+  
 }

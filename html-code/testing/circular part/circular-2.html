@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
-        .dino-container {
+        .hover-container {
             position: fixed;
             opacity: 0;
             transition: all 0.3s ease;
@@ -17,7 +17,7 @@
             transform-origin: center bottom;
         }
 
-        .dino-image {
+        .hover-image {
             width: 150px;
             height: 150px; /* Made same height as width */
             object-fit: contain;
@@ -27,7 +27,7 @@
             opacity: 0;
         }
 
-        .tag-item {
+        .tag-itemms {
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
@@ -37,12 +37,12 @@
             z-index: 10;
         }
 
-        .tag-item:hover {
+        .tag-itemms:hover {
             transform: scale(1.05) translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        #tags-wrapper {
+        #tags-wrapperrs {
             position: relative;
             overflow: hidden;
             width: calc(100% - 40px);
@@ -51,7 +51,7 @@
             padding: 20px 0;
         }
 
-        #tag-row {
+        #tag-rowws {
             display: inline-flex;
             align-items: center;
         }
@@ -62,26 +62,26 @@
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .tag-item {
+            .tag-itemms {
                 padding: 12px 20px;
                 margin: 0 8px;
                 font-size: 14px;
             }
 
-            .dino-image {
+            .hover-image {
                 width: 100px;
                 height: 100px;
             }
         }
 
         @media (max-width: 480px) {
-            .tag-item {
+            .tag-itemms {
                 padding: 10px 16px;
                 margin: 0 6px;
                 font-size: 12px;
             }
 
-            .dino-image {
+            .hover-image {
                 width: 80px;
                 height: 80px;
             }
@@ -91,36 +91,36 @@
 
 <body class="bg-green-50 flex items-center justify-center min-h-screen">
     <!-- Dino containers -->
-    <div class="dino-container" id="dino-under-container">
-        <img class="dino-image" id="dino-under" src="../../Hompage/image/dino.png" alt="Dino Under Tag">
+    <div class="hover-container" id="hover-under-container">
+        <img class="hover-image" id="hover-under" src="../../Hompage/image/dino.png" alt="Dino Under Tag">
     </div>
-    <div class="dino-container" id="dino-over-container">
-        <img class="dino-image" id="dino-over" src="../../Hompage/image/dino.png" alt="Dino Over Tag">
+    <div class="hover-container" id="hover-over-container">
+        <img class="hover-image" id="hover-over" src="../../Hompage/image/dino.png" alt="Dino Over Tag">
     </div>
 
     <!-- Tags container -->
-    <div id="tags-wrapper">
-        <div id="tag-row">
-            <div class="tag-item bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg">Certified Training</div>
-            <div class="tag-item bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg">Accessible Training</div>
-            <div class="tag-item bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg">Empowering Youth</div>
-            <div class="tag-item bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg">Global Opportunities</div>
-            <div class="tag-item bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg">Disciplinary Skills</div>
-            <div class="tag-item bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg">Immersive Learning</div>
+    <div id="tags-wrapperrs">
+        <div id="tag-rowws">
+            <div class="tag-itemms bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg">Certified Training</div>
+            <div class="tag-itemms bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg">Accessible Training</div>
+            <div class="tag-itemms bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg">Empowering Youth</div>
+            <div class="tag-itemms bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg">Global Opportunities</div>
+            <div class="tag-itemms bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg">Disciplinary Skills</div>
+            <div class="tag-itemms bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-lg">Immersive Learning</div>
         </div>
     </div>
 
     <script>
         // Duplicate tags for seamless animation (5 copies for smoother loop)
-        const row = document.getElementById("tag-row");
+        const row = document.getElementById("tag-rowws");
         const originalHTML = row.innerHTML;
         row.innerHTML = originalHTML + originalHTML + originalHTML + originalHTML + originalHTML;
 
         // GSAP animation for infinite scrolling (faster and smoother)
-        const scrollAnimation = gsap.to("#tag-row", {
-            // xPercent: -100,
-            // duration: 80000,
-            // ease: "none",
+        const scrollAnimation = gsap.to("#tag-rowws", {
+            xPercent: -100,
+            duration: 80000,
+            ease: "none",
             repeat: -1,
             modifiers: {
                 xPercent: gsap.utils.wrap(-100, 0)
@@ -136,10 +136,10 @@
         adjustAnimationSpeed();
 
         // Get elements
-        const dinoUnder = document.getElementById('dino-under');
-        const dinoOver = document.getElementById('dino-over');
-        const dinoUnderContainer = document.getElementById('dino-under-container');
-        const dinoOverContainer = document.getElementById('dino-over-container');
+        const dinoUnder = document.getElementById('hover-under');
+        const dinoOver = document.getElementById('hover-over');
+        const dinoUnderContainer = document.getElementById('hover-under-container');
+        const dinoOverContainer = document.getElementById('hover-over-container');
 
         // Responsive position config - KEEPING YOUR EXACT VALUES
         function getDinoConfig() {
@@ -302,7 +302,7 @@
         }
 
         // Initialize all tags
-        document.querySelectorAll('.tag-item').forEach(setupTagHover);
+        document.querySelectorAll('.tag-itemms').forEach(setupTagHover);
     </script>
 </body>
 </html>

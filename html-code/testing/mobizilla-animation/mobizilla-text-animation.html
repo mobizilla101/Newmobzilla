@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .image-animation {
+            position: relative;
+            width: 300px;
+            height: 500px;
+        }
+
+        .wave-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .wave-image.active {
+            opacity: 1;
+        }
+
+        .dino-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .dino {
+            width: 80px;
+            height: 80px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .dino.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="text-content">
+            <div class="dino-container">
+                <img src="../../Hompage/image/mobizilla-animation/dino-1.png" alt="Dinosaur 1" class="dino" id="dino1">
+                <img src="../../Hompage/image/mobizilla-animation/dino-1.png" alt="Dinosaur 2" class="dino" id="dino2">
+            </div>
+        </div>
+
+        <div class="image-animation">
+           
+            <img src="./frame.png" alt="Wave 1" class="wave-image" id="wave1">
+            
+        </div>
+    </div>
+
+
+
+    <script>
+        // Wave images animation
+        const waveImages = document.querySelectorAll('.wave-image');
+        let currentWaveIndex = 0;
+
+        // Dino images animation
+        const dino1 = document.getElementById('dino1');
+        const dino2 = document.getElementById('dino2');
+        let currentDino = 1;
+
+        function animateWave() {
+            // Hide all wave images
+            waveImages.forEach(img => img.classList.remove('active'));
+
+            // Show current wave image
+            waveImages[currentWaveIndex].classList.add('active');
+
+            // Move to next image (loop back to 0 after 7)
+            currentWaveIndex = (currentWaveIndex + 1) % waveImages.length;
+        }
+
+        function animateDino() {
+            if (currentDino === 1) {
+                dino1.classList.remove('active');
+                dino2.classList.add('active');
+                currentDino = 2;
+            } else {
+                dino2.classList.remove('active');
+                dino1.classList.add('active');
+                currentDino = 1;
+            }
+        }
+
+        // Start animations
+        setInterval(animateWave, 800); // Change wave every 0.2 seconds
+        setInterval(animateDino, 400); // Change dino every 0.2 seconds
+
+        // Show first image immediately
+        waveImages[0].classList.add('active');
+        dino1.classList.add('active');
+    </script>
+</body>
+
+</html>
