@@ -17,10 +17,10 @@
 
 <body class="bg-[#F3F3F3] font-[Inter]">
   <div class="sticky-wrapper sticky top-0 z-50">
-    <header class=" p-4 flex items-center justify-between flex-wrap bg-[#e6f7f3] shadow-md">
+    <header class=" bg-white p-4 flex items-center justify-between flex-wrap bg-[#e6f7f3] shadow-md">
       <div class="w-20">
         <!-- logo image will be loaded overhere -->
-        <img src="" alt="Mobizilla Logo" class="w-full" id="logo" />
+        <img src="../Hompage/image/main-section-logo.png" alt="Mobizilla Logo" class="w-full" id="logo" />
       </div>
 
       <!-- Mobile menu button -->
@@ -88,7 +88,7 @@
     </div>
 
 
-    
+
 
     <!-- Add this after your navbar and gradient bar -->
     <div class="flex relative">
@@ -96,7 +96,7 @@
       <div id="sidebar" class="sidebar closed text-white" style="margin-top: 1.2rem;">
         <!-- Sidebar Header -->
         <div class="p-4 flex items-center">
-          <img src="../Hompage/image/main-logo.png" alt="Mobizilla Logo" class="h-8 w-8 mr-2" />
+          <!-- <img src="../Hompage/image/main-logo.png" alt="Mobizilla Logo" class="h-8 w-8 mr-2" /> -->
           <span class="font-bold text-xl">Mobizilla</span>
         </div>
 
@@ -221,8 +221,6 @@
     </div>
 
 
-
-
   </div>
   <!-- Main content after search bar -->
   <section class="py-8 md:py-12 relative max-w-7xl">
@@ -278,10 +276,10 @@
 
 
         <!-- Right side text (Third Content) -->
-        <!-- CHANGE: Added 'pl-12' padding to create gap between middle and right side -->
-        <div class="w-full lg:w-1/3 pl-80">
-          <div class="flex flex-col space-y-12 items-center lg:items-start mx-auto max-w-md">
 
+        <!-- Right side text (Third Content) -->
+        <div class="w-full lg:w-1/3 ml-auto pl-40 lg:pl-52"> <!-- Reduced padding-left -->
+          <div class="flex flex-col space-y-12 items-center lg:items-start mx-auto max-w-md">
             <!-- Hands-On Training -->
             <div class="flex flex-col items-center lg:items-start" id="icon1">
               <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center">
@@ -319,9 +317,24 @@
               </div>
               <p class="text-gray-800 font-medium mt-2 text-center lg:text-left">Industry Experts</p>
             </div>
-
           </div>
         </div>
+
+        <!-- <section class="animate">
+    <div class="container">
+        <div class="image-animation">
+            <img src="../Hompage/image/mobizilla-animation/varient-1.png" alt="Wave 1" class="wave-image" id="wave1">
+            <img src="../../Hompage/image/mobizilla-animation/varient-2.png" alt="Wave 2" class="wave-image" id="wave2">
+            <img src="../../Hompage/image/mobizilla-animation/varient-3.png" alt="Wave 3" class="wave-image" id="wave3">
+            <img src="../../Hompage/image/mobizilla-animation/varient-4.png" alt="Wave 4" class="wave-image" id="wave4">
+            <img src="../../Hompage/image/mobizilla-animation/varient-5.png" alt="Wave 5" class="wave-image" id="wave5">
+            <img src="../../Hompage/image/mobizilla-animation/varient-6.png" alt="Wave 6" class="wave-image" id="wave6">
+            <img src="../../Hompage/image/mobizilla-animation/varient-7.png" alt="Wave 7" class="wave-image" id="wave7">
+            <img src="../../Hompage/image/mobizilla-animation/varient-8.png" alt="Wave 8" class="wave-image" id="wave8">
+        </div>
+    </div>
+    </section> -->
+
 
       </div>
     </div>
@@ -330,90 +343,33 @@
 
 
 
-  <!-- chatbot  -->
-  <!-- <section class="hey">
-    <div class="chatbot-container" id="chatbot">
-      <div class="chatbot-icon" id="chatbotIcon">
-        <div class="chat-icon">
-          <div class="chat-bubble"></div>
-          <div class="dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-        </div>
-        <div class="status-dot"></div>
+
+  <div class="bg-white">
+    <div class="tags-section">
+      <!-- Dino containers -->
+      <div class="hover-container" id="hover-under-container">
+        <img class="hover-image" id="hover-under" src="../Hompage/image/dino.png" alt="Dino Under Tag">
       </div>
-      <div class="message-bubble" id="messageBubble">Hi there! Need help?</div>
-    </div>
-    
-    <div class="chat-window" id="chatWindow">
-      <div class="chat-header">
-        <div>Chat Support</div>
-        <div class="close-btn" id="closeChat">×</div>
+      <div class="hover-container" id="hover-over-container">
+        <img class="hover-image" id="hover-over" src="../Hompage/image/dino.png" alt="Dino Over Tag">
       </div>
-      <div class="chat-body" id="chatBody">
-        <div class="message bot-message">
-          Hello! How can I help you today?
+
+      <!-- Tags container -->
+      <div id="tags-wrapperrs">
+        <div id="tag-rowws">
+          <div class="tag-itemms">Certified Training</div>
+          <div class="tag-itemms">Accessible Training</div>
+          <div class="tag-itemms">Empowering Youth</div>
+          <div class="tag-itemms">Global Opportunities</div>
+          <div class="tag-itemms">Disciplinary Skills</div>
+          <div class="tag-itemms">Immersive Learning</div>
+
         </div>
       </div>
-      <div class="chat-footer">
-        <input type="text" class="chat-input" placeholder="Type your message..." id="chatInput">
-        <button class="send-btn" id="sendBtn">→</button>
-      </div>
     </div>
-
-</section> -->
-
+  </div>
 
 
-  <!-- circular part with new version on hover concept -->
-
-
-
-  <!-- after main  -->
-  <!-- <div class="bg-green-50 flex items-center justify-center min-h-screen py-8">
-    <div class="overflow-hidden w-full max-w-7xl">
-      <div id="tag-row" class="flex space-x-4 whitespace-nowrap">
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">Certified
-          Training</div>
-
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">
-          Accessible Training</div>
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">
-          Empowering Youth</div>
-
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">
-          Empowering Youth</div>
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">Global
-          Opportunities</div>
-
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">
-          Accessible Training</div>
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">
-          Disciplinary Skills</div>
-
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">Certified
-          Training</div>
-
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">Certified
-          Training</div>
-
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">Certified
-          Training</div>
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">Immersive
-          Learning</div>
-
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">
-          Empowering Youth</div>
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">
-          Accessible Training</div>
-
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-6 py-3 rounded-md">
-          Empowering Youth</div>
-      </div>
-    </div>
-  </div> -->
 
   <!-- Upskill with Expertise Section -->
   <section class="bg-green-50 pt-20 pb-16">
@@ -663,12 +619,11 @@
         <div class="testimonial-slide active h-full flex flex-col justify-between relative">
           <div>
             <div class="mb-4">
-              <img src="../Hompage/image/main-logo.png" alt="Company Logo" class="w-24 h-8">
+              <!-- add logo original image -->
+              <img src="../Hompage/image/main-section-logo.png" alt="Company Logo" class="w-12 h-10">
             </div>
             <p class="text-gray-700 break-words">
-              Incredible depth and hands-on projects!
-              These experiences have transformed my learning journey. Each has boosted my confidence and helped me
-              grow in ways I never thought possible.
+              some text related to courses
             </p>
           </div>
           <div class="mt-6 pb-8 flex items-center">
@@ -684,7 +639,8 @@
         <div class="testimonial-slide h-full flex flex-col justify-between relative">
           <div>
             <div class="mb-4">
-              <img src="../Hompage/image/main-logo.png" alt="Company Logo" class="w-24 h-8">
+              <!-- add original images -->
+              <img src="../Hompage/image/main-section-logo.png" alt="Company Logo" class="w-12 h-10">
             </div>
             <p class="text-gray-700 break-words">
               The practical approach to teaching has been a game-changer.
@@ -704,12 +660,10 @@
         <div class="testimonial-slide h-full flex flex-col justify-between relative">
           <div>
             <div class="mb-4">
-              <img src="/api/placeholder/120/40" alt="Company Logo" class="w-24 h-8">
+              <img src="../Hompage/image/main-section-logo.png" alt="Company Logo" class="w-12 h-10">
             </div>
             <p class="text-gray-700 break-words">
-              The instructors truly care about your success.
-              They're always available to answer questions and provide guidance. I went from knowing nothing to
-              landing my dream job in just six months!
+              some text related to courses
             </p>
           </div>
           <div class="mt-6 pb-8 flex items-center">
@@ -734,7 +688,8 @@
         <!-- Video Slide 1 -->
         <div class="testimonial-slide active h-full relative">
           <video id="video-1" class="w-140px h-75 object-cover rounded" poster="/api/placeholder/400/320">
-            <source src="../videos/blender.mp4" type="video/mp4">
+            <!-- add original videos -->
+            <source src="" type="video/mp4">
             Your browser does not support the video tag.
           </video>
           <div class="absolute inset-0 flex items-center justify-center" id="play-overlay-1">
@@ -752,7 +707,7 @@
         <!-- Video Slide 2 -->
         <div class="testimonial-slide h-full relative">
           <video id="video-2" class="w-full h-full object-cover rounded" poster="/api/placeholder/400/320">
-            <source src="../videos/blender.mp4" type="video/mp4">
+            <source src="" type="video/mp4">
             Your browser does not support the video tag.
           </video>
           <div class="absolute inset-0 flex items-center justify-center" id="play-overlay-2">
@@ -770,7 +725,7 @@
         <!-- Video Slide 3 -->
         <div class="testimonial-slide h-full relative">
           <video id="video-3" class="w-full h-full object-cover rounded" poster="/api/placeholder/400/320">
-            <source src="../videos/testimonial3.mp4" type="video/mp4">
+            <source src="" type="video/mp4">
             Your browser does not support the video tag.
           </video>
           <div class="absolute inset-0 flex items-center justify-center" id="play-overlay-3">
@@ -881,8 +836,17 @@
             See it, fix it, master it: Video guides and step-by-step instructions await.
           </p>
           <img src="../courses/images/slider2.png" alt="Person 4" class="w-28 h-auto mb-2" />
-          <h3 class="text-sm font-semibold border-2 border-cyan-500 px-3 py-1 rounded-full">Hands-On Tutorials</h3>
+
+          <div class="revolving-dashed-border">
+            <h3
+              class="inner-button text-sm font-semibold border-2 border-dashed border-green-500 px-3 py-1 rounded-full">
+              Unlock Secrets
+            </h3>
+          </div>
         </div>
+
+
+
 
         <!-- Person 3 -->
         <div class="flex flex-col items-center  mt-20 -mr-[600%] ">
@@ -890,7 +854,12 @@
             Complete courses and get certifications to boost your career.
           </p>
           <img src="../courses/images/slider2.png" alt="Person 5" class="w-28 h-auto mb-2" />
-          <h3 class="text-sm font-semibold border-2 border-cyan-500 px-3 py-1 rounded-full">Certify Your Skills</h3>
+          <div class="revolving-dashed-border">
+            <h3
+              class="inner-button text-sm font-semibold border-2 border-dashed border-green-500 px-3 py-1 rounded-full">
+              Unlock Secrets
+            </h3>
+          </div>
         </div>
 
 
@@ -910,9 +879,10 @@
       <div class="w-full md:w-1/4 space-y-4">
         <!-- Logo and Text on the Same Line -->
         <div class="flex items-center space-x-2">
-          <div class="h-14 w-14 bg-teal-500 rounded-full flex items-center justify-center">
+          <!-- add original image and uncomment it -->
+          <!-- <div class="h-14 w-14 bg-teal-500 rounded-full flex items-center justify-center">
             <img src="../Hompage/image/footer-logo.jpg" alt="">
-          </div>
+          </div> -->
           <p class="font-semibold text-lg">Mobizilla</p>
         </div>
 
@@ -975,18 +945,7 @@
 
 
 
-
-
-
-
-
-
-
-
   <script>
-
-
-
     document.getElementById("year").textContent = new Date().getFullYear();
 
 

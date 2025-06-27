@@ -258,48 +258,6 @@ section video {
                 height: 3px;
             }
         }
-/* circular orignal part */
-
-
-/* for circular part */
-/* .banner-container {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  position: relative;
-  height: 60px;
-}
-
-.banner-item {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.banner-item.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.card {
-  border-radius: 15px 50px 50px 15px;
-  overflow: hidden;
-}
-
-
-.side {
-  margin-left: 30%;
-} */
-
-
-
-
-
-
-
-
 
 /* for REVIEW COUSTOMER */
 .testimonial-container {
@@ -985,18 +943,18 @@ section video {
 }
 
 /* Animated outer green dashed border that moves clockwise around blue border */
-.revolving-dashed-border::before {
+/* .revolving-dashed-border::before {
     content: '';
     position: absolute;
     top: -8px;
     left: -8px;
     right: -8px;
     bottom: -8px;
-    border: 2px dashed #10b981; /* Green color */
+    border: 2px dashed #10b981; 
     border-radius: 50px;
     animation: move-clockwise 3s linear infinite;
     z-index: -1;
-}
+} */
 
 /* Static blue solid border (middle layer) */
 .revolving-dashed-border::after {
@@ -1153,3 +1111,131 @@ footer {
   background: linear-gradient(90deg, #00a4bd 0%, #00c996 100%);
   
 }
+
+
+/* circular concept with hover ideas just below main content */
+/* Ensure body doesn't cause overflow issues */
+body {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+/* Tags section container */
+.tags-section {
+  position: relative;
+  padding: 60px 0;
+  width: 100%;
+  background: transparent;
+  z-index: 10; /* Ensure it's above other content */
+}
+
+/* Dino hover containers */
+.hover-container {
+  position: fixed;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform-origin: center bottom;
+  z-index: 100; /* Above everything */
+}
+
+.hover-image {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  transform: scale(0.5) translateY(20px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+}
+
+/* Tags styling */
+#tags-wrapperrs {
+  position: relative;
+  overflow: hidden;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 20px 0;
+}
+
+#tag-rowws {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tag-itemms {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  margin: 0 15px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  z-index: 10;
+  background: linear-gradient(to right, #4ade80, #3b82f6);
+  color: white;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+}
+
+.tag-itemms:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tag-itemms {
+    padding: 10px 16px;
+    margin: 0 8px;
+    font-size: 14px;
+  }
+  
+  .hover-image {
+    width: 100px;
+    height: 100px;
+  }
+  
+  #tags-wrapperrs {
+    padding: 15px 0;
+  }
+  
+  .tags-section {
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .tag-itemms {
+    padding: 8px 12px;
+    margin: 0 6px;
+    font-size: 12px;
+  }
+  
+  .hover-image {
+    width: 80px;
+    height: 80px;
+  }
+  
+  #tags-wrapperrs {
+    padding: 10px 0;
+  }
+  
+  .tags-section {
+    padding: 30px 0;
+  }
+}
+
+/* #tags-wrapperrs { border: 1px solid red; }
+.tag-itemms { border: 1px solid blue; }
+.hover-container { border: 1px solid green; } */
+
+
+
+
+
+/* mobizilla-animation code  */
+ 
