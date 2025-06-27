@@ -7,6 +7,12 @@ __pycache__/
 db.sqlite3
 *.log
 
+# PostgreSQL dump or data files
+*.sql
+*.dump
+*.pgsql
+*.psql
+*.bak
 # Environments
 venv/
 .env
@@ -21,3 +27,4 @@ Thumbs.db
 # Migrations
 */migrations/__pycache__/
 */migrations/*.py[cod]
+

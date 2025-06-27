@@ -1,4 +1,7 @@
 from datetime import timedelta
+import os
+# from dotenv import load_dotenv
+# load_dotenv()
 
 from pathlib import Path
 
@@ -21,26 +24,79 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
-    'rest_framework',
-    # 'rest_framework.authtoken', 
-    # 'djoser'
+    'corsheaders',
+
+    # Django default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',  # Required for allauth
+
+    # Third-party apps
+    'rest_framework',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    # 'rest_framework.authtoken',
+    'rest_framework_simplejwt.token_blacklist',  # For token blacklisting
+
+    # Social authentication (via allauth)
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+    # Custom apps
     'apps.accounts',
+    'apps.courses',
 ]
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+    }
+}
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     "google": {
+#         "SCOPE": [
+#             "profile",
+#             "email"
+#         ],
+#         "AUTH_PARAMS": {
+#             "access_type": "online"
+#         }
+#     }
+# }
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -65,16 +121,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'dyno_backend.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'NewMobzilla_db',
+        'USER': 'NewMobzilla_user',
+        'PASSWORD': 'newmobzilla',
+        'HOST': 'localhost',
+        'PORT': '5433',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -111,14 +167,62 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
+REST_USE_JWT = True
+# REST_AUTH_TOKEN_MODEL = None
+# DJRESTAUTH_TOKEN_MODEL = None
+REST_AUTH = {
+    "TOKEN_MODEL": None,
 }
+
+# JWT_AUTH_COOKIE = None
+# REST Framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ),
+    
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5, 
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.UserRateThrottle',
+        'rest_framework.throttling.AnonRateThrottle',
+    ],
+
+    'DEFAULT_THROTTLE_RATES': {
+        'user': '100/day',     #Logged-in users: 100 requests per day
+        'anon': '10/hour',     #Anonymous users: 10 requests per hour
+        'register_burst': '3/minute', 
+        'login_burst': '5/minute',
+    }
+}
+
+# JWT settings for Token Access and Refresh
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    'BLACKLIST_AFTER_ROTATION': True,  # It enables blacklisting
+    'ROTATE_REFRESH_TOKENS': True,
+    "AUTH_HEADER_TYPES": ("JWT",),
+
+}
+
+
+
+
+REST_AUTH_SERIALIZERS = {
+    'JWT_SERIALIZER': 'dj_rest_auth.serializers.JWTSerializer',
+}
+
+CORS_ALLOW_ALL_ORIGINS = True  # Not recommended need to change in production
