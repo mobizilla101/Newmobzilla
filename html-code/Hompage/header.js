@@ -1,35 +1,94 @@
 //upper logo animation
-gsap.to("#logo", {
-    y: -5,
-    duration: 1,
-    repeat: -1,
-    yoyo: true,
-    ease: "power1.inOut"
-});
-
-const navLinks = document.querySelectorAll("#nav-links a");
-navLinks.forEach(link => {
-    link.addEventListener("click", function () {
-        navLinks.forEach(l => l.classList.remove("active-nav"));
-        this.classList.add("active-nav");
+ // Logo animation
+ // Logo animation
+    gsap.to(".header-logo", {
+      y: -5,
+      duration: 1,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut"
     });
-});
 
-// made for responsive
-document.getElementById("menu-btn").addEventListener("click", () => {
-    const nav = document.getElementById("nav-links");
-    nav.classList.toggle("hidden");
-});
+    // Active nav link functionality
+    const headerNavLinks = document.querySelectorAll(".header-nav-links a");
+    headerNavLinks.forEach(link => {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        headerNavLinks.forEach(l => l.classList.remove("header-active-nav"));
+        this.classList.add("header-active-nav");
+        
+        // Close mobile menu after selection
+        if (window.innerWidth < 768) {
+          document.querySelector(".header-nav-links").classList.remove("active");
+          document.body.style.overflow = 'auto';
+        }
+      });
+    });
 
-//cart count upper part
-let cartCount = 0;
-function updateCartCount(newCount) {
-    cartCount = newCount;
-    document.getElementById("cart-count").textContent = cartCount;
-}
-setTimeout(() => {
-    updateCartCount(1);
-}, 2000);
+    // Mobile menu toggle
+    document.querySelector(".header-menu-btn").addEventListener("click", () => {
+      const nav = document.querySelector(".header-nav-links");
+      nav.classList.toggle("active");
+      
+      // Prevent body scrolling when menu is open
+      if (nav.classList.contains("active")) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Close menu when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+      const nav = document.querySelector(".header-nav-links");
+      const menuBtn = document.querySelector(".header-menu-btn");
+      
+      if (window.innerWidth < 768 && nav.classList.contains("active") && 
+          !nav.contains(e.target) && e.target !== menuBtn) {
+        nav.classList.remove("active");
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Update cart count
+    let cartCount = 0;
+    function updateCartCount(newCount) {
+      cartCount = newCount;
+      document.querySelector(".header-cart-count").textContent = cartCount;
+      
+      // Add animation when count changes
+      if (newCount > 0) {
+        gsap.from(".header-cart-count", {
+          scale: 1.5,
+          duration: 0.3,
+          ease: "back.out"
+        });
+      }
+    }
+    
+    // Simulate cart update after 2 seconds
+    setTimeout(() => {
+      updateCartCount(1);
+    }, 2000);
+    
+    // Make header sticky on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.main-header');
+      if (window.scrollY > 50) {
+        header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+      } else {
+        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+      }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        document.querySelector(".header-nav-links").classList.remove("active");
+        document.body.style.overflow = 'auto';
+      }
+    });
+
 
 // menu button of that side bar
 document.addEventListener('DOMContentLoaded', function() {
@@ -49,71 +108,94 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+
+
+//running dino at the top just above the menuToggle 
+
+
+
+
+
 // blender video at main part
-document.addEventListener('DOMContentLoaded', function () {
-    gsap.set("#icon1, #icon2, #icon3", { opacity: 0, y: 20 });
-    gsap.set("#mobizillaText", { opacity: 0, y: -30 });
+ // Wave Animation
+        const waveImages = document.querySelectorAll('.wave-image');
+        let currentWaveIndex = 0;
+        
+        function animateWave() {
+            waveImages.forEach(img => img.classList.remove('active'));
+            waveImages[currentWaveIndex].classList.add('active');
+            currentWaveIndex = (currentWaveIndex + 1) % waveImages.length;
+        }
+        
+        setInterval(animateWave, 800);
+        waveImages[0].classList.add('active');
 
-    const mainTl = gsap.timeline({ delay: 0.5 });
+        // GSAP Animations
+        document.addEventListener('DOMContentLoaded', function () {
+            gsap.set("#icon1, #icon2, #icon3", { opacity: 0, y: 20 });
+            gsap.set("#mobizillaText", { opacity: 0, y: -30 });
 
-    mainTl
-        .to("#blenderVideo", {
-            x: -10,
-            duration: 1.5,
-            ease: "power2.out"
-        })
-        .to("#mobizillaText", {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out"
-        }, "<+=0.3")
-        .to("#icon1", {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: "back.out(1.7)"
-        }, "-=0.5")
-        .to("#icon2", {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: "back.out(1.7)"
-        }, "-=0.4")
-        .to("#icon3", {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: "back.out(1.7)"
-        }, "-=0.4");
+            const mainTl = gsap.timeline({ delay: 0.5 });
 
-    const circles = document.querySelectorAll(".rounded-full");
-    circles.forEach(circle => {
-        circle.addEventListener("mouseenter", () => {
-            gsap.to(circle, { scale: 1.1, duration: 0.3 });
+            mainTl
+                .to("#Video", {
+                    x: -10,
+                    duration: 1.5,
+                    ease: "power2.out"
+                })
+                .to("#mobizillaText", {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power2.out"
+                }, "<+=0.3")
+                .to("#icon1", {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "back.out(1.7)"
+                }, "-=0.5")
+                .to("#icon2", {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "back.out(1.7)"
+                }, "-=0.4")
+                .to("#icon3", {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "back.out(1.7)"
+                }, "-=0.4");
+
+            const circles = document.querySelectorAll(".rounded-full");
+            circles.forEach(circle => {
+                circle.addEventListener("mouseenter", () => {
+                    gsap.to(circle, { scale: 1.1, duration: 0.3 });
+                });
+                circle.addEventListener("mouseleave", () => {
+                    gsap.to(circle, { scale: 1, duration: 0.3 });
+                });
+            });
         });
-        circle.addEventListener("mouseleave", () => {
-            gsap.to(circle, { scale: 1, duration: 0.3 });
+
+        gsap.to("#Video", {
+            x: "-7vw",
+            duration: 3,
+            repeat: 0,
+            ease: "power1.inOut"
         });
-    });
-});
 
-gsap.to("#Video", {
-    x: "-7vw",
-    duration: 3,
-    repeat: 0,
-    ease: "power1.inOut"
-});
+        gsap.to("#mobizillaText", {
+            y: '1vw',
+            duration: 5,
+            ease: "linear"
+        });
 
-gsap.to("#mobizilla", {
-    y: '1vw',
-    duration: 5,
-    ease: "linear"
-});
-
-gsap.to("#icon1", { opacity: 1, y: -20, duration: 1, delay: 0.5, ease: "power2.out" });
-gsap.to("#icon2", { opacity: 1, y: -20, duration: 1, delay: 1.5, ease: "power2.out" });
-gsap.to("#icon3", { opacity: 1, y: -20, duration: 1, delay: 2.5, ease: "power2.out" });
+        gsap.to("#icon1", { opacity: 1, y: -20, duration: 1, delay: 0.5, ease: "power2.out" });
+        gsap.to("#icon2", { opacity: 1, y: -20, duration: 1, delay: 1.5, ease: "power2.out" });
+        gsap.to("#icon3", { opacity: 1, y: -20, duration: 1, delay: 2.5, ease: "power2.out" });
 
 // review from our customer
 document.addEventListener('DOMContentLoaded', function() {
@@ -334,318 +416,6 @@ function toggleAnswer(element) {
 }
 
 // chatbot part
-const chatbot = document.getElementById('chatbot');
-const chatbotIcon = document.getElementById('chatbotIcon');
-const messageBubble = document.getElementById('messageBubble');
-const chatWindow = document.getElementById('chatWindow');
-const closeChat = document.getElementById('closeChat');
-const chatBody = document.getElementById('chatBody');
-const chatInput = document.getElementById('chatInput');
-const sendBtn = document.getElementById('sendBtn');
-
-let isDragging = false;
-let chatOpen = false;
-let dragStartTime = 0;
-let clickTimeoutId = null;
-let dragDistance = 0;
-let startX = 0;
-let startY = 0;
-
-function ensureValidPosition() {
-    const rect = chatbot.getBoundingClientRect();
-    const maxX = window.innerWidth - rect.width;
-    const maxY = window.innerHeight - rect.height;
-    
-    if (rect.right > window.innerWidth) {
-        chatbot.style.right = '20px';
-        chatbot.style.left = 'auto';
-    }
-    
-    if (rect.bottom > window.innerHeight) {
-        chatbot.style.bottom = '20px';
-        chatbot.style.top = 'auto';
-    }
-}
-
-chatbotIcon.addEventListener('mousedown', startDrag);
-chatbotIcon.addEventListener('touchstart', startDrag, { passive: false });
-
-function startDrag(e) {
-    e.preventDefault();
-    isDragging = false;
-    dragDistance = 0;
-    dragStartTime = Date.now();
-    
-    if (e.type === 'touchstart') {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-    } else {
-        startX = e.clientX;
-        startY = e.clientY;
-    }
-    
-    document.addEventListener('mousemove', drag);
-    document.addEventListener('touchmove', drag, { passive: false });
-    document.addEventListener('mouseup', endDrag);
-    document.addEventListener('touchend', endDrag);
-    
-    gsap.to(chatbotIcon, { scale: 0.95, duration: 0.2 });
-    hideBubble();
-    
-    if (clickTimeoutId) {
-        clearTimeout(clickTimeoutId);
-        clickTimeoutId = null;
-    }
-}
-
-function drag(e) {
-    let currentX, currentY;
-    if (e.type === 'touchmove') {
-        e.preventDefault();
-        currentX = e.touches[0].clientX;
-        currentY = e.touches[0].clientY;
-    } else {
-        currentX = e.clientX;
-        currentY = e.clientY;
-    }
-    
-    const dx = currentX - startX;
-    const dy = currentY - startY;
-    dragDistance = Math.sqrt(dx * dx + dy * dy);
-    
-    if (dragDistance > 5) {
-        isDragging = true;
-        
-        const rect = chatbot.getBoundingClientRect();
-        let newX = rect.left + dx;
-        let newY = rect.top + dy;
-        
-        newX = Math.max(0, Math.min(newX, window.innerWidth - rect.width));
-        newY = Math.max(0, Math.min(newY, window.innerHeight - rect.height));
-        
-        chatbot.style.left = newX + 'px';
-        chatbot.style.top = newY + 'px';
-        chatbot.style.right = 'auto';
-        chatbot.style.bottom = 'auto';
-        
-        startX = currentX;
-        startY = currentY;
-    }
-}
-
-function endDrag(e) {
-    document.removeEventListener('mousemove', drag);
-    document.removeEventListener('touchmove', drag);
-    document.removeEventListener('mouseup', endDrag);
-    document.removeEventListener('touchend', endDrag);
-    
-    gsap.to(chatbotIcon, { scale: 1, duration: 0.3, ease: "back.out(1.7)" });
-    
-    const rect = chatbot.getBoundingClientRect();
-    const threshold = 50;
-    
-    if (rect.left < threshold) {
-        gsap.to(chatbot, { left: 0, duration: 0.3, ease: "power3.out" });
-    } else if (rect.right > window.innerWidth - threshold) {
-        gsap.to(chatbot, { left: window.innerWidth - rect.width, duration: 0.3, ease: "power3.out" });
-    }
-    
-    const dragTime = Date.now() - dragStartTime;
-    if (!isDragging && dragTime < 200 && dragDistance < 5) {
-        clickTimeoutId = setTimeout(() => {
-            toggleChat();
-        }, 50);
-    }
-}
-
-window.addEventListener('load', () => {
-    chatbot.style.left = '';
-    chatbot.style.top = '';
-    chatbot.style.bottom = '20px';
-    chatbot.style.right = '20px';
-    
-    gsap.from("#chatbot", { 
-        y: 20,
-        opacity: 0,
-        duration: 0.7,
-        ease: "back.out(1.7)"
-    });
-    
-    animateDots();
-    
-    setTimeout(() => {
-        showBubble();
-        setTimeout(hideBubble, 5000);
-    }, 1500);
-    
-    ensureValidPosition();
-});
-
-window.addEventListener('resize', ensureValidPosition);
-
-chatbot.addEventListener('mouseenter', () => {
-    if (!isDragging && !chatOpen) {
-        showBubble();
-    }
-});
-
-chatbot.addEventListener('mouseleave', () => {
-    if (!chatOpen) {
-        hideBubble();
-    }
-});
-
-closeChat.addEventListener('click', function(e) {
-    e.stopPropagation();
-    toggleChat();
-});
-
-sendBtn.addEventListener('click', sendMessage);
-chatInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        sendMessage();
-    }
-});
-
-function toggleChat() {
-    chatOpen = !chatOpen;
-    
-    if (chatOpen) {
-        chatWindow.classList.add('active');
-        gsap.to(chatbotIcon, {
-            scale: 0.8,
-            opacity: 0.7,
-            duration: 0.3
-        });
-        hideBubble();
-        setTimeout(() => chatInput.focus(), 400);
-    } else {
-        chatWindow.classList.remove('active');
-        gsap.to(chatbotIcon, {
-            scale: 1,
-            opacity: 1,
-            duration: 0.3
-        });
-    }
-}
-
-function sendMessage() {
-    const message = chatInput.value.trim();
-    if (message !== '') {
-        const userMessageEl = document.createElement('div');
-        userMessageEl.className = 'message user-message';
-        userMessageEl.textContent = message;
-        chatBody.appendChild(userMessageEl);
-        
-        chatInput.value = '';
-        chatBody.scrollTop = chatBody.scrollHeight;
-        
-        const typingIndicator = document.createElement('div');
-        typingIndicator.className = 'message bot-message';
-        typingIndicator.innerHTML = '<div class="typing-indicator"><span>.</span><span>.</span><span>.</span></div>';
-        typingIndicator.style.padding = '8px 12px';
-        chatBody.appendChild(typingIndicator);
-        
-        chatBody.scrollTop = chatBody.scrollHeight;
-        
-        setTimeout(() => {
-            chatBody.removeChild(typingIndicator);
-            
-            const botResponses = [
-                "I understand. How else can I help you?",
-                "Thanks for sharing that. Do you have any questions?",
-                "I'll look into that for you. Anything else you need?",
-                "Got it! Let me know if you need more information."
-            ];
-            
-            const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
-            
-            const botMessageEl = document.createElement('div');
-            botMessageEl.className = 'message bot-message';
-            botMessageEl.textContent = randomResponse;
-            chatBody.appendChild(botMessageEl);
-            
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }, 1200);
-    }
-}
-
-function showBubble() {
-    gsap.to(messageBubble, {
-        opacity: 1,
-        y: 0,
-        duration: 0.4,
-        ease: "power2.out"
-    });
-}
-
-function hideBubble() {
-    gsap.to(messageBubble, {
-        opacity: 0,
-        y: 10,
-        duration: 0.3
-    });
-}
-
-function animateDots() {
-    const dots = document.querySelectorAll('.dot');
-    
-    gsap.to(dots[0], {
-        y: -3,
-        duration: 0.5,
-        repeat: -1,
-        yoyo: true,
-        delay: 0
-    });
-    
-    gsap.to(dots[1], {
-        y: -3,
-        duration: 0.5,
-        repeat: -1,
-        yoyo: true,
-        delay: 0.2
-    });
-    
-    gsap.to(dots[2], {
-        y: -3,
-        duration: 0.5,
-        repeat: -1,
-        yoyo: true,
-        delay: 0.4
-    });
-}
-
-const style = document.createElement('style');
-style.textContent = `
-    .typing-indicator {
-        display: flex;
-        align-items: center;
-    }
-    
-    .typing-indicator span {
-        height: 8px;
-        width: 8px;
-        margin: 0 1px;
-        background-color: #6b7280;
-        border-radius: 50%;
-        display: inline-block;
-        animation: typing-bounce 1.4s infinite ease-in-out both;
-    }
-    
-    .typing-indicator span:nth-child(1) {
-        animation-delay: -0.32s;
-    }
-    
-    .typing-indicator span:nth-child(2) {
-        animation-delay: -0.16s;
-    }
-    
-    @keyframes typing-bounce {
-        0%, 80%, 100% { transform: scale(0); }
-        40% { transform: scale(1); }
-    }
-`;
-document.head.appendChild(style);
 
 //foter with dino hii
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -884,7 +654,6 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('Circular tags initialization complete');
 });
 
-// mobizilla animation in main content
 
 
 
