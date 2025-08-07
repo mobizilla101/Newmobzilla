@@ -28,3 +28,4 @@ Thumbs.db
 */migrations/__pycache__/
 */migrations/*.py[cod]
 
+media/
