@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ALLOWED_HOSTS = []
 SECRET_KEY = os.getenv("SECRET_KEY", "dev_secret_key")
 DEBUG = os.getenv("DEBUG", "False") == "True"
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "*").split(",")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", ".vercel.app").split(",")
 print("alloehost--",ALLOWED_HOSTS)
 
 
