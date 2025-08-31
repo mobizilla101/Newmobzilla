@@ -1,5 +1,8 @@
 from datetime import timedelta
 import os
+import dj_database_url
+
+
 # from dotenv import load_dotenv
 # load_dotenv()
 
@@ -10,17 +13,11 @@ AUTH_USER_MODEL = 'accounts.User'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*fi4sjnjijx9ekcoprlc^unrud5(&ua2crewl(g3$rnp!kk07u'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+SECRET_KEY = os.getenv("SECRET_KEY", "dev_secret_key")
+DEBUG = os.getenv("DEBUG", "False") == "True"
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "*").split(",")
+print("alloehost--",ALLOWED_HOSTS)
 
 
 # Application definition
@@ -52,6 +49,7 @@ INSTALLED_APPS = [
     # Custom apps
     'apps.accounts',
     'apps.courses',
+    'apps.glbmodels',
 ]
 SITE_ID = 1
 
@@ -91,6 +89,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -98,6 +97,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -120,17 +120,35 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dyno_backend.wsgi.application'
 
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'NewMobzilla_db',
-        'USER': 'NewMobzilla_user',
-        'PASSWORD': 'newmobzilla',
-        'HOST': 'localhost',
-        'PORT': '5433',
-    }
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR / 'db.sqlite3'}"),
+        conn_max_age=600,
+    )
+
 }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": os.getenv("POSTGRES_DB", "newmozilla_db"),
+#         "USER": os.getenv("POSTGRES_USER", "newmozilla_user"),
+#         "PASSWORD": os.getenv("POSTGRES_PASSWORD", "newmobzilla"),
+#         "HOST": os.getenv("POSTGRES_HOST", "db"),
+#         "PORT": os.getenv("POSTGRES_PORT", 5432),
+#     }
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'NewMobzilla_db',
+#         'USER': 'NewMobzilla_user',
+#         'PASSWORD': 'newmobzilla',
+#         'HOST': 'localhost',
+#         'PORT': '5433',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -163,10 +181,13 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+# Static files (CSS, JavaScript, Images for frontend)
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+# Media files (user uploads)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -219,10 +240,9 @@ SIMPLE_JWT = {
 }
 
 
-
-
 REST_AUTH_SERIALIZERS = {
     'JWT_SERIALIZER': 'dj_rest_auth.serializers.JWTSerializer',
 }
 
-CORS_ALLOW_ALL_ORIGINS = True  # Not recommended need to change in production
+CORS_ALLOW_ALL_ORIGINS = True  # Not recommended I need to change in production
+# CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "").split(",") #gone use this in production
