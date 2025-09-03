@@ -10,13 +10,11 @@ from accounts.views import GoogleLogin
 # class GoogleLogin(SocialLoginView):
 #     adapter_class = GoogleOAuth2Adapter
 
-def home(request):
-    return HttpResponse("Welcome to Newmobzilla API")
 
 urlpatterns = [
-    path('', home), 
+    path('', include('core.urls')), 
     path('admin/', admin.site.urls),
-    path('api/auth/', include('apps.accounts.urls')),
+    path('api/auth/', include('accounts.urls')),
     path('api/auth/', include('dj_rest_auth.urls')),
     # path('api/auth/social/', include('dj_rest_auth.social_urls')),
     path('api/auth/registration/', include('dj_rest_auth.registration.urls')),
@@ -24,5 +22,5 @@ urlpatterns = [
     # path('social/google/', GoogleLogin.as_view(), name='google_login'),
     path('api/auth/social/google/', GoogleLogin.as_view(), name='google_login'),
 
-    path('api/', include('apps.courses.urls')),
+    path('api/', include('courses.urls')),
 ]

@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+def homepage(request):
+    context = {
+        'message': 'Hello from Django!'
+    }
+    return render(request, "core/index.html", context)
