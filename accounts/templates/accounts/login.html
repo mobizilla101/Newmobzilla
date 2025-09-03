@@ -1,0 +1,22 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}" />
+
+  <body>
+    <h1>Login</h1>
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Login</button>
+    </form>
+
+    <h1>Login</h1>
+    <a href="{% provider_login_url 'google' %}">Login with Google</a>
+
+    <script src="{% static 'accounts/js/script.js' %}"></script>
+  </body>
+</html>

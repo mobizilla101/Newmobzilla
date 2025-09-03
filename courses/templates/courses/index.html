@@ -1,976 +1,1352 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'courses/css/style.css' %}" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-</head>
+  <body>
+    <div class="sticky-wrapper sticky top-0 z-50">
+      <header
+        class="p-4 flex items-center justify-between flex-wrap bg-[#e6f7f3] shadow-md"
+      >
+        <div class="w-20">
 
-<body>
-  <div class="sticky-wrapper sticky top-0 z-50">
-    <header class=" p-4 flex items-center justify-between flex-wrap bg-[#e6f7f3] shadow-md">
-      <div class="w-20">
-        <img src="../Hompage/image/main-logo.png" alt="Mobizilla Logo" class="w-full" id="logo" />
-      </div>
-
-      <!-- Mobile menu button -->
-      <button id="menu-btn" class="md:hidden text-3xl text-gray-700">
-        &#9776;
-      </button>
-
-      <nav id="nav-links"
-        class="hidden w-full md:w-auto md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 mt-4 md:mt-0 text-lg text-center">
-        <a href="#" class="px-2 py-1 active-nav">Home</a>
-        <a href="#" class="px-2 py-1">Offers</a>
-        <a href="#" class="px-2 py-1">Courses</a>
-        <a href="#" class="px-2 py-1">UpcomingClasses</a>
-        <a href="#" class="px-2 py-1">Blog</a>
-        <a href="#" class="px-2 py-1">ContactUs</a>
-        <a href="#" class="px-2 py-1">Carrier</a>
-        <a href="#" class="px-2 py-1">Fixit</a>
-      </nav>
-
-      <div class="flex items-center space-x-4 mt-4 md:mt-0">
-
-        <!-- Wishlist Heart Icon -->
-        <div class="relative cursor-pointer">
-          <a href="#">
-            <i class="fa-regular fa-heart text-2xl text-gray-700"></i>
-          </a>
+          <img src="{% static 'courses/images/main-logo.png' %}"             alt="Mobizilla Logo"
+            class="w-full"
+            id="logo">
         </div>
 
-        <!-- Cart Icon (from image) -->
-        <div class="relative cursor-pointer">
-          <a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#1c2d4a" viewBox="0 0 24 24">
+        <!-- Mobile menu button -->
+        <button id="menu-btn" class="md:hidden text-3xl text-gray-700">
+          &#9776;
+        </button>
+
+        <nav
+          id="nav-links"
+          class="hidden w-full md:w-auto md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 mt-4 md:mt-0 text-lg text-center"
+        >
+          <a href="#" class="px-2 py-1 active-nav">Home</a>
+          <a href="#" class="px-2 py-1">Offers</a>
+          <a href="#" class="px-2 py-1">Courses</a>
+          <a href="#" class="px-2 py-1">UpcomingClasses</a>
+          <a href="#" class="px-2 py-1">Blog</a>
+          <a href="#" class="px-2 py-1">ContactUs</a>
+          <a href="#" class="px-2 py-1">Carrier</a>
+          <a href="#" class="px-2 py-1">Fixit</a>
+        </nav>
+
+        <div class="flex items-center space-x-4 mt-4 md:mt-0">
+          <!-- Wishlist Heart Icon -->
+          <div class="relative cursor-pointer">
+            <a href="#">
+              <i class="fa-regular fa-heart text-2xl text-gray-700"></i>
+            </a>
+          </div>
+
+          <!-- Cart Icon (from image) -->
+          <div class="relative cursor-pointer">
+            <a href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                fill="#1c2d4a"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0 2a.001.001 0 0 0 0 0h0zm10-2c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0 2a.001.001 0 0 0 0 0h0zM7.24 14l.94-2h8.24a1 1 0 0 0 .96-.73l2.5-8A1 1 0 0 0 18 2H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44A1.992 1.992 0 0 0 4 15c0 1.104.896 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.07-.25z"
+                ></path>
+              </svg>
+            </a>
+            <span
+              id="cart-count"
+              class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+            >
+              0
+            </span>
+          </div>
+
+          <!-- Clean User Icon (large, solid black) -->
+          <a title="Go to about me page" href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-8 h-7 text-black"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
               <path
-                d="M7 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0 2a.001.001 0 0 0 0 0h0zm10-2c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0 2a.001.001 0 0 0 0 0h0zM7.24 14l.94-2h8.24a1 1 0 0 0 .96-.73l2.5-8A1 1 0 0 0 18 2H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44A1.992 1.992 0 0 0 4 15c0 1.104.896 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.07-.25z">
-              </path>
+                fill-rule="evenodd"
+                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                clip-rule="evenodd"
+              />
             </svg>
           </a>
-          <span id="cart-count"
-            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-            0
-          </span>
+        </div>
+      </header>
+
+      <!-- middle line between search-bar -->
+      <!-- Add this to your gradient background div -->
+      <div class="gradient-bg h-14 w-full flex items-center">
+        <button
+          id="menuToggle"
+          class="menu-button ml-6 text-white hover:bg-white/20 rounded-full w-10 h-10 flex items-center justify-center"
+        >
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+
+        <!-- Your existing search box here -->
+      </div>
+
+      <!-- Add this after your navbar and gradient bar -->
+      <div class="flex relative">
+        <!-- Sidebar -->
+        <div
+          id="sidebar"
+          class="sidebar closed text-white"
+          style="margin-top: 1.2rem"
+        >
+          <!-- Sidebar Header -->
+          <div class="p-4 flex items-center">
+            <img
+              src="../Hompage/image/main-logo.png"
+              alt="Mobizilla Logo"
+              class="h-8 w-8 mr-2"
+            />
+            <span class="font-bold text-xl">Mobizilla</span>
+          </div>
+
+          <!-- Sidebar Content -->
+          <div class="sidebar-content pb-4">
+            <ul class="space-y-1">
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center px-4 py-3 hover:bg-white/20"
+                >
+                  <i class="fas fa-home mr-4"></i>
+                  <span>Home</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center px-4 py-3 hover:bg-white/20"
+                >
+                  <i class="fas fa-play-circle mr-4"></i>
+                  <span>Subscription</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center px-4 py-3 hover:bg-white/20"
+                >
+                  <i class="fas fa-fire mr-4"></i>
+                  <span>Lorem</span>
+                </a>
+              </li>
+
+              <li class="border-t border-white/30 my-2"></li>
+
+              <li>
+                <div
+                  class="flex items-center justify-between px-4 py-3 hover:bg-white/20 cursor-pointer"
+                >
+                  <div class="flex items-center">
+                    <i class="fas fa-user mr-4"></i>
+                    <span>You</span>
+                  </div>
+                  <i class="fas fa-chevron-down text-sm"></i>
+                </div>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center px-4 py-3 hover:bg-white/20"
+                >
+                  <i class="fas fa-history mr-4"></i>
+                  <span>History</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center px-4 py-3 hover:bg-white/20"
+                >
+                  <i class="fas fa-video mr-4"></i>
+                  <span>Your videos</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center px-4 py-3 hover:bg-white/20"
+                >
+                  <i class="fas fa-clock mr-4"></i>
+                  <span>Watch Later</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center px-4 py-3 hover:bg-white/20"
+                >
+                  <i class="fas fa-bookmark mr-4"></i>
+                  <span>Saved</span>
+                </a>
+              </li>
+
+              <li class="border-t border-white/30 my-2"></li>
+
+              <li>
+                <div class="px-4 py-2 text-white/80 text-sm">Subscriptions</div>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center px-4 py-3 hover:bg-white/20"
+                >
+                  <div
+                    class="w-6 h-6 rounded-full bg-red-500 mr-4 flex items-center justify-center text-white"
+                  >
+                    1
+                  </div>
+                  <span>Channel 1</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center px-4 py-3 hover:bg-white/20"
+                >
+                  <div
+                    class="w-6 h-6 rounded-full bg-blue-500 mr-4 flex items-center justify-center text-white"
+                  >
+                    2
+                  </div>
+                  <span>Channel 2</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center px-4 py-3 hover:bg-white/20"
+                >
+                  <div
+                    class="w-6 h-6 rounded-full bg-green-500 mr-4 flex items-center justify-center text-white"
+                  >
+                    3
+                  </div>
+                  <span>Channel 3</span>
+                </a>
+              </li>
+
+              <li class="border-t border-white/30 my-2"></li>
+
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center px-4 py-3 hover:bg-white/20"
+                >
+                  <i class="fas fa-cog mr-4"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center px-4 py-3 hover:bg-white/20"
+                >
+                  <i class="fas fa-user-circle mr-4"></i>
+                  <span>Your profile</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <!-- Clean User Icon (large, solid black) -->
-        <a title="Go to about me page" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-7 text-black" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-          </svg>
-        </a>
-
+        <!-- Your existing content container here -->
       </div>
-    </header>
+      <!--  search bar    duplicate file -->
+      <div class="flex justify-center -mt-7 px-4">
+        <div
+          class="hello w-[full] lg:w-[600px] md:w-2/3 flex items-center p-6 px-4"
+        ></div>
+      </div>
+      <!-- place holder for search bar -->
+      <div class="flex justify-center -mt-10 px-4">
+        <div
+          class="search-bar lg:w-[600px] md:w-2/3 flex items-center p-1 px-4"
+        >
+          <input
+            type="text"
+            placeholder="Search.."
+            class="w-full bg-transparent text-white placeholder-white outline-none p-2"
+          />
+          <button class="p-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- circuit design background part  -->
 
+    <section class="relative bg-gray-100">
+      <!-- Background image (replace background manually later) -->
+      <div class="absolute inset-0">
+        <img
+          src="./images/circuit-background.jpg"
+          alt="Background"
+          class="w-full h-full object-cover"
+        />
+      </div>
 
-    <!-- middle line between search-bar -->
-    <!-- Add this to your gradient background div -->
-    <div class="gradient-bg h-14 w-full flex items-center">
-      <button id="menuToggle"
-        class="menu-button  ml-6 text-white hover:bg-white/20 rounded-full w-10 h-10 flex items-center justify-center">
-        <i class="fas fa-bars text-2xl"></i>
-      </button>
+      <!-- Wave Effect Overlay -->
+      <div
+        class="relative bg-white bg-opacity-80 backdrop-blur-sm pt-24 pb-12 rounded-b-[50px]"
+      >
+        <div
+          class="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center justify-between"
+        >
+          <!-- Left Content -->
+          <div class="w-full md:w-1/2 text-center md:text-left">
+            <h1 class="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
+              Discover the Best <br />
+              Course for Your Journey
+            </h1>
+            <p class="text-gray-600 mb-6">
+              Explore over 1000 courses tailored to your interests and career
+              goals.
+            </p>
 
-      <!-- Your existing search box here -->
+            <!-- Search Bar -->
+            <div
+              class="flex items-center bg-gradient-to-r from-green-400 to-blue-500 rounded-full p-1"
+            >
+              <input
+                type="text"
+                placeholder="Search.."
+                class="flex-1 p-3 rounded-full outline-none bg-white text-gray-700"
+              />
+              <button class="p-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2a7.5 7.5 0 010 14.5z"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Popular Searches -->
+            <div class="mt-6 flex flex-wrap gap-2">
+              <button
+                class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700"
+              >
+                VR Development
+              </button>
+              <button
+                class="bg-green-600 text-white px-4 py-2 rounded-full text-sm hover:bg-green-700"
+              >
+                Gamified Learning
+              </button>
+              <button
+                class="bg-teal-600 text-white px-4 py-2 rounded-full text-sm hover:bg-teal-700"
+              >
+                AI Courses
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Image (Mobizilla Mascot) -->
+          <div class="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
+            <img
+              src="./images/mobizilla-cartoon.jpg"
+              alt="Mobizilla Mascot"
+              class="w-64 md:w-80"
+            />
+          </div>
+        </div>
+
+        <!-- Wave Line -->
+        <div class="mt-8">
+          <svg
+            class="w-full h-12 md:h-16"
+            viewBox="0 0 1440 320"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#22c55e"
+              fill-opacity="1"
+              d="M0,256L60,229.3C120,203,240,149,360,128C480,107,600,117,720,122.7C840,128,960,128,1080,138.7C1200,149,1320,171,1380,181.3L1440,192L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- category part -->
+    <div class="container">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold">
+          <span class="text-gray-800">Explore</span>
+          <span class="text-emerald-500">Categories</span>
+        </h1>
+        <p class="text-gray-600 mt-2">
+          Find the perfect course for your learning journey
+        </p>
+      </div>
+
+      <div class="slider-wrapper">
+        <div class="slider-container">
+          <!-- Category 1: Mobile Repair -->
+          <div class="slide" id="slide-0">
+            <img
+              src="../courses/images/slider1.png"
+              alt="Mobile Repair"
+              class="w-full h-full object-cover"
+            />
+            <div class="category-text">Mobile Repair</div>
+          </div>
+
+          <!-- Category 2: Web Development -->
+          <div class="slide" id="slide-1">
+            <img
+              src="../courses/images/slider2.png"
+              alt="Web Development"
+              class="w-full h-full object-cover"
+            />
+            <div class="category-text">Web Development</div>
+          </div>
+
+          <!-- Category 3: Digital Marketing -->
+          <div class="slide" id="slide-2">
+            <img
+              src="../courses/images/slider3.png"
+              alt="Digital Marketing"
+              class="w-full h-full object-cover"
+            />
+            <div class="category-text">Digital Marketing</div>
+          </div>
+
+          <!-- Category 4: Graphic Design -->
+          <div class="slide" id="slide-3">
+            <img
+              src="../courses/images/slider1.png"
+              alt="Graphic Design"
+              class="w-full h-full object-cover"
+            />
+            <div class="category-text">Graphic Design</div>
+          </div>
+
+          <!-- Category 5: Data Science -->
+          <div class="slide" id="slide-4">
+            <img
+              src="../courses/images/slider2.png"
+              alt="Data Science"
+              class="w-full h-full object-cover"
+            />
+            <div class="category-text">Data Science</div>
+          </div>
+
+          <!-- Category 6: Cyber Security -->
+          <div class="slide" id="slide-5">
+            <img
+              src="../courses/images/slider3.png"
+              alt="Cyber Security"
+              class="w-full h-full object-cover"
+            />
+            <div class="category-text">Cyber Security</div>
+          </div>
+
+          <!-- Category 7: AI & Machine Learning -->
+          <div class="slide" id="slide-6">
+            <img
+              src="../courses/images/slider1.png"
+              alt="AI & Machine Learning"
+              class="w-full h-full object-cover"
+            />
+            <div class="category-text">AI & Machine Learning</div>
+          </div>
+
+          <!-- Pagination Dots -->
+          <div class="pagination">
+            <div class="dot" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+            <div class="dot" data-index="4"></div>
+            <div class="dot" data-index="5"></div>
+            <div class="dot" data-index="6"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Add this after your navbar and gradient bar -->
-    <div class="flex relative">
-      <!-- Sidebar -->
-      <div id="sidebar" class="sidebar closed text-white" style="margin-top: 1.2rem;">
-        <!-- Sidebar Header -->
-        <div class="p-4 flex items-center">
-          <img src="../Hompage/image/main-logo.png" alt="Mobizilla Logo" class="h-8 w-8 mr-2" />
-          <span class="font-bold text-xl">Mobizilla</span>
+    <!--feature courses -->
+    <div class="bg-gray-100 min-h-screen py-8">
+      <div class="max-w-7xl mx-auto px-8">
+        <!-- Featured Courses Header -->
+        <div class="flex justify-center items-center mb-6">
+          <h2 class="text-2xl font-bold">
+            <span class="text-green-500">Featured</span>
+            <span class="text-gray-800">Courses</span>
+          </h2>
         </div>
 
-        <!-- Sidebar Content -->
-        <div class="sidebar-content pb-4">
-          <ul class="space-y-1">
-            <li>
-              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-                <i class="fas fa-home mr-4"></i>
-                <span>Home</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-                <i class="fas fa-play-circle mr-4"></i>
-                <span>Subscription</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-                <i class="fas fa-fire mr-4"></i>
-                <span>Lorem</span>
-              </a>
-            </li>
-
-            <li class="border-t border-white/30 my-2"></li>
-
-            <li>
-              <div class="flex items-center justify-between px-4 py-3 hover:bg-white/20 cursor-pointer">
-                <div class="flex items-center">
-                  <i class="fas fa-user mr-4"></i>
-                  <span>You</span>
-                </div>
-                <i class="fas fa-chevron-down text-sm"></i>
+        <!-- Courses Grid -->
+        <div class="carousel-container overflow-hidden" id="courses-container">
+          <div
+            id="courses-grid"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-300"
+          >
+            <!-- Course Card 1 -->
+            <div
+              class="course-card bg-white rounded-lg overflow-hidden shadow-md"
+            >
+              <div class="h-40 bg-green-100 overflow-hidden">
+                <img
+                  src="../courses/images/slider1.png"
+                  alt="Mobile Repair & Electronics"
+                  class="w-full h-full object-cover"
+                />
               </div>
-            </li>
-            <li>
-              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-                <i class="fas fa-history mr-4"></i>
-                <span>History</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-                <i class="fas fa-video mr-4"></i>
-                <span>Your videos</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-                <i class="fas fa-clock mr-4"></i>
-                <span>Watch Later</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-                <i class="fas fa-bookmark mr-4"></i>
-                <span>Saved</span>
-              </a>
-            </li>
+              <div class="p-3">
+                <h3 class="font-bold text-base mb-1">
+                  Mobile Repair & Electronics
+                </h3>
+                <p class="text-gray-600 text-xs mb-2">
+                  Repairing phones and gadgets with our experts, with great
+                  training
+                </p>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex text-yellow-400 text-xs">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <span class="font-bold text-sm">$40</span>
+                </div>
+                <button
+                  class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
 
-            <li class="border-t border-white/30 my-2"></li>
+            <!-- Course Card 2 -->
+            <div
+              class="course-card bg-white rounded-lg overflow-hidden shadow-md"
+            >
+              <div class="h-40 bg-green-100 overflow-hidden">
+                <img
+                  src="../courses/images/slider2.png"
+                  alt="Fundamentals of IoT"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <h3 class="font-bold text-base mb-1">Fundamentals of IoT</h3>
+                <p class="text-gray-600 text-xs mb-2">
+                  Building internet and devices with our experts, with great
+                  training
+                </p>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex text-yellow-400 text-xs">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <span class="font-bold text-sm">$90</span>
+                </div>
+                <button
+                  class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
 
-            <li>
-              <div class="px-4 py-2 text-white/80 text-sm">Subscriptions</div>
-            </li>
-            <li>
-              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-                <div class="w-6 h-6 rounded-full bg-red-500 mr-4 flex items-center justify-center text-white">1</div>
-                <span>Channel 1</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-                <div class="w-6 h-6 rounded-full bg-blue-500 mr-4 flex items-center justify-center text-white">2</div>
-                <span>Channel 2</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-                <div class="w-6 h-6 rounded-full bg-green-500 mr-4 flex items-center justify-center text-white">3</div>
-                <span>Channel 3</span>
-              </a>
-            </li>
+            <!-- Course Card 3 -->
+            <div
+              class="course-card bg-white rounded-lg overflow-hidden shadow-md"
+            >
+              <div class="h-40 bg-green-100 overflow-hidden">
+                <img
+                  src="../courses/images/slider3.png"
+                  alt="Web Development"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <h3 class="font-bold text-base mb-1">Web Development</h3>
+                <p class="text-gray-600 text-xs mb-2">
+                  Learn to buil
+                  class="bg-gre
+                  class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
 
-            <li class="border-t border-white/30 my-2"></li>
+            <!-- Course Card 5en-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
 
-            <li>
-              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-                <i class="fas fa-cog mr-4"></i>
-                <span>Settings</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center px-4 py-3 hover:bg-white/20">
-                <i class="fas fa-user-circle mr-4"></i>
-                <span>Your profile</span>
-              </a>
-            </li>
+            <!-- Course Card 5d modern websites and web applications
+                </p>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex text-yellow-400 text-xs">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <span class="font-bold text-sm">$65</span>
+                </div>
+                <button
+                  class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Course Card 4 -->
+            <div
+              class="course-card bg-white rounded-lg overflow-hidden shadow-md"
+            >
+              <div class="h-40 bg-green-100 overflow-hidden">
+                <img
+                  src="../courses/images/slider1.png"
+                  alt="Data Science Bootcamp"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <h3 class="font-bold text-base mb-1">Data Science Bootcamp</h3>
+                <p class="text-gray-600 text-xs mb-2">
+                  Master data analysis, machine learning and visualization
+                </p>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex text-yellow-400 text-xs">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <span class="font-bold text-sm">$120</span>
+                </div>
+                <button
+                  class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Course Card 5 -->
+            <div
+              class="course-card bg-white rounded-lg overflow-hidden shadow-md"
+            >
+              <div class="h-40 bg-green-100 overflow-hidden">
+                <img
+                  src="../courses/images/slider2.png"
+                  alt="UI/UX Design"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <h3 class="font-bold text-base mb-1">UI/UX Design</h3>
+                <p class="text-gray-600 text-xs mb-2">
+                  Create beautiful user interfaces and seamless experiences
+                </p>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex text-yellow-400 text-xs">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <span class="font-bold text-sm">$75</span>
+                </div>
+                <button
+                  class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Course Card 6 -->
+            <div
+              class="course-card bg-white rounded-lg overflow-hidden shadow-md"
+            >
+              <div class="h-40 bg-green-100 overflow-hidden">
+                <img
+                  src="../courses/images/slider3.png"
+                  alt="Mobile App Development"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <h3 class="font-bold text-base mb-1">Mobile App Development</h3>
+                <p class="text-gray-600 text-xs mb-2">
+                  Build iOS and Android apps with React Native
+                </p>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex text-yellow-400 text-xs">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <span class="font-bold text-sm">$85</span>
+                </div>
+                <button
+                  class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Hidden courses (will show on "View all Courses" click) -->
+            <div
+              class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses"
+            >
+              <div class="h-40 bg-green-100 overflow-hidden">
+                <img
+                  src="../courses/images/slider1.png"
+                  alt="Blockchain Development"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <h3 class="font-bold text-base mb-1">Blockchain Development</h3>
+                <p class="text-gray-600 text-xs mb-2">
+                  Learn to build decentralized applications and smart contracts
+                </p>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex text-yellow-400 text-xs">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <span class="font-bold text-sm">$110</span>
+                </div>
+                <button
+                  class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses"
+            >
+              <div class="h-40 bg-green-100 overflow-hidden">
+                <img
+                  src="../courses/images/slider1.png"
+                  alt="Blockchain Development"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <h3 class="font-bold text-base mb-1">Blockchain Development</h3>
+                <p class="text-gray-600 text-xs mb-2">
+                  Learn to build decentralized applications and smart contracts
+                </p>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex text-yellow-400 text-xs">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <span class="font-bold text-sm">$110</span>
+                </div>
+                <button
+                  class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses"
+            >
+              <div class="h-40 bg-green-100 overflow-hidden">
+                <img
+                  src="../courses/images/slider2.png"
+                  alt="Cloud Computing"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <h3 class="font-bold text-base mb-1">Cloud Computing</h3>
+                <p class="text-gray-600 text-xs mb-2">
+                  Master AWS, Azure, and Google Cloud platforms
+                </p>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex text-yellow-400 text-xs">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <span class="font-bold text-sm">$95</span>
+                </div>
+                <button
+                  class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses"
+            >
+              <div class="h-40 bg-green-100 overflow-hidden">
+                <img
+                  src="../courses/images/slider1.png"
+                  alt="Cybersecurity Fundamentals"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <h3 class="font-bold text-base mb-1">
+                  Cybersecurity Fundamentals
+                </h3>
+                <p class="text-gray-600 text-xs mb-2">
+                  Learn to protect systems and networks from digital attacks
+                </p>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex text-yellow-400 text-xs">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <span class="font-bold text-sm">$105</span>
+                </div>
+                <button
+                  class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses"
+            >
+              <div class="h-40 bg-green-100 overflow-hidden">
+                <img
+                  src="../courses/images/slider3.png"
+                  alt="Digital Marketing"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3">
+                <h3 class="font-bold text-base mb-1">Digital Marketing</h3>
+                <p class="text-gray-600 text-xs mb-2">
+                  Master SEO, social media, and content marketing strategies
+                </p>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex text-yellow-400 text-xs">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <span class="font-bold text-sm">$70</span>
+                </div>
+                <button
+                  class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- View All Courses Button -->
+        <div class="text-center mt-6">
+          <button
+            id="view-all-btn"
+            class="bg-blue-500 text-white px-6 py-2 text-sm rounded-md hover:bg-blue-600 transition flex items-center mx-auto"
+          >
+            <span>View all Courses</span>
+            <i class="fas fa-chevron-down ml-2"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- total students -->
+    <div class="bg-gray-100 flex items-start justify-center p-4">
+      <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+        <div
+          class="card-shadow rounded-lg py-12 px-8 overflow-hidden"
+          style="
+            background-image: url('../courses/images/soft\ texture.png');
+            background-size: cover;
+            background-position: center;
+          "
+        >
+          <div class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-3">
+              <span class="text-gray-900">Our </span>
+              <span class="text-green-600">Impact</span>
+              <span class="text-gray-900"> in </span>
+              <span class="text-blue-500">Numbers</span>
+            </h1>
+            <p class="text-gray-700 text-lg md:text-xl">
+              Join our growing community of Learners
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center"
+          >
+            <div>
+              <h2 class="text-4xl md:text-5xl font-bold mb-2 impact-number">
+                <span id="students-count">0</span>k+
+              </h2>
+              <p class="text-gray-800 font-medium text-lg">Students Enrolled</p>
+            </div>
+            <div>
+              <h2 class="text-4xl md:text-5xl font-bold mb-2 impact-number">
+                <span id="courses-count">0</span>+
+              </h2>
+              <p class="text-gray-800 font-medium text-lg">Course Available</p>
+            </div>
+            <div>
+              <h2 class="text-4xl md:text-5xl font-bold mb-2 impact-number">
+                <span id="instructors-count">0</span>+
+              </h2>
+              <p class="text-gray-800 font-medium text-lg">
+                Expert Instructors
+              </p>
+            </div>
+            <div>
+              <h2 class="text-4xl md:text-5xl font-bold mb-2 impact-number">
+                <span id="rating-count">0</span>/5
+              </h2>
+              <p class="text-gray-800 font-medium text-lg">Average Rating</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- why learn with mobizilla -->
+    <div class="bg-gray-50 p-10">
+      <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-16">
+          <h1 class="text-4xl font-bold text-gray-900">
+            Why Learn With
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500"
+              >Mobizilla</span
+            >?
+          </h1>
+          <p class="text-gray-600 mt-4 text-lg">
+            We provide the best learning experience for our students
+          </p>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <!-- Card 1 with top background PNG -->
+          <div
+            class="relative bg-white rounded-[2rem] overflow-hidden card-shadow pt-24 pb-6 px-6 text-center"
+            style="
+              background-image: url('../courses/images/box2.png');
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: top;
+            "
+          >
+            <h2 class="text-xl font-bold">Expert Instructors</h2>
+            <p class="text-gray-600 mt-2">
+              Learn from industry professionals with real-world experience in
+              their fields.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white rounded-[2rem] p-6 card-shadow text-center">
+            <div
+              class="mx-auto bg-green-100 p-4 rounded-full w-12 h-12 flex items-center justify-center mb-4"
+            >
+              💼
+            </div>
+            <h2 class="text-xl font-bold">Hands-on Projects</h2>
+            <p class="text-gray-600 mt-2">
+              Apply what you learn with real-world projects and build your
+              portfolio.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white rounded-[2rem] p-6 card-shadow text-center">
+            <div
+              class="mx-auto bg-blue-100 p-4 rounded-full w-12 h-12 flex items-center justify-center mb-4"
+            >
+              ♾️
+            </div>
+            <h2 class="text-xl font-bold">Lifetime Access</h2>
+            <p class="text-gray-600 mt-2">
+              Get lifetime access to course materials, including all future
+              updates.
+            </p>
+          </div>
+
+          <!-- Card 4 with bottom background PNG -->
+          <div
+            class="relative bg-white rounded-[2rem] overflow-visible card-shadow pt-6 pb-24 px-6 text-center"
+            style="
+              background-image: url('../courses/images/box2.png');
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: bottom;
+            "
+          >
+            <h2 class="text-xl font-bold">Certification</h2>
+            <p class="text-gray-600 mt-2">
+              Earn certificates that you can share with employers and your
+              professional network.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-10 px-4">
+      <div
+        class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between space-y-8 md:space-y-0"
+      >
+        <!-- Logo and Contact Info -->
+        <div class="w-full md:w-1/4 space-y-4">
+          <!-- Logo and Text on the Same Line -->
+          <div class="flex items-center space-x-2">
+            <img
+              src="../Hompage/image/footer-logo.jpg"
+              alt="Mobizilla Logo"
+              class="h-14 w-auto rounded-full"
+            />
+            <p class="font-semibold text-lg">Mobizilla</p>
+          </div>
+
+          <!-- Additional Information -->
+          <div class="space-y-1 text-sm">
+            <p class="font-semibold">
+              Mobizilla Training & Technical Institute
+            </p>
+            <p>Newroad, Kathmandu, Nepal</p>
+            <p>
+              Phone:
+              <a href="tel:+9779808450458" class="hover:underline"
+                >+977-9808450458</a
+              >
+            </p>
+            <p>
+              Email:
+              <a href="mailto:mobzillastore@gmail.com" class="hover:underline"
+                >mobzillastore@gmail.com</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <!-- Company Links -->
+        <div class="w-full md:w-1/4 space-y-2">
+          <h2 class="text-lg font-semibold">Company</h2>
+          <ul class="space-y-1 text-sm">
+            <li><a href="#" class="hover:underline">Home</a></li>
+            <li><a href="#" class="hover:underline">Career</a></li>
+            <li><a href="#" class="hover:underline">About</a></li>
+            <li><a href="#" class="hover:underline">Blogs</a></li>
+            <li><a href="#" class="hover:underline">Contact</a></li>
+            <li><a href="#" class="hover:underline">FixIT</a></li>
           </ul>
         </div>
-      </div>
 
-      <!-- Your existing content container here -->
-    </div>
-    <!--  search bar    duplicate file -->
-    <div class="flex justify-center   -mt-7 px-4">
-      <div class="hello w-[full] lg:w-[600px] md:w-2/3 flex items-center p-6 px-4">
-      </div>
-    </div>
-    <!-- place holder for search bar -->
-    <div class="flex justify-center -mt-10 px-4">
-      <div class="search-bar lg:w-[600px] md:w-2/3 flex items-center p-1 px-4">
-        <input type="text" placeholder="Search.."
-          class="w-full bg-transparent text-white placeholder-white outline-none p-2" />
-        <button class="p-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        </button>
-      </div>
-    </div>
+        <!-- Social Links -->
+        <div class="w-full md:w-1/4 space-y-2">
+          <h2 class="text-lg font-semibold">Social</h2>
+          <ul class="space-y-1 text-sm">
+            <li><a href="#" class="hover:underline">Facebook</a></li>
+            <li><a href="#" class="hover:underline">Instagram</a></li>
+            <li><a href="#" class="hover:underline">YouTube</a></li>
+            <li><a href="#" class="hover:underline">Twitter</a></li>
+          </ul>
+        </div>
 
-
-
-
-  </div>
-  <!-- circuit design background part  -->
-
-
-  <section class="relative bg-gray-100">
-    <!-- Background image (replace background manually later) -->
-    <div class="absolute inset-0">
-      <img src="./images/circuit-background.jpg" alt="Background" class="w-full h-full object-cover">
-    </div>
-
-    <!-- Wave Effect Overlay -->
-    <div class="relative bg-white bg-opacity-80 backdrop-blur-sm pt-24 pb-12 rounded-b-[50px]">
-      <div class="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center justify-between">
-
-        <!-- Left Content -->
-        <div class="w-full md:w-1/2 text-center md:text-left">
-          <h1 class="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-            Discover the Best <br> Course for Your Journey
-          </h1>
-          <p class="text-gray-600 mb-6">
-            Explore over 1000 courses tailored to your interests and career goals.
-          </p>
-
-          <!-- Search Bar -->
-          <div class="flex items-center bg-gradient-to-r from-green-400 to-blue-500 rounded-full p-1">
-            <input type="text" placeholder="Search.."
-              class="flex-1 p-3 rounded-full outline-none bg-white text-gray-700" />
-            <button class="p-3">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2a7.5 7.5 0 010 14.5z" />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Popular Searches -->
-          <div class="mt-6 flex flex-wrap gap-2">
-            <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700">VR
-              Development</button>
-            <button class="bg-green-600 text-white px-4 py-2 rounded-full text-sm hover:bg-green-700">Gamified
-              Learning</button>
-            <button class="bg-teal-600 text-white px-4 py-2 rounded-full text-sm hover:bg-teal-700">AI
-              Courses</button>
+        <!-- Google Map -->
+        <div class="w-full md:w-1/4 space-y-2">
+          <h2 class="text-lg font-semibold">Locate Us:</h2>
+          <div class="w-full h-48">
+            <iframe
+              class="w-full h-full rounded"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=27.7172,85.3240&hl=es;z=14&output=embed"
+            >
+            </iframe>
           </div>
         </div>
-
-        <!-- Right Image (Mobizilla Mascot) -->
-        <div class="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
-          <img src="./images/mobizilla-cartoon.jpg" alt="Mobizilla Mascot" class="w-64 md:w-80">
-        </div>
-
       </div>
 
-      <!-- Wave Line -->
-      <div class="mt-8">
-        <svg class="w-full h-12 md:h-16" viewBox="0 0 1440 320" preserveAspectRatio="none">
-          <path fill="#22c55e" fill-opacity="1"
-            d="M0,256L60,229.3C120,203,240,149,360,128C480,107,600,117,720,122.7C840,128,960,128,1080,138.7C1200,149,1320,171,1380,181.3L1440,192L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
-          </path>
-        </svg>
+      <!-- Copyright -->
+      <div class="max-w-7xl mx-auto mt-8 pt-4 text-sm text-gray-400">
+        Mobizilla All Right Reserved&copy; <span id="year"></span>
       </div>
+    </footer>
 
-    </div>
-  </section>
+    <!-- trying to make a explore pages just like that ui design -->
 
-
-
-
-
-
-  <!-- category part -->
-  <div class="container">
-    <div class="text-center mb-8">
-      <h1 class="text-3xl font-bold">
-        <span class="text-gray-800">Explore</span>
-        <span class="text-emerald-500">Categories</span>
-      </h1>
-      <p class="text-gray-600 mt-2">Find the perfect course for your learning journey</p>
-    </div>
-
-    <div class="slider-wrapper">
-      <div class="slider-container">
-        <!-- Category 1: Mobile Repair -->
-        <div class="slide" id="slide-0">
-          <img src="../courses/images/slider1.png" alt="Mobile Repair" class="w-full h-full object-cover">
-          <div class="category-text">Mobile Repair</div>
-        </div>
-
-        <!-- Category 2: Web Development -->
-        <div class="slide" id="slide-1">
-          <img src="../courses/images/slider2.png" alt="Web Development" class="w-full h-full object-cover">
-          <div class="category-text">Web Development</div>
-        </div>
-
-        <!-- Category 3: Digital Marketing -->
-        <div class="slide" id="slide-2">
-          <img src="../courses/images/slider3.png" alt="Digital Marketing" class="w-full h-full object-cover">
-          <div class="category-text">Digital Marketing</div>
-        </div>
-
-        <!-- Category 4: Graphic Design -->
-        <div class="slide" id="slide-3">
-          <img src="../courses/images/slider1.png" alt="Graphic Design" class="w-full h-full object-cover">
-          <div class="category-text">Graphic Design</div>
-        </div>
-
-        <!-- Category 5: Data Science -->
-        <div class="slide" id="slide-4">
-          <img src="../courses/images/slider2.png" alt="Data Science" class="w-full h-full object-cover">
-          <div class="category-text">Data Science</div>
-        </div>
-
-        <!-- Category 6: Cyber Security -->
-        <div class="slide" id="slide-5">
-          <img src="../courses/images/slider3.png" alt="Cyber Security" class="w-full h-full object-cover">
-          <div class="category-text">Cyber Security</div>
-        </div>
-
-        <!-- Category 7: AI & Machine Learning -->
-        <div class="slide" id="slide-6">
-          <img src="../courses/images/slider1.png" alt="AI & Machine Learning" class="w-full h-full object-cover">
-          <div class="category-text">AI & Machine Learning</div>
-        </div>
-
-        <!-- Pagination Dots -->
-        <div class="pagination">
-          <div class="dot" data-index="0"></div>
-          <div class="dot" data-index="1"></div>
-          <div class="dot" data-index="2"></div>
-          <div class="dot" data-index="3"></div>
-          <div class="dot" data-index="4"></div>
-          <div class="dot" data-index="5"></div>
-          <div class="dot" data-index="6"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--feature courses -->
-  <div class="bg-gray-100 min-h-screen py-8">
-    <div class="max-w-7xl mx-auto px-8">
-      <!-- Featured Courses Header -->
-      <div class="flex justify-center items-center mb-6">
+    <div
+      class="bg-gray-100 min-h-screen flex flex-col justify-center items-center p-6"
+    >
+      <div class="text-center mb-6">
         <h2 class="text-2xl font-bold">
-          <span class="text-green-500">Featured</span>
-          <span class="text-gray-800">Courses</span>
+          Explore <span class="text-green-600">Categories</span>
         </h2>
+        <p class="text-sm text-gray-500">
+          Find the perfect course for your learning journey
+        </p>
       </div>
 
-      <!-- Courses Grid -->
-      <div class="carousel-container overflow-hidden" id="courses-container">
-        <div id="courses-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-300">
-          <!-- Course Card 1 -->
-          <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
-            <div class="h-40 bg-green-100 overflow-hidden">
-              <img src="../courses/images/slider1.png" alt="Mobile Repair & Electronics"
-                class="w-full h-full object-cover">
-            </div>
-            <div class="p-3">
-              <h3 class="font-bold text-base mb-1">Mobile Repair & Electronics</h3>
-              <p class="text-gray-600 text-xs mb-2">Repairing phones and gadgets with our experts, with
-                great training</p>
-              <div class="flex justify-between items-center mb-2">
-                <div class="flex text-yellow-400 text-xs">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-                <span class="font-bold text-sm">$40</span>
-              </div>
-              <button
-                class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll
-                Now</button>
-            </div>
+      <div class="relative w-full max-w-6xl overflow-hidden">
+        <div class="flex items-center space-x-6 transition-all duration-500">
+          <!-- Slide 1 (half visible) -->
+          <div
+            class="relative h-72 w-40 flex-shrink-0 overflow-hidden rounded-lg bg-cover bg-center"
+            style="background-image: url('../courses/images/slider1.png')"
+          >
+            <div class="absolute right-0 top-0 w-1 h-full bg-green-500"></div>
+            <p
+              class="absolute left-0 top-4 text-white text-sm font-semibold vertical-text"
+            >
+              Mobile Repair
+            </p>
           </div>
 
-          <!-- Course Card 2 -->
-          <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
-            <div class="h-40 bg-green-100 overflow-hidden">
-              <img src="../courses/images/slider2.png" alt="Fundamentals of IoT" class="w-full h-full object-cover">
-            </div>
-            <div class="p-3">
-              <h3 class="font-bold text-base mb-1">Fundamentals of IoT</h3>
-              <p class="text-gray-600 text-xs mb-2">Building internet and devices with our experts, with
-                great training</p>
-              <div class="flex justify-between items-center mb-2">
-                <div class="flex text-yellow-400 text-xs">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-                <span class="font-bold text-sm">$90</span>
-              </div>
-              <button
-                class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll
-                Now</button>
-            </div>
+          <!-- Slide 2 (absolute on slide 3) -->
+          <div
+            class="relative -ml-20 z-20 h-64 w-48 flex-shrink-0 overflow-hidden rounded-lg bg-cover bg-center shadow-md"
+            style="background-image: url('../courses/images/slider2.png')"
+          >
+            <div class="absolute right-0 top-0 w-1 h-full bg-green-500"></div>
+            <p
+              class="absolute left-0 top-4 text-white text-sm font-semibold vertical-text"
+            >
+              Advance Technology
+            </p>
           </div>
 
-          <!-- Course Card 3 -->
-          <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
-            <div class="h-40 bg-green-100 overflow-hidden">
-              <img src="../courses/images/slider3.png" alt="Web Development" class="w-full h-full object-cover">
-            </div>
-            <div class="p-3">
-              <h3 class="font-bold text-base mb-1">Web Development</h3>
-              <p class="text-gray-600 text-xs mb-2">Learn to build modern websites and web applications
-              </p>
-              <div class="flex justify-between items-center mb-2">
-                <div class="flex text-yellow-400 text-xs">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                </div>
-                <span class="font-bold text-sm">$65</span>
-              </div>
-              <button
-                class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll
-                Now</button>
-            </div>
+          <!-- Slide 3 (active, larger) -->
+          <div
+            class="relative z-10 h-72 w-60 flex-shrink-0 overflow-hidden rounded-lg bg-cover bg-center shadow-xl"
+            style="background-image: url('../courses/images/slider3.png')"
+          >
+            <div class="absolute right-0 top-0 w-1 h-full bg-green-500"></div>
+            <p
+              class="absolute left-0 top-4 text-white text-sm font-semibold vertical-text"
+            >
+              Internet System
+            </p>
           </div>
 
-          <!-- Course Card 4 -->
-          <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
-            <div class="h-40 bg-green-100 overflow-hidden">
-              <img src="../courses/images/slider1.png" alt="Data Science Bootcamp" class="w-full h-full object-cover">
-            </div>
-            <div class="p-3">
-              <h3 class="font-bold text-base mb-1">Data Science Bootcamp</h3>
-              <p class="text-gray-600 text-xs mb-2">Master data analysis, machine learning and
-                visualization</p>
-              <div class="flex justify-between items-center mb-2">
-                <div class="flex text-yellow-400 text-xs">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-                <span class="font-bold text-sm">$120</span>
-              </div>
-              <button
-                class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll
-                Now</button>
-            </div>
-          </div>
-
-          <!-- Course Card 5 -->
-          <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
-            <div class="h-40 bg-green-100 overflow-hidden">
-              <img src="../courses/images/slider2.png" alt="UI/UX Design" class="w-full h-full object-cover">
-            </div>
-            <div class="p-3">
-              <h3 class="font-bold text-base mb-1">UI/UX Design</h3>
-              <p class="text-gray-600 text-xs mb-2">Create beautiful user interfaces and seamless
-                experiences</p>
-              <div class="flex justify-between items-center mb-2">
-                <div class="flex text-yellow-400 text-xs">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
-                <span class="font-bold text-sm">$75</span>
-              </div>
-              <button
-                class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll
-                Now</button>
-            </div>
-          </div>
-
-          <!-- Course Card 6 -->
-          <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
-            <div class="h-40 bg-green-100 overflow-hidden">
-              <img src="../courses/images/slider3.png" alt="Mobile App Development" class="w-full h-full object-cover">
-            </div>
-            <div class="p-3">
-              <h3 class="font-bold text-base mb-1">Mobile App Development</h3>
-              <p class="text-gray-600 text-xs mb-2">Build iOS and Android apps with React Native</p>
-              <div class="flex justify-between items-center mb-2">
-                <div class="flex text-yellow-400 text-xs">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                </div>
-                <span class="font-bold text-sm">$85</span>
-              </div>
-              <button
-                class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll
-                Now</button>
-            </div>
-          </div>
-
-          <!-- Hidden courses (will show on "View all Courses" click) -->
-          <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses">
-            <div class="h-40 bg-green-100 overflow-hidden">
-              <img src="../courses/images/slider1.png" alt="Blockchain Development" class="w-full h-full object-cover">
-            </div>
-            <div class="p-3">
-              <h3 class="font-bold text-base mb-1">Blockchain Development</h3>
-              <p class="text-gray-600 text-xs mb-2">Learn to build decentralized applications and smart
-                contracts</p>
-              <div class="flex justify-between items-center mb-2">
-                <div class="flex text-yellow-400 text-xs">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
-                <span class="font-bold text-sm">$110</span>
-              </div>
-              <button
-                class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll
-                Now</button>
-            </div>
-          </div>
-
-
-          <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses">
-            <div class="h-40 bg-green-100 overflow-hidden">
-              <img src="../courses/images/slider1.png" alt="Blockchain Development" class="w-full h-full object-cover">
-            </div>
-            <div class="p-3">
-              <h3 class="font-bold text-base mb-1">Blockchain Development</h3>
-              <p class="text-gray-600 text-xs mb-2">Learn to build decentralized applications and smart
-                contracts</p>
-              <div class="flex justify-between items-center mb-2">
-                <div class="flex text-yellow-400 text-xs">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
-                <span class="font-bold text-sm">$110</span>
-              </div>
-              <button
-                class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll
-                Now</button>
-            </div>
-          </div>
-
-          <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses">
-            <div class="h-40 bg-green-100 overflow-hidden">
-              <img src="../courses/images/slider2.png" alt="Cloud Computing" class="w-full h-full object-cover">
-            </div>
-            <div class="p-3">
-              <h3 class="font-bold text-base mb-1">Cloud Computing</h3>
-              <p class="text-gray-600 text-xs mb-2">Master AWS, Azure, and Google Cloud platforms</p>
-              <div class="flex justify-between items-center mb-2">
-                <div class="flex text-yellow-400 text-xs">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-                <span class="font-bold text-sm">$95</span>
-              </div>
-              <button
-                class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll
-                Now</button>
-            </div>
-          </div>
-
-
-
-
-          <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses">
-            <div class="h-40 bg-green-100 overflow-hidden">
-              <img src="../courses/images/slider1.png" alt="Cybersecurity Fundamentals"
-                class="w-full h-full object-cover">
-            </div>
-            <div class="p-3">
-              <h3 class="font-bold text-base mb-1">Cybersecurity Fundamentals</h3>
-              <p class="text-gray-600 text-xs mb-2">Learn to protect systems and networks from digital
-                attacks</p>
-              <div class="flex justify-between items-center mb-2">
-                <div class="flex text-yellow-400 text-xs">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                </div>
-                <span class="font-bold text-sm">$105</span>
-              </div>
-              <button
-                class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll
-                Now</button>
-            </div>
-          </div>
-
-
-
-          <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hidden-courses">
-            <div class="h-40 bg-green-100 overflow-hidden">
-              <img src="../courses/images/slider3.png" alt="Digital Marketing" class="w-full h-full object-cover">
-            </div>
-            <div class="p-3">
-              <h3 class="font-bold text-base mb-1">Digital Marketing</h3>
-              <p class="text-gray-600 text-xs mb-2">Master SEO, social media, and content marketing
-                strategies</p>
-              <div class="flex justify-between items-center mb-2">
-                <div class="flex text-yellow-400 text-xs">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
-                <span class="font-bold text-sm">$70</span>
-              </div>
-              <button
-                class="bg-green-500 text-white text-sm py-1 px-4 rounded-md hover:bg-green-600 transition w-full">Enroll
-                Now</button>
-            </div>
+          <!-- Slide 4 (inactive) -->
+          <div
+            class="relative h-64 w-48 flex-shrink-0 overflow-hidden rounded-lg bg-cover bg-center shadow-md"
+            style="background-image: url('../courses/images/slider3.png')"
+          >
+            <div class="absolute right-0 top-0 w-1 h-full bg-green-500"></div>
+            <p
+              class="absolute left-0 top-4 text-white text-sm font-semibold vertical-text"
+            >
+              Digital Device
+            </p>
           </div>
         </div>
-      </div>
 
-      <!-- View All Courses Button -->
-      <div class="text-center mt-6">
-        <button id="view-all-btn"
-          class="bg-blue-500 text-white px-6 py-2 text-sm rounded-md hover:bg-blue-600 transition flex items-center mx-auto">
-          <span>View all Courses</span>
-          <i class="fas fa-chevron-down ml-2"></i>
-        </button>
-      </div>
-    </div>
-
-
-  </div>
-
-
-  <!-- total students -->
-  <div class="bg-gray-100 flex items-start justify-center p-4">
-    <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
-      <div class="card-shadow rounded-lg py-12 px-8 overflow-hidden"
-        style="background-image: url('../courses/images/soft\ texture.png'); background-size: cover; background-position: center;">
-
-        <div class="text-center mb-10">
-          <h1 class="text-4xl md:text-5xl font-bold mb-3">
-            <span class="text-gray-900">Our </span>
-            <span class="text-green-600">Impact</span>
-            <span class="text-gray-900"> in </span>
-            <span class="text-blue-500">Numbers</span>
-          </h1>
-          <p class="text-gray-700 text-lg md:text-xl">Join our growing community of Learners</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-          <div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-2 impact-number">
-              <span id="students-count">0</span>k+
-            </h2>
-            <p class="text-gray-800 font-medium text-lg">Students Enrolled</p>
-          </div>
-          <div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-2 impact-number">
-              <span id="courses-count">0</span>+
-            </h2>
-            <p class="text-gray-800 font-medium text-lg">Course Available</p>
-          </div>
-          <div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-2 impact-number">
-              <span id="instructors-count">0</span>+
-            </h2>
-            <p class="text-gray-800 font-medium text-lg">Expert Instructors</p>
-          </div>
-          <div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-2 impact-number">
-              <span id="rating-count">0</span>/5
-            </h2>
-            <p class="text-gray-800 font-medium text-lg">Average Rating</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <!-- why learn with mobizilla -->
-  <div class="bg-gray-50 p-10">
-    <div class="max-w-6xl mx-auto">
-      <!-- Header -->
-      <div class="text-center mb-16">
-        <h1 class="text-4xl font-bold text-gray-900">
-          Why Learn With <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">Mobizilla</span>?
-        </h1>
-        <p class="text-gray-600 mt-4 text-lg">We provide the best learning experience for our students</p>
-      </div>
-
-      <!-- Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <!-- Card 1 with top background PNG -->
-        <div class="relative bg-white rounded-[2rem] overflow-hidden card-shadow pt-24 pb-6 px-6 text-center"
-          style="background-image: url('../courses/images/box2.png'); background-repeat: no-repeat; background-size: cover; background-position: top;">
-          <h2 class="text-xl font-bold">Expert Instructors</h2>
-          <p class="text-gray-600 mt-2">
-            Learn from industry professionals with real-world experience in their fields.
-          </p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-white rounded-[2rem] p-6 card-shadow text-center">
-          <div class="mx-auto bg-green-100 p-4 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-            💼
-          </div>
-          <h2 class="text-xl font-bold">Hands-on Projects</h2>
-          <p class="text-gray-600 mt-2">
-            Apply what you learn with real-world projects and build your portfolio.
-          </p>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white rounded-[2rem] p-6 card-shadow text-center">
-          <div class="mx-auto bg-blue-100 p-4 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-            ♾️
-          </div>
-          <h2 class="text-xl font-bold">Lifetime Access</h2>
-          <p class="text-gray-600 mt-2">
-            Get lifetime access to course materials, including all future updates.
-          </p>
-        </div>
-
-        <!-- Card 4 with bottom background PNG -->
-        <div class="relative bg-white rounded-[2rem] overflow-visible card-shadow pt-6 pb-24 px-6 text-center"
-          style="background-image: url('../courses/images/box2.png'); background-repeat: no-repeat; background-size: cover; background-position: bottom;">
-          <h2 class="text-xl font-bold">Certification</h2>
-          <p class="text-gray-600 mt-2">
-            Earn certificates that you can share with employers and your professional network.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-  <footer class="bg-gray-800 text-white py-10 px-4">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
-
-      <!-- Logo and Contact Info -->
-      <div class="w-full md:w-1/4 space-y-4">
-        <!-- Logo and Text on the Same Line -->
-        <div class="flex items-center space-x-2">
-          <img src="../Hompage/image/footer-logo.jpg" alt="Mobizilla Logo" class="h-14 w-auto rounded-full">
-          <p class="font-semibold text-lg">Mobizilla</p>
-        </div>
-
-        <!-- Additional Information -->
-        <div class="space-y-1 text-sm">
-          <p class="font-semibold">Mobizilla Training & Technical Institute</p>
-          <p>Newroad, Kathmandu, Nepal</p>
-          <p>Phone: <a href="tel:+9779808450458" class="hover:underline">+977-9808450458</a></p>
-          <p>Email: <a href="mailto:mobzillastore@gmail.com" class="hover:underline">mobzillastore@gmail.com</a></p>
-        </div>
-      </div>
-
-
-      <!-- Company Links -->
-      <div class="w-full md:w-1/4 space-y-2">
-        <h2 class="text-lg font-semibold">Company</h2>
-        <ul class="space-y-1 text-sm">
-          <li><a href="#" class="hover:underline">Home</a></li>
-          <li><a href="#" class="hover:underline">Career</a></li>
-          <li><a href="#" class="hover:underline">About</a></li>
-          <li><a href="#" class="hover:underline">Blogs</a></li>
-          <li><a href="#" class="hover:underline">Contact</a></li>
-          <li><a href="#" class="hover:underline">FixIT</a></li>
-        </ul>
-      </div>
-
-      <!-- Social Links -->
-      <div class="w-full md:w-1/4 space-y-2">
-        <h2 class="text-lg font-semibold">Social</h2>
-        <ul class="space-y-1 text-sm">
-          <li><a href="#" class="hover:underline">Facebook</a></li>
-          <li><a href="#" class="hover:underline">Instagram</a></li>
-          <li><a href="#" class="hover:underline">YouTube</a></li>
-          <li><a href="#" class="hover:underline">Twitter</a></li>
-        </ul>
-      </div>
-
-      <!-- Google Map -->
-      <div class="w-full md:w-1/4 space-y-2">
-        <h2 class="text-lg font-semibold">Locate Us:</h2>
-        <div class="w-full h-48">
-          <iframe class="w-full h-full rounded" loading="lazy" allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=27.7172,85.3240&hl=es;z=14&output=embed">
-          </iframe>
+        <!-- Dots Navigation -->
+        <div class="absolute right-4 bottom-4 flex items-center space-x-2">
+          <span class="h-2 w-2 bg-green-500 rounded-full"></span>
+          <span class="h-2 w-2 bg-gray-400 rounded-full"></span>
+          <span class="h-2 w-2 bg-gray-400 rounded-full"></span>
+          <span class="h-2 w-2 bg-gray-400 rounded-full"></span>
         </div>
       </div>
     </div>
 
-    <!-- Copyright -->
-    <div class="max-w-7xl mx-auto mt-8 pt-4 text-sm text-gray-400">
-      Mobizilla All Right Reserved&copy; <span id="year"></span>
-    </div>
-  </footer>
-
-
-  <!-- trying to make a explore pages just like that ui design -->
-
-  <div class="bg-gray-100 min-h-screen flex flex-col justify-center items-center p-6">
-    <div class="text-center mb-6">
-      <h2 class="text-2xl font-bold">
-        Explore <span class="text-green-600">Categories</span>
-      </h2>
-      <p class="text-sm text-gray-500">
-        Find the perfect course for your learning journey
-      </p>
-    </div>
-
-    <div class="relative w-full max-w-6xl overflow-hidden">
-      <div class="flex items-center space-x-6 transition-all duration-500">
-        <!-- Slide 1 (half visible) -->
-        <div class="relative h-72 w-40 flex-shrink-0 overflow-hidden rounded-lg bg-cover bg-center"
-          style="background-image: url('../courses/images/slider1.png')">
-          <div class="absolute right-0 top-0 w-1 h-full bg-green-500"></div>
-          <p class="absolute left-0 top-4 text-white text-sm font-semibold vertical-text">
-            Mobile Repair
-          </p>
-        </div>
-
-        <!-- Slide 2 (absolute on slide 3) -->
-        <div
-          class="relative -ml-20 z-20 h-64 w-48 flex-shrink-0 overflow-hidden rounded-lg bg-cover bg-center shadow-md"
-          style="background-image: url('../courses/images/slider2.png')">
-          <div class="absolute right-0 top-0 w-1 h-full bg-green-500"></div>
-          <p class="absolute left-0 top-4 text-white text-sm font-semibold vertical-text">
-            Advance Technology
-          </p>
-        </div>
-
-        <!-- Slide 3 (active, larger) -->
-        <div class="relative z-10 h-72 w-60 flex-shrink-0 overflow-hidden rounded-lg bg-cover bg-center shadow-xl"
-          style="background-image: url('../courses/images/slider3.png')">
-          <div class="absolute right-0 top-0 w-1 h-full bg-green-500"></div>
-          <p class="absolute left-0 top-4 text-white text-sm font-semibold vertical-text">
-            Internet System
-          </p>
-        </div>
-
-        <!-- Slide 4 (inactive) -->
-        <div class="relative h-64 w-48 flex-shrink-0 overflow-hidden rounded-lg bg-cover bg-center shadow-md"
-          style="background-image: url('../courses/images/slider3.png')">
-          <div class="absolute right-0 top-0 w-1 h-full bg-green-500"></div>
-          <p class="absolute left-0 top-4 text-white text-sm font-semibold vertical-text">
-            Digital Device
-          </p>
-        </div>
-      </div>
-
-      <!-- Dots Navigation -->
-      <div class="absolute right-4 bottom-4 flex items-center space-x-2">
-        <span class="h-2 w-2 bg-green-500 rounded-full"></span>
-        <span class="h-2 w-2 bg-gray-400 rounded-full"></span>
-        <span class="h-2 w-2 bg-gray-400 rounded-full"></span>
-        <span class="h-2 w-2 bg-gray-400 rounded-full"></span>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-  <!-- last one -->
-  <div class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="container mx-auto px-4 py-8">
+    <!-- last one -->
+    <div class="bg-gray-100 min-h-screen flex items-center justify-center">
+      <div class="container mx-auto px-4 py-8">
         <!-- Header -->
         <div class="mb-4">
-            <h1 class="text-3xl font-bold">Explore <span class="text-emerald-500">Categories</span></h1>
-            <p class="text-gray-600">Find the perfect course for your learning journey</p>
+          <h1 class="text-3xl font-bold">
+            Explore <span class="text-emerald-500">Categories</span>
+          </h1>
+          <p class="text-gray-600">
+            Find the perfect course for your learning journey
+          </p>
         </div>
 
         <!-- Carousel Container -->
         <div class="relative overflow-hidden my-8">
-            <div class="slide-container flex items-center" id="slide-container">
-                <!-- Slide 1 -->
-                <div class="slide h-64 bg-gray-300" id="slide-1">
-                    <div class="category-title">Web Development</div>
-                    <img src="../courses/images/slider1.png" alt="Web Development" class="w-full h-full object-cover">
-                </div>
-                
-                <!-- Slide 2 -->
-                <div class="slide h-64 bg-gray-300" id="slide-2">
-                    <div class="category-title">Mobile Repair</div>
-                    <img src="../courses/images/slider2.png" alt="Mobile Repair" class="w-full h-full object-cover">
-                </div>
-                
-                <!-- Slide 3 -->
-                <div class="slide h-64 bg-gray-300" id="slide-3">
-                    <div class="category-title">Advanced Soldering</div>
-                    <img src="../courses/images/slider3.png" alt="Advanced Soldering" class="w-full h-full object-cover">
-                </div>
-                
-                <!-- Slide 4 -->
-                <div class="slide h-64 bg-gray-300" id="slide-4">
-                    <div class="category-title">Personal Finance</div>
-                    <img src="../courses/images/slider1.png" alt="Personal Finance" class="w-full h-full object-cover">
-                </div>
-                
-                <!-- Slide 5 -->
-                <div class="slide h-64 bg-gray-300" id="slide-5">
-                    <div class="category-title">Digital Marketing</div>
-                    <img src="../courses/images/slider1.png" alt="Digital Marketing" class="w-full h-full object-cover">
-                </div>
+          <div class="slide-container flex items-center" id="slide-container">
+            <!-- Slide 1 -->
+            <div class="slide h-64 bg-gray-300" id="slide-1">
+              <div class="category-title">Web Development</div>
+              <img
+                src="../courses/images/slider1.png"
+                alt="Web Development"
+                class="w-full h-full object-cover"
+              />
             </div>
 
-            <!-- Navigation Dots -->
-            <div class="absolute right-4 bottom-4 flex flex-col space-y-2" id="dots-container">
-                <button class="dot w-16 h-2 bg-emerald-500 rounded-full" data-slide="1"></button>
-                <button class="dot w-4 h-2 bg-gray-300 rounded-full" data-slide="2"></button>
-                <button class="dot w-4 h-2 bg-gray-300 rounded-full" data-slide="3"></button>
-                <button class="dot w-4 h-2 bg-gray-300 rounded-full" data-slide="4"></button>
-                <button class="dot w-4 h-2 bg-gray-300 rounded-full" data-slide="5"></button>
+            <!-- Slide 2 -->
+            <div class="slide h-64 bg-gray-300" id="slide-2">
+              <div class="category-title">Mobile Repair</div>
+              <img
+                src="../courses/images/slider2.png"
+                alt="Mobile Repair"
+                class="w-full h-full object-cover"
+              />
             </div>
+
+            <!-- Slide 3 -->
+            <div class="slide h-64 bg-gray-300" id="slide-3">
+              <div class="category-title">Advanced Soldering</div>
+              <img
+                src="../courses/images/slider3.png"
+                alt="Advanced Soldering"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="slide h-64 bg-gray-300" id="slide-4">
+              <div class="category-title">Personal Finance</div>
+              <img
+                src="../courses/images/slider1.png"
+                alt="Personal Finance"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="slide h-64 bg-gray-300" id="slide-5">
+              <div class="category-title">Digital Marketing</div>
+              <img
+                src="../courses/images/slider1.png"
+                alt="Digital Marketing"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <!-- Navigation Dots -->
+          <div
+            class="absolute right-4 bottom-4 flex flex-col space-y-2"
+            id="dots-container"
+          >
+            <button
+              class="dot w-16 h-2 bg-emerald-500 rounded-full"
+              data-slide="1"
+            ></button>
+            <button
+              class="dot w-4 h-2 bg-gray-300 rounded-full"
+              data-slide="2"
+            ></button>
+            <button
+              class="dot w-4 h-2 bg-gray-300 rounded-full"
+              data-slide="3"
+            ></button>
+            <button
+              class="dot w-4 h-2 bg-gray-300 rounded-full"
+              data-slide="4"
+            ></button>
+            <button
+              class="dot w-4 h-2 bg-gray-300 rounded-full"
+              data-slide="5"
+            ></button>
+          </div>
         </div>
+      </div>
     </div>
 
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 
-  </div>
+      <script src="{% static 'courses/js/script.js' %}"></script>
 
-
-
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-
-  </script>
-
-  <script src="index.js"></script>
-</body>
-
+  </body>
 </html>
