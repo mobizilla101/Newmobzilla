@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-from datetime import timedelta
 import dj_database_url
 from dotenv import load_dotenv
 
@@ -52,6 +51,7 @@ INSTALLED_APPS = [
     'glbmodels',
     'subscription',
     'core',
+    'widget_tweaks',
 ]
 
 SITE_ID = 1
@@ -70,18 +70,23 @@ AUTHENTICATION_BACKENDS = [
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'webmaster@localhost'
 
-# Allauth settings
 
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_AUTHENTICATION_METHOD = "email"
+# Updated Allauth settings
+ACCOUNT_LOGIN_METHODS = ['email']  # Replaces ACCOUNT_AUTHENTICATION_METHOD
+ACCOUNT_EMAIL_VERIFICATION = 'optional'  # or 'mandatory' or 'none'
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*'] 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-# ACCOUNT_USER_MODEL_USERNAME_FIELD = None  
-LOGIN_REDIRECT_URL = "/home"      # where to redirect after login
-LOGOUT_REDIRECT_URL = "/accounts/login"     # where to redirect after logout
+ACCOUNT_USER_MODEL_EMAIL_FIELD = 'email'
 
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = "/home"  # where to redirect after login
+LOGOUT_REDIRECT_URL = "/accounts/login"  # where to redirect after logout
+
+# Additional allauth settings
+ACCOUNT_SESSION_REMEMBER = True  # Remember login
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True  # Auto login after email confirmation
+ACCOUNT_LOGOUT_ON_GET = False  # Require POST for logout
+SOCIALACCOUNT_QUERY_EMAIL = True
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -179,41 +184,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key
 # -------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# -------------------------
-# Django REST Framework & JWT
-# -------------------------
-REST_USE_JWT = True
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 5,
-    'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.UserRateThrottle',
-        'rest_framework.throttling.AnonRateThrottle',
-    ],
-    'DEFAULT_THROTTLE_RATES': {
-        'user': '100/day',
-        'anon': '10/hour',
-        'register_burst': '3/minute',
-        'login_burst': '5/minute',
-    }
-}
-
-SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
-    'BLACKLIST_AFTER_ROTATION': True,
-    'ROTATE_REFRESH_TOKENS': True,
-    "AUTH_HEADER_TYPES": ("JWT",),
-}
-
-REST_AUTH_SERIALIZERS = {
-    'JWT_SERIALIZER': 'dj_rest_auth.serializers.JWTSerializer',
-}
 
 # -------------------------
 # CORS

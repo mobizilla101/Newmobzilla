@@ -1,0 +1,35 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<h2>{{ course.title }}</h2>
+
+{% if course.content %}
+  <video width="800" controls>
+    <source src="{{ course.content.url }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+{% else %}
+  <p>Video not available.</p>
+{% endif %}
+
+<hr>
+<h3>Comments</h3>
+
+<!-- Comment Form -->
+<form method="POST" class="mb-4">
+  {% csrf_token %}
+  <textarea name="content" rows="3" placeholder="Add a comment..." required class="w-full p-2 border rounded"></textarea>
+  <button type="submit" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Post Comment</button>
+</form>
+
+<!-- List of Comments using reverse relationship -->
+{% for comment in course.comments.all %}
+  <div class="border p-2 mb-2 rounded">
+    <strong>{{ comment.user.username }}</strong>
+    <small class="text-gray-500">{{ comment.created_at|date:"M d, Y H:i" }}</small>
+    <p>{{ comment.content }}</p>
+  </div>
+{% empty %}
+  <p>No comments yet. Be the first to comment!</p>
+{% endfor %}
+{% endblock %}

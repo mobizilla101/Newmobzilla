@@ -30,6 +30,7 @@ class Course(models.Model):
     )
     category = models.CharField(max_length=100)
     pricing = models.CharField(max_length=10, choices=PRICING_CHOICES)
+    price = models.FloatField(max_length=5, default=None, null=True, blank=True)
     description = models.TextField()
     thumbnail = models.ImageField(upload_to='thumbnails/', null=True, blank=True,validators=[validate_image])
     content = models.FileField(upload_to='content/', null=True, blank=True,validators=[validate_video])
@@ -37,3 +38,41 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
+class Purchase(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    purchased_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("user", "course")
+
+    def __str__(self):
+        return f"{self.user} → {self.course}"
+
+class Comment(models.Model):
+    course = models.ForeignKey(
+        Course, 
+        on_delete=models.CASCADE, 
+        related_name='comments'
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE
+    )
+    content = models.TextField(max_length=1000)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['course', '-created_at']),
+            models.Index(fields=['user', '-created_at']),
+        ]
+
+    def __str__(self):
+        return f"Comment by {self.user} on {self.course.title}"
