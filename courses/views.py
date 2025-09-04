@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView
 from .models import Course, Purchase
 from django.contrib.auth.decorators import login_required
 from courses.models import Comment
+
 class CourseListView(ListView):
     model = Course
     template_name = "courses/course_list.html"

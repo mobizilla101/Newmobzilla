@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'subscription',
     'core',
     'widget_tweaks',
+    'blogs',
 ]
 
 SITE_ID = 1

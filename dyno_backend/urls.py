@@ -10,7 +10,7 @@ def redirect_to_login(request):
 urlpatterns = [
     path('', redirect_to_login, name="redirect_to_login"), 
     path('', include('accounts.urls')),
-
+    path('blogs', include('blogs.urls')),
     path('', include('core.urls'), name='core'),
     path('admin/', admin.site.urls),
     path('api/auth/', include('dj_rest_auth.urls')),
