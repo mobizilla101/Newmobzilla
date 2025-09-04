@@ -6,6 +6,6 @@ router = DefaultRouter()
 router.register('courses', CourseViewSet, basename='courses')
 
 urlpatterns = [
-    path('', course_page, name="course_page"),
+    path('', course_page, name="courses"),
     # path('', include(router.urls)),
 ]

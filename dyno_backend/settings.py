@@ -80,7 +80,7 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 # ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 # ACCOUNT_USER_MODEL_USERNAME_FIELD = None  
 LOGIN_REDIRECT_URL = "/home"      # where to redirect after login
-LOGOUT_REDIRECT_URL = "/login"     # where to redirect after logout
+LOGOUT_REDIRECT_URL = "/accounts/login"     # where to redirect after logout
 
 
 SOCIALACCOUNT_PROVIDERS = {
