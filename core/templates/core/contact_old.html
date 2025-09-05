@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Document</title>
+        <link rel="stylesheet" href="contact.css">
+        <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: white;
+    }
+
+    .contact-card {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-input {
+      border: 1px solid #00997a;
+      border-radius: 0.375rem;
+      padding: 0.75rem;
+      width: 100%;
+      outline: none;
+    }
+
+    .form-input:focus {
+      border: 1px solid #00997a;
+    }
+
+    .half-green {
+      position: relative;
+    }
+
+    .half-green::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 65%;
+      background-color: #00a651;
+      z-index: -1;
+    }
+        </style>
+    </head>
+    <body class="font-sans">
+        <div class="half-green min-h-screen overflow-hidden">
+            <!-- Header Section -->
+            <div class="bg-white pt-8 pb-16 text-center">
+                <div class="relative mx-auto max-w-xl">
+                    <h2 class="text-4xl font-bold mb-2">
+                        <span class="text-blue-500">Get in</span> <span class="text-green-600">Touch</span>
+                    </h2>
+                </div>
+                <p class="text-gray-600 max-w-xl mx-auto px-4">
+                    Get best learning and courses of mobile and repairing from the best professor and experts in the market.
+                </p>
+            </div>
+            <!-- Contact Form Section -->
+            <div class="max-w-5xl mx-auto bg-white rounded-lg contact-card flex flex-col md:flex-row relative z-10 px-4 pt-8 pb-10 overflow-visible">
+                <!-- Left: Phone Image -->
+                <div class="w-full md:w-2/5 flex justify-center md:justify-start items-end md:items-end relative">
+                    <img src="../contact/images/phone contact.png"
+                         alt="Phone"
+                         class="absolute w-[28rem] h-[45rem] md:w-[36rem] md:h-[42rem] object-contain -left-[25%] bottom-[-15.6rem] z-10" />
+                </div>
+                <!-- Right: Form -->
+                <div class="w-full md:w-3/5 pt-6 md:pt-2 pr-2 md:pr-6">
+                    <form class="space-y-5">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" class="form-input" />
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" class="form-input" />
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Write your message here:</label>
+                            <textarea rows="5" class="form-input resize-none"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <!-- Dino Character -->
+                <div class="absolute -top-20 right-4 md:-top-18 md:right-4 w-30 md:w-32 z-20">
+                    <img src="../contact/images/dino sitting.png" alt="Dino" />
+                </div>
+            </div>
+            <!-- Submit Button OUTSIDE the white card -->
+            <div class="flex justify-center mt-6 mb-2">
+                <button class="bg-white text-green-600 font-bold px-8 py-2 rounded-md border border-green-600 hover:bg-green-50 transition">
+                    Submit Now
+                </button>
+            </div>
+        </div>
+    </body>
+</html>

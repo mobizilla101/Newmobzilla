@@ -1,0 +1,151 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <body class="bg-[#F3F3F3] font-[Inter]">
+        <!-- Main content -->
+        <section class="py-8 md:py-16 relative">
+            <div class="container mx-auto px-4 max-w-7xl">
+                <div class="flex flex-col lg:flex-row items-center justify-center relative min-h-[500px]">
+                    <!-- Left side - Mobile phones -->
+                    <div class="lg:w-1/3 flex justify-center lg:justify-end mb-8 lg:mb-0 lg:pr-8">
+                        <div class="relative">
+                            <img src="{% static 'core/videos/bg-remove-phone.gif' %}"
+                                 alt="Mobile phones animation"
+                                 class="w-80 h-auto object-contain" />
+                        </div>
+                    </div>
+                    <!-- Center Content Box -->
+                    <div class="lg:w-1/3 mb-8 lg:mb-0 relative z-10">
+                        <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mx-auto relative">
+                            <!-- Content Layout -->
+                            <div class="flex items-center justify-center">
+                                <!-- Left: Logo -->
+                                <div class="flex flex-col items-center mr-6">
+                                    <img src="{% static 'core/images/main-section-logo.png' %}"
+                                         alt="Mobizilla Logo"
+                                         class="w-20 md:w-24 mb-2"
+                                         id="contentLogo" />
+                                    <div class="text-center">
+                                        <div class="text-teal-500 font-bold text-sm tracking-wide">MOBIZILLA</div>
+                                    </div>
+                                </div>
+                                <!-- Center: Vertical Line -->
+                                <div class="flex items-center mx-4">
+                                    <div class="w-px bg-gray-300 h-32"></div>
+                                </div>
+                                <!-- Right: Text and Button -->
+                                <div class="flex flex-col items-start">
+                                    <h2 class="text-lg md:text-xl font-medium text-gray-700 mb-1">Be an Expert with</h2>
+                                    <h1 class="text-2xl md:text-3xl font-bold text-black mb-4">MOBIZILLA</h1>
+                                    <a href="{% url 'course_list' %}"
+                                       class="bg-gradient-to-r from-blue-500 to-teal-500 text-white font-medium px-6 py-3 rounded-md hover:from-blue-600 hover:to-teal-600 transition-colors">
+                                        EXPLORE COURSES
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right side - Feature icons -->
+                    <div class="lg:w-1/3 flex justify-center lg:justify-start lg:pl-8">
+                        <div class="flex flex-col space-y-12 items-center lg:items-start max-w-md">
+                            <!-- Hands-On Training -->
+                            <div class="flex flex-col items-center lg:items-start" id="icon1">
+                                <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="h-8 w-8 text-white"
+                                         fill="none"
+                                         viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <p class="text-gray-800 font-medium mt-2 text-center lg:text-left whitespace-nowrap">Hands-On Training</p>
+                            </div>
+                            <!-- Certification -->
+                            <div class="flex flex-col items-center lg:items-start" id="icon2">
+                                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="h-8 w-8 text-white"
+                                         fill="none"
+                                         viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <p class="text-gray-800 font-medium mt-2 text-center lg:text-left">Certification</p>
+                            </div>
+                            <!-- Industry Experts -->
+                            <div class="flex flex-col items-center lg:items-start" id="icon3">
+                                <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="h-8 w-8 text-white"
+                                         fill="none"
+                                         viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                </div>
+                                <p class="text-gray-800 font-medium mt-2 text-center lg:text-left">Industry Experts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Feature tags section with animation -->
+        <div class="bg-gradient-to-r from-green-50 to-blue-50 py-8">
+            <div class="overflow-hidden w-full">
+                <div id="tag-row" class="flex space-x-6 whitespace-nowrap animate-scroll">
+                    <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg whitespace-nowrap text-lg">
+                        Certified Training
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-500 to-green-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg whitespace-nowrap text-lg">
+                        Empowering Youth
+                    </div>
+                    <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg whitespace-nowrap text-lg">
+                        Global Opportunities
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-500 to-green-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg whitespace-nowrap text-lg">
+                        Disciplinary Skills
+                    </div>
+                    <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg whitespace-nowrap text-lg">
+                        Immersive Learning
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-500 to-green-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg whitespace-nowrap text-lg">
+                        Accessible Training
+                    </div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg whitespace-nowrap text-lg">
+                        Certified Training
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-500 to-green-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg whitespace-nowrap text-lg">
+                        Empowering Youth
+                    </div>
+                    <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold px-8 py-4 rounded-lg shadow-lg whitespace-nowrap text-lg">
+                        Global Opportunities
+                    </div>
+                </div>
+            </div>
+        </section>
+        <style>
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-scroll {
+      animation: scroll 20s linear infinite;
+    }
+
+    .animate-scroll:hover {
+      animation-play-state: paused;
+    }
+        </style>
+    </body>
+{% endblock %}
