@@ -1,7 +1,246 @@
 {% extends 'core/base.html' %}
-
-{% block title %}Home{% endblock %}
-
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}Profile - Mobizilla{% endblock %}
 {% block content %}
-    <h1>Profile</h1>
+    <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header -->
+            <div class="mb-8 text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                </div>
+                <h1 class="text-3xl font-bold text-gray-900">My Profile</h1>
+                <p class="text-gray-600">Manage your account settings</p>
+            </div>
+            <!-- Messages -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="mb-4 p-4 rounded-lg {% if message.tags == 'success' %}bg-green-100 text-green-800{% elif message.tags == 'error' %}bg-red-100 text-red-800{% else %}bg-blue-100 text-blue-800{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <!-- Tab Navigation -->
+            <div class="bg-white rounded-t-2xl shadow-xl">
+                <div class="flex border-b">
+                    <button onclick="showTab('profile')"
+                            id="profile-tab"
+                            class="flex-1 py-4 px-6 text-center font-medium border-b-2 border-blue-600 text-blue-600">
+                        <svg class="w-5 h-5 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                        </svg>
+                        Profile Info
+                    </button>
+                    <button onclick="showTab('password')"
+                            id="password-tab"
+                            class="flex-1 py-4 px-6 text-center font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                        <svg class="w-5 h-5 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z" />
+                        </svg>
+                        Change Password
+                    </button>
+                </div>
+            </div>
+            <!-- Profile Tab Content -->
+            <div id="profile-content" class="bg-white rounded-b-2xl shadow-xl p-8">
+                <!-- Current Info -->
+                <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                    <h3 class="font-medium text-gray-700 mb-2">Current Information</h3>
+                    <div class="text-sm text-gray-600 space-y-1">
+                        <p>
+                            <span class="font-medium">Email:</span> {{ user.email }}
+                        </p>
+                        <p>
+                            <span class="font-medium">Joined:</span> {{ user.date_joined|date:"M d, Y" }}
+                        </p>
+                        <p>
+                            <span class="font-medium">Last Login:</span> {{ user.last_login|date:"M d, Y"|default:"Never" }}
+                        </p>
+                    </div>
+                </div>
+                <!-- Profile Form -->
+                <form method="post" class="space-y-4">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">{{ profile_form.first_name.label }}</label>
+                            {{ profile_form.first_name|add_class:"w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" }}
+                            {% if profile_form.first_name.errors %}
+                                <p class="mt-1 text-xs text-red-600">{{ profile_form.first_name.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">{{ profile_form.last_name.label }}</label>
+                            {{ profile_form.last_name|add_class:"w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" }}
+                            {% if profile_form.last_name.errors %}
+                                <p class="mt-1 text-xs text-red-600">{{ profile_form.last_name.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ profile_form.email.label }}</label>
+                        {{ profile_form.email|add_class:"w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 cursor-not-allowed" }}
+                        <p class="mt-1 text-xs text-gray-500">Email cannot be changed</p>
+                    </div>
+                    <button type="submit"
+                            name="update_profile"
+                            class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 font-medium transition-colors">
+                        Update Profile
+                    </button>
+                </form>
+            </div>
+            <!-- Password Tab Content -->
+            <div id="password-content"
+                 class="bg-white rounded-b-2xl shadow-xl p-8 hidden">
+                <!-- Security Notice -->
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-6">
+                    <div class="flex items-center text-sm text-yellow-800">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92z" />
+                        </svg>
+                        Use a strong password with 8+ characters, letters, numbers, and symbols
+                    </div>
+                </div>
+                <!-- Password Form -->
+                <form method="post" class="space-y-4">
+                    {% csrf_token %}
+                    {% if password_form.non_field_errors %}
+                        <div class="bg-red-100 border border-red-300 text-red-800 p-3 rounded-lg text-sm">
+                            {{ password_form.non_field_errors.0 }}
+                        </div>
+                    {% endif %}
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ password_form.old_password.label }}</label>
+                        {{ password_form.old_password|add_class:"w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" }}
+                        {% if password_form.old_password.errors %}
+                            <p class="mt-1 text-xs text-red-600">{{ password_form.old_password.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ password_form.new_password1.label }}</label>
+                        {{ password_form.new_password1|add_class:"w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" }}
+                        {% if password_form.new_password1.errors %}
+                            <p class="mt-1 text-xs text-red-600">{{ password_form.new_password1.errors.0 }}</p>
+                        {% endif %}
+                        <!-- Password Strength -->
+                        <div class="mt-2">
+                            <div class="text-xs text-gray-500">
+                                Strength: <span id="strength-text">Not set</span>
+                            </div>
+                            <div class="mt-1 bg-gray-200 rounded-full h-1">
+                                <div id="strength-bar"
+                                     class="h-1 rounded-full transition-all duration-300"
+                                     style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ password_form.new_password2.label }}</label>
+                        {{ password_form.new_password2|add_class:"w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" }}
+                        {% if password_form.new_password2.errors %}
+                            <p class="mt-1 text-xs text-red-600">{{ password_form.new_password2.errors.0 }}</p>
+                        {% endif %}
+                        <div class="mt-1 text-xs" id="password-match"></div>
+                    </div>
+                    <button type="submit"
+                            name="change_password"
+                            class="w-full bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700 font-medium transition-colors">
+                        Change Password
+                    </button>
+                </form>
+            </div>
+            <!-- Back Button -->
+            <div class="mt-6 text-center">
+                <a href="{% url 'dashboard' %}"
+                   class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+                    <svg class="w-4 h-4 mr-2"
+                         fill="none"
+                         stroke="currentColor"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+function showTab(tab) {
+    // Hide all content
+    document.getElementById('profile-content').classList.add('hidden');
+    document.getElementById('password-content').classList.add('hidden');
+    
+    // Reset tab styles
+    document.getElementById('profile-tab').className = 'flex-1 py-4 px-6 text-center font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700';
+    document.getElementById('password-tab').className = 'flex-1 py-4 px-6 text-center font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700';
+    
+    // Show selected content and style tab
+    if (tab === 'profile') {
+        document.getElementById('profile-content').classList.remove('hidden');
+        document.getElementById('profile-tab').className = 'flex-1 py-4 px-6 text-center font-medium border-b-2 border-blue-600 text-blue-600';
+    } else {
+        document.getElementById('password-content').classList.remove('hidden');
+        document.getElementById('password-tab').className = 'flex-1 py-4 px-6 text-center font-medium border-b-2 border-blue-600 text-blue-600';
+    }
+}
+
+// Password strength checker
+const newPasswordInput = document.getElementById('{{ password_form.new_password1.id_for_label }}');
+const confirmPasswordInput = document.getElementById('{{ password_form.new_password2.id_for_label }}');
+
+function checkPasswordStrength(password) {
+    let strength = 0;
+    if (password.length >= 8) strength += 25;
+    if (/[a-z]/.test(password)) strength += 25;
+    if (/[A-Z]/.test(password)) strength += 25;
+    if (/[0-9]/.test(password)) strength += 25;
+    if (/[^a-zA-Z0-9]/.test(password)) strength += 25;
+    return Math.min(strength, 100);
+}
+
+if (newPasswordInput) {
+    newPasswordInput.addEventListener('input', function() {
+        const strength = checkPasswordStrength(this.value);
+        const strengthBar = document.getElementById('strength-bar');
+        const strengthText = document.getElementById('strength-text');
+        
+        strengthBar.style.width = strength + '%';
+        
+        if (strength < 50) {
+            strengthBar.className = 'h-1 rounded-full transition-all duration-300 bg-red-500';
+            strengthText.textContent = 'Weak';
+        } else if (strength < 100) {
+            strengthBar.className = 'h-1 rounded-full transition-all duration-300 bg-yellow-500';
+            strengthText.textContent = 'Good';
+        } else {
+            strengthBar.className = 'h-1 rounded-full transition-all duration-300 bg-green-500';
+            strengthText.textContent = 'Strong';
+        }
+        checkPasswordMatch();
+    });
+}
+
+if (confirmPasswordInput) {
+    confirmPasswordInput.addEventListener('input', checkPasswordMatch);
+}
+
+function checkPasswordMatch() {
+    if (!newPasswordInput || !confirmPasswordInput) return;
+    
+    const password = newPasswordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
+    const matchDiv = document.getElementById('password-match');
+
+    if (confirmPassword === '') {
+        matchDiv.textContent = '';
+    } else if (password === confirmPassword) {
+        matchDiv.innerHTML = '<span class="text-green-600">✓ Passwords match</span>';
+    } else {
+        matchDiv.innerHTML = '<span class="text-red-600">✗ Passwords do not match</span>';
+    }
+}
+    </script>
 {% endblock %}

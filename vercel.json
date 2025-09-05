@@ -1,8 +1,0 @@
-{
-  "builds": [
-    { "src": "dyno_backend/wsgi.py", "use": "@vercel/python" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "dyno_backend/wsgi.py" }
-  ]
-}
